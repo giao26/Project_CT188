@@ -1,0 +1,605 @@
+[
+  {
+    "id": 1,
+    "name": "Áo Polo Nam IconDenim Trim Color",
+    "slug": "ao-polo-nam-icondenim-trim-color",
+    "category": "Áo polo",
+    "categorySlug": "ao-polo",
+    "rating": 4.8,
+    "description": "Áo polo nam form regular, chất vải mềm, cổ phối màu gọn gàng, phù hợp đi học, đi làm và dạo phố.",
+    "material": "Vải cá sấu cotton pha spandex",
+    "designTechnique": "Dệt bo cổ phối màu, may viền rib tương phản",
+    "form": "Regular",
+    "price": "329.000₫",
+    "priceValue": 329000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-polo-icondenim-trim-color__6__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-polo-icondenim-trim-color__6__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/ao_polo_sizing.png",
+    "preserve": "Giặt máy ở chế độ nhẹ, không dùng thuốc tẩy, phơi trong bóng râm và ủi ở nhiệt độ thấp.",
+    "stock": 42,
+    "sold": 118,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/ao-polo-icondenim-trim-color__6__main.jpg"
+      },
+      {
+        "color": "Đen",
+        "img": "./assets/images/productlistimage/ao-polo-icondenim-trim-color__6__hover.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 15,
+    "references": [2, 3, 5],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=11",
+        "name": "Minh Khang",
+        "address": "Cần Thơ",
+        "star": 5,
+        "text": "Áo mặc vừa người, cổ áo chắc và màu xanh lên khá đẹp."
+      },
+      {
+        "avt": "https://i.pravatar.cc/80?img=12",
+        "name": "Hoàng Nam",
+        "address": "TP. Hồ Chí Minh",
+        "star": 5,
+        "text": "Chất vải ổn, giao hàng nhanh, đúng mô tả."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Áo Polo Nam Họa Tiết Phối Cổ",
+    "slug": "ao-polo-nam-hoa-tiet-phoi-co",
+    "category": "Áo polo",
+    "categorySlug": "ao-polo",
+    "rating": 4.6,
+    "description": "Thiết kế polo có điểm nhấn ở cổ và tay áo, dễ phối với quần jean hoặc quần short.",
+    "material": "Vải cá sấu cotton pha polyester",
+    "designTechnique": "Phối cổ và bo tay tương phản, thêu logo nhỏ",
+    "form": "Regular",
+    "price": "289.000₫",
+    "priceValue": 289000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/-polo-nam-hoa-tiet-phoi-co-contrasting-ribbed-details-form-regular__2__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/-polo-nam-hoa-tiet-phoi-co-contrasting-ribbed-details-form-regular__2__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/ao_polo_sizing.png",
+    "preserve": "Lộn trái khi giặt, giặt với màu tương tự, hạn chế sấy nóng để giữ form áo.",
+    "stock": 36,
+    "sold": 87,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/-polo-nam-hoa-tiet-phoi-co-contrasting-ribbed-details-form-regular__2__main.jpg"
+      },
+      {
+        "color": "Xanh Than",
+        "img": "./assets/images/productlistimage/-polo-nam-hoa-tiet-phoi-co-contrasting-ribbed-details-form-regular__2__hover.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 25,
+    "references": [1, 5, 7, 9],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=13",
+        "name": "Gia Huy",
+        "address": "Đà Nẵng",
+        "star": 4,
+        "text": "Form đẹp, vải hơi dày nhưng mặc lên rất lịch sự."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Áo Sơ Mi Cuban Simplify",
+    "slug": "ao-so-mi-cuban-simplify",
+    "category": "Áo sơ mi",
+    "categorySlug": "ao-so-mi",
+    "rating": 4.7,
+    "description": "Áo sơ mi cổ cuban form relaxed, chất vải thoáng và dễ phối trong nhiều hoàn cảnh.",
+    "material": "Vải cotton pha linen",
+    "designTechnique": "Cổ cuban, đường may mí tối giản",
+    "form": "Relaxed",
+    "price": "419.000₫",
+    "priceValue": 419000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-so-mi-nam-cuban-simplify-form-relaxed__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-so-mi-nam-cuban-simplify-form-relaxed__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/so_mi_tay_ngan_sizing.jpg",
+    "preserve": "Giặt nhẹ bằng nước lạnh, không vắt mạnh, treo phơi để hạn chế nhăn.",
+    "stock": 28,
+    "sold": 64,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Nâu",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-cuban-simplify-form-relaxed__main.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 19,
+    "references": [1, 4, 5],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=14",
+        "name": "Thanh Bình",
+        "address": "Hà Nội",
+        "star": 5,
+        "text": "Vải mát, mặc đi chơi hoặc đi làm đều hợp."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Áo Sơ Mi Tay Dài Sandveil",
+    "slug": "ao-so-mi-tay-dai-sandveil",
+    "category": "Áo sơ mi",
+    "categorySlug": "ao-so-mi",
+    "rating": 4.8,
+    "description": "Áo sơ mi tay dài form regular, thiết kế sạch sẽ, hợp phong cách công sở và tối giản.",
+    "material": "Vải cotton pha spandex",
+    "designTechnique": "Cổ đức, nẹp nút trước, may regular fit",
+    "form": "Regular",
+    "price": "459.000₫",
+    "priceValue": 459000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-so-mi-nam-tay-dai-sandveil-form-regular93__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-so-mi-nam-tay-dai-sandveil-form-regular93__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/so_mi_tay_dai_sizing.jpg",
+    "preserve": "Ủi ở nhiệt độ vừa, treo móc sau khi giặt và tránh phơi trực tiếp dưới nắng gắt.",
+    "stock": 31,
+    "sold": 91,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Xanh Than",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-tay-dai-sandveil-form-regular93__main.jpg"
+      },
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-tay-dai-sandveil-form-regular93__hover.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 49,
+    "references": [2, 3, 5],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=16",
+        "name": "Anh Tuấn",
+        "address": "Bình Dương",
+        "star": 5,
+        "text": "Mặc đi làm rất ổn, form đứng và thoải mái."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Áo Sơ Mi Tay Ngắn Cosmic Draft",
+    "slug": "ao-so-mi-tay-ngan-cosmic-draft",
+    "category": "Áo sơ mi",
+    "categorySlug": "ao-so-mi",
+    "rating": 4.5,
+    "description": "Áo sơ mi tay ngắn form boxy, kiểu dáng trẻ trung, hợp phối với quần short hoặc jean.",
+    "material": "Vải poplin cotton pha polyester",
+    "designTechnique": "Tay ngắn, phom boxy, đường may vai rơi nhẹ",
+    "form": "Boxy",
+    "price": "399.000₫",
+    "priceValue": 399000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-cosmic-draft-form-boxy-1__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-cosmic-draft-form-boxy-1__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/so_mi_tay_ngan_sizing.jpg",
+    "preserve": "Giặt riêng trong lần đầu, dùng nước giặt dịu nhẹ và phơi bằng móc áo.",
+    "stock": 24,
+    "sold": 52,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-cosmic-draft-form-boxy-1__main.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 19,
+    "references": [2, 6, 7],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=17",
+        "name": "Hữu Phước",
+        "address": "An Giang",
+        "star": 4,
+        "text": "Form boxy đẹp, nên chọn đúng size nếu thích mặc gọn."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Áo Sơ Mi Linen Cuban Sandrift",
+    "slug": "ao-so-mi-linen-cuban-sandrift",
+    "category": "Áo sơ mi",
+    "categorySlug": "ao-so-mi",
+    "rating": 4.9,
+    "description": "Áo sơ mi tay ngắn chất linen thoáng mát, cổ cuban phóng khoáng, hợp thời tiết nóng.",
+    "material": "Vải linen pha cotton",
+    "designTechnique": "Cổ cuban, xử lý wash mềm bề mặt",
+    "form": "Relaxed",
+    "price": "439.000₫",
+    "priceValue": 439000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-linen-cuban-sandrift-form-relaxed-1__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-linen-cuban-sandrift-form-relaxed-1__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/so_mi_tay_ngan_sizing.jpg",
+    "preserve": "Giặt nhẹ bằng nước lạnh, không ngâm lâu, phơi nơi thoáng để giữ bề mặt vải linen.",
+    "stock": 34,
+    "sold": 76,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Kem",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-linen-cuban-sandrift-form-relaxed-1__main.jpg"
+      },
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-linen-cuban-sandrift-form-relaxed-1__hover.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 15,
+    "references": [1, 5],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=15",
+        "name": "Quốc Bảo",
+        "address": "Cần Thơ",
+        "star": 5,
+        "text": "Màu đẹp, đường may gọn, size đúng."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Áo Sơ Mi Summer Tribal",
+    "slug": "ao-so-mi-summer-tribal",
+    "category": "Áo sơ mi",
+    "categorySlug": "ao-so-mi",
+    "rating": 4.6,
+    "description": "Áo sơ mi tay ngắn họa tiết mùa hè, chất vải nhẹ, hợp đi chơi và du lịch.",
+    "material": "Vải rayon pha cotton",
+    "designTechnique": "In họa tiết toàn thân, cổ cuban, may relaxed fit",
+    "form": "Relaxed",
+    "price": "379.000₫",
+    "priceValue": 379000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-summer-tribal-form-relaxed-2_main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-summer-tribal-form-relaxed-2_hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/so_mi_tay_ngan_sizing.jpg",
+    "preserve": "Lộn trái khi giặt, không dùng chất tẩy và phơi mặt trái để giữ màu.",
+    "stock": 27,
+    "sold": 58,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Kem",
+        "img": "./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-summer-tribal-form-relaxed-2_main.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 29,
+    "references": [1, 9],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=20",
+        "name": "Duy Khánh",
+        "address": "Hậu Giang",
+        "star": 5,
+        "text": "Áo lên hình đẹp, mặc đi chơi rất nổi bật."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Áo Thun Nam Atelier Regular",
+    "slug": "ao-thun-nam-atelier-regular",
+    "category": "Áo thun",
+    "categorySlug": "ao-thun",
+    "rating": 4.8,
+    "description": "Áo thun form regular, chất cotton mềm, graphic tối giản dễ mặc hằng ngày.",
+    "material": "Vải cotton jersey",
+    "designTechnique": "In graphic trước ngực, cổ bo rib",
+    "form": "Regular",
+    "price": "199.000₫",
+    "priceValue": 199000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-thun-nam-atelier-form-regular27__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-thun-nam-atelier-form-regular27__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/ao_thun_sizing.png",
+    "preserve": "Lộn trái khi giặt và ủi, không ủi trực tiếp lên hình in.",
+    "stock": 58,
+    "sold": 214,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/ao-thun-nam-atelier-form-regular27__main.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 16,
+    "references": [2, 3, 5],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=18",
+        "name": "Ngọc Sơn",
+        "address": "Đồng Nai",
+        "star": 5,
+        "text": "Áo mềm, hình in ổn, mặc nhiều lần chưa bị bai."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Áo Thun Nam Precision Regular",
+    "slug": "ao-thun-nam-precision-regular",
+    "category": "Áo thun",
+    "categorySlug": "ao-thun",
+    "rating": 4.7,
+    "description": "Áo thun nam thiết kế hiện đại, form regular dễ mặc và dễ phối đồ.",
+    "material": "Vải cotton compact",
+    "designTechnique": "In lụa graphic, may cổ tròn bo rib",
+    "form": "Regular",
+    "price": "249.000₫",
+    "priceValue": 249000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/ao-thun-nam-precision-form-regular41_main.jpg",
+    "ImgHover": "./assets/images/productlistimage/ao-thun-nam-precision-form-regular41__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/ao_thun_sizing.png",
+    "preserve": "Không dùng bàn chải chà lên hình in, phơi nơi thoáng mát.",
+    "stock": 39,
+    "sold": 132,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/ao-thun-nam-precision-form-regular41_main.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 25,
+    "references": [1, 4, 8],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=21",
+        "name": "Phúc Thịnh",
+        "address": "Vĩnh Long",
+        "star": 5,
+        "text": "Áo đẹp hơn ảnh, mặc với quần short rất hợp."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Quần Short Denim Nam Wash Basic",
+    "slug": "quan-short-denim-nam-wash-basic",
+    "category": "Quần short",
+    "categorySlug": "quan-short",
+    "rating": 4.6,
+    "description": "Quần short denim form slim, màu wash basic, phù hợp phong cách năng động.",
+    "material": "Denim cotton",
+    "designTechnique": "Wash bạc màu, may túi classic, xử lý lai quần",
+    "form": "Slim",
+    "price": "349.000₫",
+    "priceValue": 349000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/quan-short-denim-nam-wash-basic-color-form-slim__3__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/quan-short-denim-nam-wash-basic-color-form-slim__3__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/quan_sort_jean_sizing.jpg",
+    "preserve": "Giặt riêng với sản phẩm màu sáng, ủi mặt trái và không dùng chất tẩy mạnh.",
+    "stock": 22,
+    "sold": 49,
+    "sizes": ["29", "30", "31", "32", "34", "35", "36"],
+    "colors": [
+      {
+        "color": "Xanh denim",
+        "img": "./assets/images/productlistimage/quan-short-denim-nam-wash-basic-color-form-slim__3__main.jpg"
+      },
+      {
+        "color": "Đen",
+        "img": "./assets/images/productlistimage/quan-short-denim-nam-wash-basic-color-form-slim__3__hover.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 17,
+    "references": [11, 13, 14],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=25",
+        "name": "Nhật Hào",
+        "address": "TP. Hồ Chí Minh",
+        "star": 4,
+        "text": "Quần đứng form, vải khá dày dặn."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Quần Short Nam Zephyr Regular",
+    "slug": "quan-short-nam-zephyr-regular",
+    "category": "Quần short",
+    "categorySlug": "quan-short",
+    "rating": 4.7,
+    "description": "Quần short nam form regular, chất vải nhẹ, thoải mái cho sinh hoạt hằng ngày.",
+    "material": "Vải kaki cotton pha spandex",
+    "designTechnique": "Lưng thun rút dây, may túi hông tiện dụng",
+    "form": "Regular",
+    "price": "319.000₫",
+    "priceValue": 319000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/quan-short-nam-zephyr-form-regular-3__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/quan-short-nam-zephyr-form-regular-3__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/quan_sort_sizing.jpg",
+    "preserve": "Giặt nhẹ, không ngâm lâu, phơi nơi thoáng để giữ bề mặt vải.",
+    "stock": 33,
+    "sold": 78,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Hồng",
+        "img": "./assets/images/productlistimage/quan-short-nam-zephyr-form-regular-3__main.jpg"
+      },
+      {
+        "color": "Đen",
+        "img": "./assets/images/productlistimage/quan-short-nam-zephyr-form-regular-3__hover.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 39,
+    "references": [7, 9, 10],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=24",
+        "name": "Khải Hoàn",
+        "address": "Cần Thơ",
+        "star": 5,
+        "text": "Quần nhẹ, thoáng, mặc mùa hè rất dễ chịu."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Quần Linen Sudaze Baggy",
+    "slug": "quan-linen-sudaze-baggy",
+    "category": "Quần dài",
+    "categorySlug": "quan-dai",
+    "rating": 4.5,
+    "description": "Quần linen dáng baggy thoáng mát, dễ phối với áo thun và áo sơ mi.",
+    "material": "Vải linen pha rayon",
+    "designTechnique": "Dáng baggy, xếp ly nhẹ, may lưng bán thun",
+    "form": "Baggy",
+    "price": "579.000₫",
+    "priceValue": 579000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/quan_nam_linen_sudaze_baggy__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/quan_nam_linen_sudaze_baggy__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/quan_tay_sizing.png",
+    "preserve": "Giặt nước lạnh, phơi mặt trái, tránh ngâm với bột giặt quá lâu.",
+    "stock": 19,
+    "sold": 38,
+    "sizes": ["29", "30", "31", "32", "34", "35", "36"],
+    "colors": [
+      {
+        "color": "Trắng",
+        "img": "./assets/images/productlistimage/quan_nam_linen_sudaze_baggy__main.jpg"
+      },
+      {
+        "color": "Be",
+        "img": "./assets/images/productlistimage/quan_nam_linen_sudaze_baggy__hover.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 29,
+    "references": [2, 3],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=26",
+        "name": "Bảo Long",
+        "address": "Đồng Tháp",
+        "star": 5,
+        "text": "Dáng baggy đẹp, phối với sơ mi trắng rất hợp."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Áo Thun Nam Trơn Cotton Lụa 4 Chiều Casual Vibe Form Regular",
+    "slug": "ao-thun-nam-tron-cotton-lua-4-chieu-casual-vibe-form-regular",
+    "category": "Áo thun",
+    "categorySlug": "ao-thun",
+    "rating": 4.4,
+    "description": "Áo thun nam trơn chất cotton lụa co giãn 4 chiều, form regular thoải mái, dễ phối đồ hằng ngày.",
+    "material": "Vải thun ponte pha spandex",
+    "designTechnique": "May tối giản, xử lý lưng co giãn, đường may giấu gọn",
+    "form": "Regular",
+    "price": "629.000₫",
+    "priceValue": 629000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/id-000123a_main.jpg",
+    "ImgHover": "./assets/images/productlistimage/id-000123a_hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/quan_thun_dai_sizing.png",
+    "preserve": "Giặt riêng với đồ sáng màu, phơi mặt trái và ủi ở nhiệt độ vừa.",
+    "stock": 21,
+    "sold": 43,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "color": "Xanh Than",
+        "img": "./assets/images/productlistimage/id-000123a_main.jpg"
+      },
+      {
+        "color": "Đen",
+        "img": "./assets/images/productlistimage/id-000123a_hover.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 25,
+    "references": [6, 9],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=28",
+        "name": "Đức Anh",
+        "address": "Hà Nội",
+        "star": 5,
+        "text": "Quần lên dáng đẹp, phối với áo đen rất hợp."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Quần Tây Nam Ống Ôm Classical Form Slim",
+    "slug": "quan-tay-nam-ong-om-classical-form-slim",
+    "category": "Quần dài",
+    "categorySlug": "quan-dai",
+    "rating": 4.6,
+    "description": "Quần dài nam form gọn, chất vải đứng dáng, dễ sử dụng trong nhiều hoàn cảnh.",
+    "material": "Vải twill polyester pha rayon",
+    "designTechnique": "May ly trước, túi xéo, hoàn thiện lai ẩn",
+    "form": "Slim",
+    "price": "699.000₫",
+    "priceValue": 699000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/id-005102a__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/id-005102a__hover.jpg",
+    "ImgSizing": "./assets/images/productlistimage/quan_tay_sizing.png",
+    "preserve": "Không giặt chung với đồ dễ ra màu, phơi thoáng và tránh ánh nắng trực tiếp quá lâu.",
+    "stock": 16,
+    "sold": 27,
+    "sizes": ["29", "30", "31", "32", "34", "35", "36"],
+    "colors": [
+      {
+        "color": "Nâu",
+        "img": "./assets/images/productlistimage/id-005102a__main.jpg"
+      },
+      {
+        "color": "Kem",
+        "img": "./assets/images/productlistimage/id-005102a__hover.jpg"
+      }
+    ],
+    "isNew": false,
+    "discountPercent": 30,
+    "references": [12],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=29",
+        "name": "Quang Vinh",
+        "address": "Cần Thơ",
+        "star": 4,
+        "text": "Đóng gói kỹ, chất quần đúng mong đợi."
+      }
+    ]
+  }
+]
