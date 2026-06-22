@@ -54,9 +54,16 @@
   outline: none;
 }
 
+.filter-category {
+  width: 200px;
+}
+
+.price-sort {
+  width: 140px;
+}
+
 .filter-category,
 .price-sort {
-  width: 160px;
   min-height: 44px;
   border: 1px solid var(--color-gray-400);
   border-radius: var(--radius-xl);

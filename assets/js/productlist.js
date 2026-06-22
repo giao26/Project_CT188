@@ -80,7 +80,7 @@ const loadCategoryList = (data) => {
     .join();
 
   fillterCategory.innerHTML = `
-    <option value="default" selected>Bộ lọc</option>
+    <option value="default" selected>Sản phẩm nổi bậc</option>
     ${category}
   `;
 };
@@ -143,11 +143,15 @@ searchInp.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     currentSearch = removeVietnameseTones(e.target.value);
-
     applySortAndFilter();
   }
 });
 
-
+searchInp.addEventListener("input", (e) => {
+  if (!e.target.value) {
+    currentSearch = "";
+    applySortAndFilter();
+  }
+});
 
 getProduct();
