@@ -80,7 +80,7 @@ const loadCategoryList = (data) => {
     .join();
 
   fillterCategory.innerHTML = `
-    <option value="default" selected>Sản phẩm nổi bậc</option>
+    <option value="default" selected>Sản phẩm nổi bật</option>
     ${category}
   `;
 };
