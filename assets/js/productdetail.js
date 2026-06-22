@@ -14,7 +14,8 @@ const getProductDetail = async () => {
     const productId = path.get("id");
 
     if (!productId) {
-      singleProduct.innerHTML = `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);">Không tìm thấy sản phẩm. Vui lòng quay lại <a href="productlist.html" style="color:var(--color-primary);">danh sách sản phẩm</a>.</p>`;
+      document.querySelector("main").innerHTML =
+        `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);">Không tìm thấy sản phẩm. Vui lòng quay lại <a href="productlist.html" style="color:var(--color-primary);">danh sách sản phẩm</a>.</p>`;
       return;
     }
 
@@ -27,7 +28,8 @@ const getProductDetail = async () => {
     );
 
     if (!product) {
-      singleProduct.innerHTML = `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);">Sản phẩm không tồn tại. Vui lòng quay lại <a href="productlist.html" style="color:var(--color-primary);">danh sách sản phẩm</a>.</p>`;
+      document.querySelector("main").innerHTML =
+        `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);">Sản phẩm không tồn tại. Vui lòng quay lại <a href="productlist.html" style="color:var(--color-primary);">danh sách sản phẩm</a>.</p>`;
       return;
     }
 

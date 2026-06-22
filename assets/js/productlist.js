@@ -15,7 +15,8 @@ const getProduct = async () => {
     loadCategoryList(data);
   } catch (error) {
     console.error("Lỗi khi tải danh sách sản phẩm:", error);
-    productsList.innerHTML = `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);grid-column:1/-1;">Có lỗi xảy ra khi tải sản phẩm. Vui lòng thử lại sau.</p>`;
+    document.querySelector("main").innerHTML =
+      `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);grid-column:1/-1;">Có lỗi xảy ra khi tải sản phẩm. Vui lòng thử lại sau.</p>`;
   }
 };
 
