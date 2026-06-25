@@ -441,7 +441,8 @@ const getProductDetail = async () => {
     });
   } catch (error) {
     console.error("Lỗi khi tải chi tiết sản phẩm:", error);
-    singleProduct.innerHTML = `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);">Có lỗi xảy ra khi tải sản phẩm. Vui lòng thử lại sau.</p>`;
+    document.querySelector("main").innerHTML =
+      `<p style="text-align:center;padding:3rem;color:var(--color-gray-600);">Có lỗi xảy ra khi tải sản phẩm. Vui lòng thử lại sau.</p>`;
   }
 };
 
