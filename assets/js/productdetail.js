@@ -267,6 +267,30 @@ const getProductDetail = async () => {
     });
 
     addCardBtn.addEventListener("click", () => {
+      const currentUser = localStorage.getItem("currentUser");
+      if (!currentUser) {
+        if (currentToast) {
+          currentToast.hideToast();
+        }
+        currentToast = Toastify({
+          text: `Bạn cần đăng nhập để sử dụng tính năng này`,
+          duration: 3000, // 3 giây rồi ẩn
+          newWindow: true,
+          gravity: "bottom",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "#e50d2dff",
+            color: "#ffffff",
+            borderRadius: "8px",
+          },
+          onClick: function () {
+            currentToast = null;
+          },
+        });
+        currentToast.showToast();
+        return;
+      }
       if (currentToast) {
         currentToast.hideToast();
       }
@@ -288,54 +312,54 @@ const getProductDetail = async () => {
       });
       currentToast.showToast();
 
-      const cartProduct = JSON.parse(localStorage.getItem("cart") || "[]");
+      const jsonString = localStorage.getItem("cartMap");
+      const cartMap = jsonString ? new Map(JSON.parse(jsonString)) : new Map();
+      const userId = JSON.parse(currentUser).id;
+      const cartList = cartMap.get(userId) || [];
 
       if (
-        cartProduct.some(
+        cartList.some(
           (item) =>
             item.id === product.id &&
             item.selectedColor === currentColor &&
             item.selectedSize === currentSize,
         )
       ) {
-        localStorage.setItem(
-          "cart",
-          JSON.stringify(
-            cartProduct.map((item) => {
-              return item.id === product.id &&
-                item.selectedColor === currentColor &&
-                item.selectedSize === currentSize
-                ? {
-                    ...item,
-                    quantity: Number(item.quantity) + Number(currentQuantity),
-                  }
-                : item;
-            }),
-          ),
+        cartMap.set(
+          userId,
+          cartList.map((item) => {
+            return item.id === product.id &&
+              item.selectedColor === currentColor &&
+              item.selectedSize === currentSize
+              ? {
+                  ...item,
+                  quantity: Number(item.quantity) + Number(currentQuantity),
+                }
+              : item;
+          }),
         );
-      } else
-        localStorage.setItem(
-          "cart",
-          JSON.stringify([
-            ...cartProduct,
-            {
-              id: product.id,
-              name: product.name,
-              price: product.price,
-              priceValue: product.priceValue,
-              sizes: product.sizes,
-              colors: product.colors,
-              mainImg: product.mainImg,
-              ImgHover: product.ImgHover,
-              ImgSizing: product.ImgSizing,
-              discountPercent: product.discountPercent,
-              stock: product.stock,
-              quantity: currentQuantity,
-              selectedSize: currentSize,
-              selectedColor: currentColor,
-            },
-          ]),
-        );
+      } else {
+        cartMap.set(userId, [
+          ...cartList,
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            priceValue: product.priceValue,
+            sizes: product.sizes,
+            colors: product.colors,
+            mainImg: product.mainImg,
+            ImgHover: product.ImgHover,
+            ImgSizing: product.ImgSizing,
+            discountPercent: product.discountPercent,
+            stock: product.stock,
+            quantity: Number(currentQuantity),
+            selectedSize: currentSize,
+            selectedColor: currentColor,
+          },
+        ]);
+      }
+      localStorage.setItem("cartMap", JSON.stringify([...cartMap.entries()]));
     });
 
     moreDescription.innerHTML = `
