@@ -12,7 +12,8 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/login.css" />
@@ -21,7 +22,7 @@
   <body>
     <header></header>
     <main class="auth-page">
-      <div class="auth-content">
+      <section class="auth-content">
         <div class="logo-wrapper">
           <img
             src="./assets/images/login/laplanh_3d.png"
@@ -39,8 +40,8 @@
           Uy tín làm nên thương hiệu <br />
           Tự tin tỏa sáng với phong cách của bạn
         </p>
-      </div>
-      <div class="auth-login">
+      </section>
+      <section class="auth-login">
         <div class="wrapper">
           <div class="form-header">
             <div class="title">Đăng nhập</div>
@@ -51,17 +52,19 @@
           <form class="login-form">
             <!-- email -->
             <div class="input-box">
+              <i class="ri-mail-line"></i>
               <input
                 type="email"
                 class="input-field"
                 id="log-mail"
                 placeholder="Email"
+                autocomplete="off"
                 required
               />
-              <i class="ri-mail-line icon"></i>
             </div>
             <!-- password -->
             <div class="input-box">
+              <i class="ri-lock-line"></i>
               <input
                 type="password"
                 class="input-field password-input"
@@ -69,7 +72,7 @@
                 placeholder="Mật khẩu"
                 required
               />
-              <i class="ri-eye-fill icon toggle"></i>
+              <i class="ri-eye-off-fill toggle"></i>
             </div>
 
             <div class="form-cols">
@@ -77,7 +80,7 @@
               <div class="col-2"><a href="#">Quên mật khẩu?</a></div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box click-btn">
               <button class="log-btn" id="logBtn">
                 Đăng nhập
                 <i class="ri-login-box-line"></i>
@@ -100,39 +103,43 @@
           <form action="#" class="register-form hidden-form">
             <!-- reg-user -->
             <div class="input-box">
+              <i class="ri-user-line"></i>
               <input
                 type="text"
                 class="input-field"
                 id="reg-name"
                 placeholder="Họ và tên"
+                autocomplete="off"
                 required
               />
-              <i class="ri-user-line icon"></i>
             </div>
             <!-- reg-mail -->
             <div class="input-box">
+              <i class="ri-mail-line"></i>
               <input
                 type="email"
                 class="input-field"
                 id="reg-mail"
                 placeholder="Email"
+                autocomplete="off"
                 required
               />
-              <i class="ri-mail-line icon"></i>
             </div>
             <!-- reg-phone -->
             <div class="input-box">
+              <i class="ri-phone-line"></i>
               <input
                 type="tel"
                 class="input-field"
                 id="reg-phone"
                 placeholder="Số điện thoại"
+                autocomplete="off"
                 required
               />
-              <i class="ri-phone-line icon"></i>
             </div>
             <!-- reg-pass -->
             <div class="input-box">
+              <i class="ri-lock-line"></i>
               <input
                 type="password"
                 class="input-field password-input"
@@ -140,10 +147,11 @@
                 placeholder="Mật khẩu"
                 required
               />
-              <i class="ri-eye-fill icon toggle"></i>
+              <i class="ri-eye-off-fill toggle"></i>
             </div>
             <!-- reg-confirmPass -->
             <div class="input-box">
+              <i class="ri-lock-line"></i>
               <input
                 type="password"
                 class="input-field password-input"
@@ -151,10 +159,10 @@
                 placeholder="Xác nhận mật khẩu"
                 required
               />
-              <i class="ri-eye-fill icon toggle"></i>
+              <i class="ri-eye-off-fill toggle"></i>
             </div>
             <!-- btn -->
-            <div class="input-box">
+            <div class="input-box click-btn">
               <button class="reg-btn" id="regBtn">
                 Đăng ký<i class="ri-user-add-line"></i>
               </button>
@@ -169,10 +177,13 @@
             </div>
           </form>
         </div>
-      </div>
+      </section>
     </main>
     <footer></footer>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="./assets/js/login.js"></script>
   </body>
 </html>
