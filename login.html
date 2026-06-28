@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <title>Đăng nhập & Đăng ký</title>
+  </head>
+  <body>
+    <header></header>
+    <main class="auth-page">
+      <div class="auth-content">
+        <div class="logo-wrapper">
+          <img
+            src="./assets/images/login/laplanh_3d.png"
+            alt="star"
+            class="star"
+          />
+          <img
+            src="./assets/images/login/logo-mellow.png"
+            alt="logo"
+            class="logo"
+          />
+        </div>
+        <!-- <p id="greeting"></p> -->
+        <p class="content">
+          Uy tín làm nên thương hiệu <br />
+          Tự tin tỏa sáng với phong cách của bạn
+        </p>
+      </div>
+      <div class="auth-login">
+        <div class="wrapper">
+          <div class="form-header">
+            <div class="title">Đăng nhập</div>
+          </div>
+          <!---------
+             LOGIN
+          ---------->
+          <form class="login-form">
+            <!-- email -->
+            <div class="input-box">
+              <input
+                type="email"
+                class="input-field"
+                id="log-mail"
+                placeholder="Email"
+                required
+              />
+              <i class="ri-mail-line icon"></i>
+            </div>
+            <!-- password -->
+            <div class="input-box">
+              <input
+                type="password"
+                class="input-field password-input"
+                id="log-pass"
+                placeholder="Mật khẩu"
+                required
+              />
+              <i class="ri-eye-fill icon toggle"></i>
+            </div>
+
+            <div class="form-cols">
+              <div class="col-1"></div>
+              <div class="col-2"><a href="#">Quên mật khẩu?</a></div>
+            </div>
+
+            <div class="input-box">
+              <button class="log-btn" id="logBtn">
+                Đăng nhập
+                <i class="ri-login-box-line"></i>
+              </button>
+            </div>
+
+            <div class="switch-form">
+              <span>
+                Bạn mới biết đến MELLOW?
+                <a href="#" id="regset-log" onclick="registerFunction()"
+                  >Đăng ký ngay</a
+                ></span
+              >
+            </div>
+          </form>
+
+          <!----------------
+                REGISTER
+            ---------------->
+          <form action="#" class="register-form hidden-form">
+            <!-- reg-user -->
+            <div class="input-box">
+              <input
+                type="text"
+                class="input-field"
+                id="reg-name"
+                placeholder="Họ và tên"
+                required
+              />
+              <i class="ri-user-line icon"></i>
+            </div>
+            <!-- reg-mail -->
+            <div class="input-box">
+              <input
+                type="email"
+                class="input-field"
+                id="reg-mail"
+                placeholder="Email"
+                required
+              />
+              <i class="ri-mail-line icon"></i>
+            </div>
+            <!-- reg-phone -->
+            <div class="input-box">
+              <input
+                type="tel"
+                class="input-field"
+                id="reg-phone"
+                placeholder="Số điện thoại"
+                required
+              />
+              <i class="ri-phone-line icon"></i>
+            </div>
+            <!-- reg-pass -->
+            <div class="input-box">
+              <input
+                type="password"
+                class="input-field password-input"
+                id="reg-pass"
+                placeholder="Mật khẩu"
+                required
+              />
+              <i class="ri-eye-fill icon toggle"></i>
+            </div>
+            <!-- reg-confirmPass -->
+            <div class="input-box">
+              <input
+                type="password"
+                class="input-field password-input"
+                id="reg-confirmPass"
+                placeholder="Xác nhận mật khẩu"
+                required
+              />
+              <i class="ri-eye-fill icon toggle"></i>
+            </div>
+            <!-- btn -->
+            <div class="input-box">
+              <button class="reg-btn" id="regBtn">
+                Đăng ký<i class="ri-user-add-line"></i>
+              </button>
+            </div>
+            <div class="switch-form">
+              <span
+                >Bạn đã có tài khoản?
+                <a href="#" id="reset-reg" onclick="loginFunction()"
+                  >Đăng nhập ngay</a
+                ></span
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="./assets/js/login.js"></script>
+  </body>
+</html>
