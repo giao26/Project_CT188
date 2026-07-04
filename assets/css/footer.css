@@ -93,6 +93,31 @@ a {
   transform: translateY(2px);
 }
 
+.footer-links a span {
+  position: relative;
+}
+
+.footer-about .footer-links a span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 3px;
+  border-radius: 12px;
+  background: rgba(0, 212, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(102, 102, 250, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  transition: width 0.3s ease;
+}
+
+.footer-about .footer-links a:hover span::after {
+  width: 3rem;
+}
+
 @media (max-width: 825px) {
   .footer-content {
     flex-direction: column;

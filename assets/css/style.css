@@ -356,16 +356,6 @@ textarea:disabled {
   }
 }
 
-.notyf__toast {
-  border-radius: 12px;
-}
-
-.notyf {
-  top: 0;
-  right: 0;
-  padding: 5px;
-}
-
 @keyframes float {
   0% {
     transform: translateY(0);
