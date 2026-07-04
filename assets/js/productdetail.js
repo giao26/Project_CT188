@@ -453,12 +453,12 @@ const getProductDetail = async () => {
       .addEventListener("click", () => {
         overlayModal.classList.add("show");
       });
-    document
-      .getElementById("closeModalBtn")
-      .addEventListener("click", function () {
-        overlayModal.classList.remove("show");
-      });
-    window.addEventListener("click", function (event) {
+
+    document.getElementById("closeModalBtn").addEventListener("click", () => {
+      overlayModal.classList.remove("show");
+    });
+    
+    window.addEventListener("click", (event) => {
       if (event.target === overlayModal) {
         overlayModal.classList.remove("show");
       }

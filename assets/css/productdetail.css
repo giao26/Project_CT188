@@ -8,7 +8,7 @@
 
 .product-gallery {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
+  grid-template-columns: 6rem minmax(0, 1fr);
   align-items: start;
   gap: 1rem;
   min-width: 0;
