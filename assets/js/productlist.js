@@ -44,7 +44,7 @@ const getProduct = async () => {
           <p>
             Không tìm thấy sản phẩm. Vui lòng thử lại sau.
           </p>
-        <div/>`;
+        </div>`;
   }
 };
 
