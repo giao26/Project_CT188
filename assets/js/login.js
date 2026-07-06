@@ -1,3 +1,38 @@
+// toast
+let currentToast = null;
+
+// Hàm hiển thị thông báo thành công (Màu xanh)
+const showSuccess = (message) => {
+  if (currentToast) currentToast.hideToast();
+
+  currentToast = Toastify({
+    text: message,
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    style: {
+      background: "rgba(75, 247, 13, 0.9)",
+      color: "#ffffff",
+      borderRadius: "8px",
+    },
+  });
+  currentToast.showToast();
+};
+
+// Hàm hiển thị thông báo lỗi (Màu đỏ)
+const showError = (message) => {
+  if (currentToast) currentToast.hideToast();
+
+  currentToast = Toastify({
+    text: message,
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    style: { background: "#ef4444", color: "#ffffff", borderRadius: "8px" }, // Màu đỏ cho lỗi
+  });
+  currentToast.showToast();
+};
+// change form
 const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 const wrapper = document.querySelector(".wrapper");
@@ -47,6 +82,21 @@ if (hour > 18) {
 // document.getElementById("greeting").innerHTML = greeting;
 
 /*=== SHOW/HIDE PASS ===*/
+const passwordInputs = document.querySelectorAll(".password-input");
+passwordInputs.forEach((input) => {
+  const eye = input.parentElement.querySelector(".toggle");
+
+  input.addEventListener("input", () => {
+    if (input.value.length > 0) {
+      eye.style.opacity = "1";
+      eye.style.visibility = "visible";
+    } else {
+      eye.style.opacity = "0";
+      eye.style.visibility = "hidden";
+    }
+  });
+});
+
 const toggles = document.querySelectorAll(".toggle");
 toggles.forEach((toggle) => {
   toggle.addEventListener("click", () => {
@@ -54,12 +104,12 @@ toggles.forEach((toggle) => {
 
     if (input.type === "password") {
       input.type = "text";
-      toggle.classList.remove("ri-eye-fill");
-      toggle.classList.add("ri-eye-off-fill");
-    } else {
-      input.type = "password";
       toggle.classList.remove("ri-eye-off-fill");
       toggle.classList.add("ri-eye-fill");
+    } else {
+      input.type = "password";
+      toggle.classList.remove("ri-eye-fill");
+      toggle.classList.add("ri-eye-off-fill");
     }
   });
 });
@@ -70,37 +120,35 @@ const phoneRegex = /^(0[35789])+([0-9]{8})$/;
 /*============== 
      ĐĂNG KÝ 
 ===============*/
-const notyf = new Notyf({
-  duration: 2000,
-  position: {
-    x: "right",
-    y: "top",
-  },
-});
-
 if (registerForm) {
   registerForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const emailInput = document.getElementById("reg-mail");
+    const phoneInput = document.getElementById("reg-phone");
+    const passwordInput = document.getElementById("reg-pass");
+    const confirmPasswordInput = document.getElementById("reg-confirmPass");
+
     const name = document.getElementById("reg-name").value.trim();
-    const email = document.getElementById("reg-mail").value.trim();
-    const phone = document.getElementById("reg-phone").value.trim();
-    const password = document.getElementById("reg-pass").value.trim();
-    const confirmPassword = document
-      .getElementById("reg-confirmPass")
-      .value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
 
     if (!phoneRegex.test(phone)) {
-      notyf.error("Số điện thoại không hợp lệ");
+      showError("Số điện thoại không hợp lệ");
+      phoneInput.parentElement.classList.add("error-input");
       return;
     }
 
     if (password.length < 8) {
-      notyf.error("Mật khẩu phải có ít nhất 8 kí tự");
+      showError("Mật khẩu phải có ít nhất 8 kí tự");
+      passwordInput.parentElement.classList.add("error-input");
       return;
     }
 
     if (password !== confirmPassword) {
-      notyf.error("Mật khẩu xác nhận không đúng");
+      showError("Mật khẩu xác nhận không đúng");
+      confirmPasswordInput.parentElement.classList.add("error-input");
       return;
     }
 
@@ -110,7 +158,8 @@ if (registerForm) {
 
     const isExist = users.some((u) => u.email === email);
     if (isExist || email === "admin@gmail.com") {
-      notyf.error("Email này đã được sử dụng");
+      showError("Email này đã được sử dụng");
+      emailInput.parentElement.classList.add("error-input");
       return;
     }
 
@@ -119,10 +168,30 @@ if (registerForm) {
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
 
-    notyf.success("Đăng Ký Thành Công");
+    showSuccess("Đăng Ký Thành Công");
     registerForm.reset();
     loginFunction();
   });
+
+  document.getElementById("reg-phone").addEventListener("input", (event) => {
+    if (phoneRegex.test(event.target.value)) {
+      event.target.parentElement.classList.remove("error-input");
+    }
+  });
+
+  document.getElementById("reg-pass").addEventListener("input", (event) => {
+    if (event.target.value.length >= 8) {
+      event.target.classList.remove("error-input");
+    }
+  });
+
+  document
+    .getElementById("reg-confirmPass")
+    .addEventListener("input", (event) => {
+      if (event.target.value.length >= 8) {
+        event.target.classList.remove("error-input");
+      }
+    });
 }
 
 /*=============
@@ -141,6 +210,9 @@ if (loginForm) {
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const emailInput = document.getElementById("log-mail");
+    const passwordInput = document.getElementById("log-pass");
+
     const email = document.getElementById("log-mail").value.trim();
     const password = document.getElementById("log-pass").value.trim();
 
@@ -149,17 +221,17 @@ if (loginForm) {
       console.log(localStorage.getItem("currentUser"));
       // sessionStorage.setItem("toastMessage", "Chào mừng bạn đã đến với MELLOW");
       /* đợi trang Home */
-      notyf.success("Chào mừng bạn đã đến với MELLOW");
+      // showSuccess("Chào mừng bạn đã đến với MELLOW");
       window.location.href = "index.html";
       return;
     }
 
     // normal account
     if (password.length < 8) {
-      notyf.error("Mật khẩu phải có ít nhất 8 ký tự");
+      showError("Sai mật khẩu vui lòng nhập lại");
+      passwordInput.parentElement.classList.add("error-input");
       return;
     }
-
     // find user
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(
@@ -167,13 +239,19 @@ if (loginForm) {
     );
 
     if (!user) {
-      notyf.error("Sai tài khoản hoặc mật khẩu vui lòng thử lại");
+      showError("Sai tài khoản hoặc mật khẩu vui lòng thử lại");
       return;
     }
     loginForm.reset();
 
     localStorage.setItem("currentUser", JSON.stringify(user));
     window.location.href = "index.html";
-    // notyf.success("Chào mừng bạn đã đến với MELLOW");
+  });
+
+  // Gõ đủ tự xóa viền đỏ
+  document.getElementById("log-pass").addEventListener("input", function () {
+    if (this.value.trim().length >= 8) {
+      this.parentElement.classList.remove("error-input");
+    }
   });
 }
