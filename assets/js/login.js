@@ -200,6 +200,7 @@ if (registerForm) {
 if (loginForm) {
   // test account
   const testUser = {
+    id: 0,
     name: "test",
     email: "test@gmail.com",
     password: "12345678",
