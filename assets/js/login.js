@@ -1,7 +1,7 @@
 // toast
 let currentToast = null;
 
-// Hàm hiển thị thông báo thành công (Màu xanh)
+// Hàm hiển thị thông báo thành công (Màu xanh) sử dụng Toastify
 const showSuccess = (message) => {
   if (currentToast) currentToast.hideToast();
 
@@ -19,7 +19,7 @@ const showSuccess = (message) => {
   currentToast.showToast();
 };
 
-// Hàm hiển thị thông báo lỗi (Màu đỏ)
+// Hàm hiển thị thông báo lỗi (Màu đỏ) sử dụng Toastify
 const showError = (message) => {
   if (currentToast) currentToast.hideToast();
 
@@ -38,6 +38,7 @@ const registerForm = document.querySelector(".register-form");
 const wrapper = document.querySelector(".wrapper");
 const title = document.querySelector(".title");
 
+// Hàm chuyển đổi sang chế độ Đăng ký (Register)
 const registerFunction = () => {
   registerForm.classList.remove("hidden-form");
   registerForm.classList.add("show-form");
@@ -48,6 +49,7 @@ const registerFunction = () => {
   title.textContent = "Đăng ký";
 };
 
+// Hàm chuyển đổi sang chế độ Đăng nhập (Login)
 const loginFunction = () => {
   registerForm.classList.add("hidden-form");
   registerForm.classList.remove("show-form");
@@ -64,9 +66,11 @@ resetReg.addEventListener("click", () => {
 });
 
 const resetLog = document.getElementById("reset-log");
-resetReg.addEventListener("click", () => {
-  loginForm.reset();
-});
+if (resetLog) {
+  resetLog.addEventListener("click", () => {
+    loginForm.reset();
+  });
+}
 
 const today = new Date();
 const hour = today.getHours();
@@ -82,6 +86,7 @@ if (hour > 18) {
 // document.getElementById("greeting").innerHTML = greeting;
 
 /*=== SHOW/HIDE PASS ===*/
+// Lắng nghe sự kiện để hiển thị biểu tượng con mắt (toggle password visibility) khi có dữ liệu nhập vào
 const passwordInputs = document.querySelectorAll(".password-input");
 passwordInputs.forEach((input) => {
   const eye = input.parentElement.querySelector(".toggle");
@@ -115,6 +120,7 @@ toggles.forEach((toggle) => {
 });
 
 /*=== ĐỊNH DẠNG ===*/
+// Biểu thức chính quy (Regex) để kiểm tra định dạng số điện thoại Việt Nam
 const phoneRegex = /^(0[35789])+([0-9]{8})$/;
 
 /*============== 
@@ -156,6 +162,7 @@ if (registerForm) {
     // || [] tránh lỗi khi chưa có user nào localstorage trả về NULL
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
+    // Kiểm tra xem email đã tồn tại trong mảng user hay chưa
     const isExist = users.some((u) => u.email === email);
     if (isExist || email === "admin@gmail.com") {
       showError("Email này đã được sử dụng");
@@ -233,7 +240,7 @@ if (loginForm) {
       passwordInput.parentElement.classList.add("error-input");
       return;
     }
-    // find user
+    // Tìm kiếm người dùng trong mảng users lưu ở localStorage
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(
       (u) => u.email === email && u.password === password,

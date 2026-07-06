@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (path.endsWith("index.html") || path.endsWith("/")) initHomePageEvent();
 });
 
+/**
+ * Hàm tải nội dung HTML của header và footer từ các file tương ứng (header.html, footer.html)
+ * Sử dụng Fetch API để chèn nội dung vào các thẻ được chỉ định
+ * @param {string} selector - Selector của thẻ chứa (ví dụ: "#header")
+ * @param {string} path - Đường dẫn đến file HTML (ví dụ: "header.html")
+ */
 const getHeaderAndFooter = async (selector, path) => {
   const targetElement = document.querySelector(selector);
   if (!targetElement) return;
@@ -20,6 +26,12 @@ const getHeaderAndFooter = async (selector, path) => {
   }
 };
 
+/**
+ * Khởi tạo các sự kiện cho thanh điều hướng (header) như:
+ * - Đánh dấu (active) mục menu hiện tại
+ * - Đóng/mở menu trên điện thoại (mobile menu)
+ * - Quản lý nút Đăng nhập / Đăng xuất tùy theo trạng thái user
+ */
 function initHeaderEvents() {
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
   const mobileMenuClose = document.getElementById("mobile-menu-close");
@@ -141,7 +153,10 @@ function initHeaderEvents() {
 }
 
 // --- 2. CẬP NHẬT SỐ LƯỢNG SẢN PHẨM TRONG GIỎ HÀNG ---
-// Hàm này được để ở phạm vi toàn cục (global) để các trang/file JS khác có thể gọi tải lại số lượng khi thêm sản phẩm
+/**
+ * Hàm này được để ở phạm vi toàn cục (global) để các trang/file JS khác có thể gọi tải lại số lượng khi thêm sản phẩm
+ * Nó tính toán tổng số loại sản phẩm có trong giỏ hàng (cartMap) của người dùng hiện tại
+ */
 function updateCartBadge() {
   const cartBadge = document.querySelector(".cart-badge");
   if (!cartBadge) return;
@@ -176,6 +191,10 @@ function updateCartBadge() {
 }
 window.updateCartBadge = updateCartBadge;
 
+/**
+ * Khởi tạo các sự kiện dành riêng cho Trang Chủ (index.html)
+ * Chức năng chính: Xử lý tìm kiếm danh mục (hiệu ứng nổi bật khung danh mục theo từ khóa)
+ */
 function initHomePageEvent() {
   const searchInput = document.getElementById("search-input");
   const searchBtn = document.getElementById("search-btn");
