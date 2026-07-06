@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/index.css" />
-    <link rel="stylesheet" href="assets/css/productlist.css" />
+    <title>MELLOW - Danh sách sản phẩm</title>
+    <link rel="icon" href="./assets/images/logo/logo-mellow.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/css/productlist.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -14,12 +15,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
   </head>
   <body>
-    <header id="header"></header>
+    <header id="header" class="header"></header>
 
     <main>
-      <section class="hero">
+      <section class="productlist-hero">
         <div class="hero-img">
           <img
             src="assets/images/productlistimage/product-page-hero-img.jpg"
@@ -29,7 +34,7 @@
       </section>
 
       <section class="container action flex">
-        <div class="search-box">
+        <div class="product-search">
           <span>
             <i class="fa-brands fa-sistrix"></i>
           </span>
@@ -59,8 +64,8 @@
       </section>
     </main>
 
-    <footer id="footer"></footer>
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/productlist.js"></script>
+    <footer id="footer" class="footer"></footer>
+    <script type="module" src="./assets/js/script.js"></script>
+    <script type="module" src="./assets/js/productlist.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-.hero {
+.productlist-hero {
   width: 100%;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
   margin-block: 2rem;
 }
 
-.search-box {
+.product-search {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -36,7 +36,7 @@
   background: var(--color-white);
 }
 
-.search-box span {
+.product-search span {
   flex: 0 0 auto;
   color: var(--color-gray-600);
 }
@@ -69,7 +69,7 @@
   outline: none;
 }
 
-.search-box:focus-within,
+.product-search:focus-within,
 .filter-category:focus,
 .price-sort:focus {
   border-color: var(--color-primary);
@@ -230,7 +230,7 @@
     margin-block: 1.5rem;
   }
 
-  .search-box {
+  .product-search {
     width: 100%;
   }
 

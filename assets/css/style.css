@@ -28,6 +28,8 @@
   --color-primary-hover: var(--color-blue-dark);
   --color-primary-soft: var(--color-blue-light);
 
+  --color-gradient: linear-gradient(135deg, #2563eb 0%, #dbeafe 100%);
+
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 8px;
@@ -159,3 +161,4 @@ textarea:disabled {
   body {
     font-size: 15px;
   }
+}

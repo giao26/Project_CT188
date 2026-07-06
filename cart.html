@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mellow - Giỏ hàng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/images/logo/logo-mellow.png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/cart.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <header id="header" class="header"></header>
+
+    <section class="cart-header">
+      <h1>GIỎ HÀNG CỦA BẠN</h1>
+    </section>
+    <!--Nội dung chính-->
+    <main class="cart-container">
+      <!-- BÊN TRÁI -->
+      <section class="cart-items">
+        <div class="cart-box">
+          <h3 class="section-title">TÓM TẮT ĐƠN HÀNG</h3>
+
+          <!-- JS render sản phẩm -->
+          <div id="cart-list"></div>
+
+          <div class="voucher">
+            <input
+              type="text"
+              title="Nhập mã giảm giá"
+              placeholder="Nhập mã giảm giá của bạn..."
+            />
+            <button>Áp dụng</button>
+          </div>
+
+          <hr style="opacity: 0.5" />
+          <!-- Tổng tiền -->
+          <div class="pricing-info">
+            <div class="pricing-item pre-cost">
+              <span>Tạm tính: </span>
+              <strong value="0">0₫</strong>
+            </div>
+            <div class="pricing-item delivery-cost">
+              <span>Phí vận chuyển: </span>
+              <strong value="0">0₫</strong>
+            </div>
+            <div class="pricing-item voucher-aplied">
+              <span>Voucher: </span>
+              <strong value="0">0₫</strong>
+            </div>
+            <hr />
+            <div class="pricing-item total-cost">
+              <span>Tổng: </span>
+              <strong value="0">0₫</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BÊN PHẢI -->
+      <aside class="summary">
+        <h3>THÔNG TIN KHÁCH HÀNG</h3>
+
+        <div class="customer-info">
+          <div class="form-group">
+            <label for="fullname">Họ và tên</label>
+            <input type="text" id="fullname" placeholder="Nhập họ và tên" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Số điện thoại</label>
+            <input type="tel" id="phone" placeholder="Nhập số điện thoại" />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Địa chỉ giao hàng</label>
+            <textarea
+              id="address"
+              rows="3"
+              placeholder="Nhập địa chỉ"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="note">Ghi chú</label>
+            <textarea
+              id="note"
+              rows="3"
+              placeholder="Ghi chú (nếu có)"
+            ></textarea>
+          </div>
+        </div>
+        <!--nút đặt hàng -->
+        <button class="checkout">Đặt hàng</button>
+        <!-- Thông báo thành công -->
+        <div id="success-message" class="toast-success">
+          ✅ Đặt hàng thành công!
+        </div>
+        <!--phương thức thanh toán-->
+        <div class="payment-methods">
+          <img src="assets/images/cart/visa.png" title="Thẻ visa" />
+          <img src="assets/images/cart/bank.png" title="Online banking" />
+          <img src="assets/images/cart/momo.png" title="Momo" />
+        </div>
+      </aside>
+    </main>
+
+    <footer id="footer" class="footer"></footer>
+    <script type="module" src="./assets/js/script.js"></script>
+    <script type="module" src="./assets/js/cart.js"></script>
+  </body>
+</html>
