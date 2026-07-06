@@ -601,5 +601,45 @@
         "text": "Đóng gói kỹ, chất quần đúng mong đợi."
       }
     ]
+  },
+  {
+    "id": 15,
+    "name": "Quần Jeans Nam Stonefade Form Straight",
+    "slug": "quan-jeans-nam-stone-fade-form-straight",
+    "category": "Quần jean",
+    "categorySlug": "quan-jean",
+    "rating": 4.6,
+    "description": "Form straight vừa vặn, không quá ôm cũng không quá rộng, phù hợp với nhiều vóc dáng. Dáng quần dài ôm nhẹ từ hông tới ống, dễ phối cùng áo thun, áo polo hoặc sơ mi để tạo phong cách casual lịch lãm. Một lựa chọn bền bỉ và nam tính cho tủ đồ hàng ngày.",
+    "material": "Vải Mellow",
+    "designTechnique": "Thiết kế wash xanh đậm phối chi tiết rách gối vừa đủ, mang đến vẻ bụi bặm nam tính. Phần cạp bản 4 cm may hai kim chắc chắn, belt loop đều và túi đồng hồ nhỏ ở phía trước theo đúng phom jean cổ điển. Patch da phía sau và nút kim loại màu bạc là điểm nhấn tinh tế, hoàn thiện tổng thể.",
+    "form": "Straight",
+    "price": "699.000₫",
+    "priceValue": 799000,
+    "unit": "cái",
+    "mainImg": "./assets/images/productlistimage/quan-jeans-nam-stonefade-form-straight_55743c9c515c4207a41c08eb8622a544_1024x1024__main.jpg",
+    "ImgHover": "./assets/images/productlistimage/quan-jeans-nam-stonefade-form-straight47_221fb4a99c7f450bac3257a5e2306aeb_1024x1024__hover.webp",
+    "ImgSizing": "./assets/images/productlistimage/quan-jeans-sizing.webp",
+    "preserve": "Không giặt chung với đồ dễ ra màu, phơi thoáng và tránh ánh nắng trực tiếp quá lâu.",
+    "stock": 16,
+    "sold": 27,
+    "sizes": ["29", "30", "31", "32", "34", "36"],
+    "colors": [
+      {
+        "color": "Xanh đậm",
+        "img": "./assets/images/productlistimage/quan-jeans-nam-stonefade-form-straight_55743c9c515c4207a41c08eb8622a544_1024x1024__main.jpg"
+      }
+    ],
+    "isNew": true,
+    "discountPercent": 16,
+    "references": [11, 14],
+    "review": [
+      {
+        "avt": "https://i.pravatar.cc/80?img=29",
+        "name": "Quang Vinh",
+        "address": "Cần Thơ",
+        "star": 4,
+        "text": "Đóng gói kỹ, chất quần đúng mong đợi."
+      }
+    ]
   }
 ]
