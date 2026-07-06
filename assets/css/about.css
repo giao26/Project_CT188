@@ -1,0 +1,440 @@
+/* ========================================
+   ABOUT.CSS - Trang Giới Thiệu ĐẸP MẮT
+   ======================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================
+   PHẦN 1: HERO - BANNER ĐẸP
+   ============================================ */
+.about-hero {
+  background: var(--color-gradient);
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px 100px;
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng trang trí nền */
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.about-hero h1 {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 3px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.about-hero p {
+  font-size: 22px;
+  opacity: 0.95;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   PHẦN 2: STORY - CÂU CHUYỆN
+   ============================================ */
+.about-story {
+  padding: 90px 0;
+  background-color: #fff;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.story-content h2 {
+  font-size: 38px;
+  color: #333;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* Gạch chân đẹp */
+.story-content h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: var(--color-gradient);
+  margin-top: 12px;
+  border-radius: 2px;
+}
+
+.story-content p {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+
+.story-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s ease;
+}
+
+.story-image img:hover {
+  transform: scale(1.03) rotate(-1deg);
+  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================
+   PHẦN 3: MISSION - SỨ MỆNH
+   ============================================ */
+.about-mission {
+  padding: 90px 0;
+  background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
+  text-align: center;
+}
+
+.about-mission h2 {
+  font-size: 38px;
+  color: #333;
+  margin-bottom: 55px;
+  position: relative;
+  display: inline-block;
+}
+
+.about-mission h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: var(--color-gradient);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+.mission-card {
+  background: #fff;
+  padding: 45px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(102, 126, 234, 0.08);
+}
+
+.mission-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+.mission-icon {
+  font-size: 52px;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.mission-card h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.mission-card p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ============================================
+   PHẦN 4: LOGO NHÓM - ĐẸP
+   ============================================ */
+.about-logo {
+  padding: 90px 0;
+  background-color: #fff;
+}
+
+.logo-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ẢNH LOGO */
+.logo-image {
+  text-align: center;
+}
+
+.logo-image img {
+  max-width: 100%;
+  max-height: 420px;
+  border-radius: 25px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s ease;
+  object-fit: cover;
+  border: 3px solid rgba(102, 126, 234, 0.1);
+}
+
+.logo-image img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 35px 70px rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+/* NỘI DUNG LOGO */
+.logo-content h2 {
+  font-size: 38px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.logo-content h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: var(--color-gradient);
+  margin-top: 12px;
+  border-radius: 2px;
+}
+
+.logo-subtitle {
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+
+.logo-desc p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 14px;
+}
+
+/* TAGS - Thẻ nhóm đẹp */
+.logo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--color-gradient);
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.tag:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* ============================================
+   PHẦN 5: STATS - THỐNG KÊ ĐẸP
+   ============================================ */
+.about-stats {
+  padding: 80px 0;
+  background: var(--color-gradient);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng nền trang trí */
+.about-stats::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.about-stats::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  right: -10%;
+  width: 50%;
+  height: 180%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-item {
+  padding: 25px 15px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.stat-number {
+  font-size: 52px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 18px;
+  opacity: 0.9;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   RESPONSIVE - CHO MÀN HÌNH NHỎ
+   ============================================ */
+
+/* Tablet & nhỏ hơn */
+@media (max-width: 992px) {
+  .story-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .story-content h2::after {
+    margin: 12px auto 0;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logo-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .logo-content h2::after {
+    margin: 12px auto 0;
+  }
+  .logo-tags {
+    justify-content: center;
+  }
+  .logo-image img {
+    max-height: 320px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Điện thoại */
+@media (max-width: 576px) {
+  .about-hero {
+    padding: 80px 20px 60px;
+  }
+  .about-hero h1 {
+    font-size: 32px;
+  }
+  .about-hero p {
+    font-size: 16px;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-image img {
+    max-height: 220px;
+    border-radius: 16px;
+  }
+  .logo-content h2 {
+    font-size: 28px;
+  }
+  .logo-tags {
+    gap: 10px;
+  }
+  .tag {
+    font-size: 12px;
+    padding: 7px 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .stat-number {
+    font-size: 32px;
+  }
+  .stat-label {
+    font-size: 14px;
+  }
+  .stat-item {
+    padding: 18px 10px;
+  }
+}
