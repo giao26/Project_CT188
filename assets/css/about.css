@@ -7,7 +7,7 @@
 */
 
 /* ========================================
-   ABOUT.CSS - Trang Giới Thiệu ĐẸP MẮT
+   ABOUT.CSS - Trang Giới Thiệu
    ======================================== */
 
 .container {
@@ -17,432 +17,639 @@
 }
 
 /* ============================================
-   PHẦN 1: HERO - BANNER ĐẸP
+   EYEBROW - Nhãn nhỏ phía trên heading
+   ============================================ */
+.section-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-blue);
+  margin-bottom: 10px;
+}
+
+.section-header {
+  margin-bottom: 52px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  color: var(--color-gray-900);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* ============================================
+   HERO - Phần đầu trang
    ============================================ */
 .about-hero {
-  background: var(--color-gradient);
+  background: var(--color-gray-900);
   color: #fff;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 120px 20px 100px;
-  margin-top: 0;
+  padding: 120px 24px 80px;
   position: relative;
   overflow: hidden;
 }
 
-/* Hiệu ứng trang trí nền */
+/* Lưới chấm nền nhẹ */
 .about-hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
+  inset: 0;
+  background-image: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 70%
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px
   );
-  animation: rotate 20s linear infinite;
+  background-size: 28px 28px;
+  pointer-events: none;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: 100px;
 }
 
 .about-hero h1 {
-  font-size: 52px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  letter-spacing: 3px;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #fff;
 }
 
-.about-hero p {
-  font-size: 22px;
-  opacity: 0.95;
-  font-weight: 300;
+.brand-name {
+  color: var(--color-blue);
+}
+
+.about-hero > .hero-inner > p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.hero-scroll-hint {
   position: relative;
   z-index: 1;
+  margin-top: 48px;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.3);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 /* ============================================
-   PHẦN 2: STORY - CÂU CHUYỆN
+   STORY - Câu chuyện
    ============================================ */
 .about-story {
-  padding: 90px 0;
+  padding: 96px 0;
   background-color: #fff;
 }
 
 .story-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 72px;
   align-items: center;
-}
-
-.story-content h2 {
-  font-size: 38px;
-  color: #333;
-  margin-bottom: 25px;
-  position: relative;
-}
-
-/* Gạch chân đẹp */
-.story-content h2::after {
-  content: "";
-  display: block;
-  width: 70px;
-  height: 4px;
-  background: var(--color-gradient);
-  margin-top: 12px;
-  border-radius: 2px;
-}
-
-.story-content p {
-  font-size: 17px;
-  color: #555;
-  margin-bottom: 18px;
-  line-height: 1.8;
 }
 
 .story-image img {
   width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s ease;
+  border-radius: 16px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
 }
 
 .story-image img:hover {
-  transform: scale(1.03) rotate(-1deg);
-  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.18);
+  transform: scale(1.02);
 }
 
-/* ============================================
-   PHẦN 3: MISSION - SỨ MỆNH
-   ============================================ */
-.about-mission {
-  padding: 90px 0;
-  background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
-  text-align: center;
-}
-
-.about-mission h2 {
-  font-size: 38px;
-  color: #333;
-  margin-bottom: 55px;
-  position: relative;
-  display: inline-block;
-}
-
-.about-mission h2::after {
-  content: "";
+.story-content .section-eyebrow {
   display: block;
-  width: 70px;
-  height: 4px;
-  background: var(--color-gradient);
-  margin: 12px auto 0;
-  border-radius: 2px;
-}
-
-.mission-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 35px;
-}
-
-.mission-card {
-  background: #fff;
-  padding: 45px 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(102, 126, 234, 0.08);
-}
-
-.mission-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 25px 50px rgba(102, 126, 234, 0.15);
-  border-color: rgba(102, 126, 234, 0.2);
-}
-
-.mission-icon {
-  font-size: 52px;
-  margin-bottom: 18px;
-  display: block;
-}
-
-.mission-card h3 {
-  font-size: 22px;
-  color: #333;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.mission-card p {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.7;
-}
-
-/* ============================================
-   PHẦN 4: LOGO NHÓM - ĐẸP
-   ============================================ */
-.about-logo {
-  padding: 90px 0;
-  background-color: #fff;
-}
-
-.logo-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-/* ẢNH LOGO */
-.logo-image {
-  text-align: center;
-}
-
-.logo-image img {
-  max-width: 100%;
-  max-height: 420px;
-  border-radius: 25px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s ease;
-  object-fit: cover;
-  border: 3px solid rgba(102, 126, 234, 0.1);
-}
-
-.logo-image img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 35px 70px rgba(102, 126, 234, 0.2);
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-/* NỘI DUNG LOGO */
-.logo-content h2 {
-  font-size: 38px;
-  color: #333;
   margin-bottom: 8px;
 }
 
-.logo-content h2::after {
-  content: "";
-  display: block;
-  width: 70px;
-  height: 4px;
-  background: var(--color-gradient);
-  margin-top: 12px;
-  border-radius: 2px;
+.story-content h2 {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: 24px;
+  line-height: 1.25;
 }
 
-.logo-subtitle {
-  font-size: 18px;
-  color: #888;
-  margin-bottom: 22px;
-  font-weight: 500;
-}
-
-.logo-desc p {
+.story-content p {
   font-size: 16px;
-  color: #555;
-  line-height: 1.9;
-  margin-bottom: 14px;
+  color: var(--color-gray-600);
+  line-height: 1.85;
+  margin-bottom: 16px;
 }
 
-/* TAGS - Thẻ nhóm đẹp */
-.logo-tags {
+.story-note {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 22px;
-}
-
-.tag {
-  display: inline-block;
-  background: var(--color-gradient);
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 50px;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: var(--color-gray-50);
+  border-left: 3px solid var(--color-blue);
+  border-radius: 0 8px 8px 0;
+  color: var(--color-gray-500);
   font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  line-height: 1.6;
 }
 
-.tag:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+.story-note i {
+  font-size: 16px;
+  color: var(--color-blue);
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* ============================================
-   PHẦN 5: STATS - THỐNG KÊ ĐẸP
+   TEAM - Nhóm thực hiện
    ============================================ */
-.about-stats {
-  padding: 80px 0;
-  background: var(--color-gradient);
-  color: #fff;
-  position: relative;
-  overflow: hidden;
+.about-team {
+  padding: 96px 0;
+  background: var(--color-gray-50);
 }
 
-/* Hiệu ứng nền trang trí */
-.about-stats::before {
-  content: "";
-  position: absolute;
-  top: -30%;
-  left: -20%;
-  width: 60%;
-  height: 160%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
+.logo-feature {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 64px;
+  align-items: start;
 }
 
-.about-stats::after {
-  content: "";
-  position: absolute;
-  bottom: -40%;
-  right: -10%;
-  width: 50%;
-  height: 180%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
+.logo-img-wrap {
+  position: sticky;
+  top: 100px;
+  text-align: center;
 }
 
-.stats-grid {
+.logo-img-wrap img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-gray-200);
+}
+
+.logo-desc-wrap h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: 16px;
+}
+
+.logo-desc-wrap > p {
+  font-size: 16px;
+  color: var(--color-gray-600);
+  line-height: 1.85;
+  margin-bottom: 32px;
+}
+
+.member-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.member-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-gray-200);
+  font-size: 15px;
+  color: var(--color-gray-700);
+  transition: background 0.2s ease;
+}
+
+.member-list li:last-child {
+  border-bottom: none;
+}
+
+.member-list li i {
+  font-size: 18px;
+  color: var(--color-blue);
+  background: var(--color-blue-light);
+  padding: 6px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.member-list li strong {
+  color: var(--color-gray-900);
+  font-weight: 600;
+}
+
+.member-list li span {
+  color: var(--color-gray-500);
+}
+
+/* ============================================
+   FACTS - Những con số thật
+   ============================================ */
+.about-facts {
+  padding: 96px 0;
+  background: #fff;
+}
+
+.facts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+  gap: 24px;
 }
 
-.stat-item {
-  padding: 25px 15px;
-  border-radius: 16px;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
+.fact-card {
+  padding: 36px 28px;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: var(--color-gray-700);
 }
 
-.stat-item:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.12);
+.fact-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--color-gray-700);
+  transform: translateY(-4px);
 }
 
-.stat-number {
-  font-size: 52px;
-  font-weight: 700;
+.fact-number {
   display: block;
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
   margin-bottom: 10px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.stat-label {
-  font-size: 18px;
-  opacity: 0.9;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+.fact-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-blue-light);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.fact-note {
+  font-size: 14px;
+  color: var(--color-gray-400);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ============================================
-   RESPONSIVE - CHO MÀN HÌNH NHỎ
+   VALUES - Cam kết thương hiệu
+   ============================================ */
+.about-values {
+  padding: 96px 0;
+  background: var(--color-gray-50);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.value-card {
+  background: #fff;
+  padding: 40px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--color-gray-200);
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  border-color: var(--color-blue);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+  transform: translateY(-4px);
+}
+
+.value-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-blue-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.value-icon i {
+  font-size: 22px;
+  color: var(--color-blue);
+}
+
+.value-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.value-card p {
+  font-size: 15px;
+  color: var(--color-gray-600);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATION
+   ============================================ */
+.fact-card,
+.member-list li,
+.story-grid,
+.logo-feature {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.fact-card.is-visible,
+.member-list li.is-visible,
+.story-grid.is-visible,
+.logo-feature.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE
    ============================================ */
 
-/* Tablet & nhỏ hơn */
-@media (max-width: 992px) {
-  .story-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .story-content h2::after {
-    margin: 12px auto 0;
+/* --- Tablet lớn: 1024px --- */
+@media (max-width: 1024px) {
+  .about-hero h1 {
+    font-size: 46px;
   }
 
-  .mission-grid {
-    grid-template-columns: 1fr 1fr;
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
 
-  .logo-wrapper {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .logo-content h2::after {
-    margin: 12px auto 0;
-  }
-  .logo-tags {
-    justify-content: center;
-  }
-  .logo-image img {
-    max-height: 320px;
-  }
-
-  .stats-grid {
+  .facts-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .story-grid {
+    gap: 48px;
   }
 }
 
-/* Điện thoại */
-@media (max-width: 576px) {
+/* --- Tablet: 768px --- */
+@media (max-width: 768px) {
   .about-hero {
-    padding: 80px 20px 60px;
+    padding: 110px 24px 72px;
+    min-height: 360px;
   }
+
   .about-hero h1 {
-    font-size: 32px;
+    font-size: 38px;
   }
-  .about-hero p {
+
+  .about-hero > .hero-inner > p {
     font-size: 16px;
   }
 
-  .mission-grid {
+  .about-story,
+  .about-values,
+  .about-facts,
+  .about-team {
+    padding: 72px 0;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
+
+  .section-header h2 {
+    font-size: 30px;
+  }
+
+  .story-grid {
     grid-template-columns: 1fr;
+    gap: 36px;
   }
 
-  .logo-image img {
-    max-height: 220px;
-    border-radius: 16px;
-  }
-  .logo-content h2 {
-    font-size: 28px;
-  }
-  .logo-tags {
-    gap: 10px;
-  }
-  .tag {
-    font-size: 12px;
-    padding: 7px 16px;
+  .story-image {
+    order: -1;
   }
 
-  .stats-grid {
+  .story-content h2 {
+    font-size: 26px;
+  }
+
+  .values-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 20px;
   }
-  .stat-number {
+
+  .value-card {
+    padding: 28px 22px;
+  }
+
+  .facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .fact-card {
+    padding: 28px 20px;
+  }
+
+  .fact-number {
+    font-size: 40px;
+  }
+
+  .logo-feature {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .logo-img-wrap {
+    position: static;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .logo-desc-wrap h3 {
+    font-size: 22px;
+  }
+}
+
+/* --- Mobile lớn: 576px --- */
+@media (max-width: 576px) {
+  .about-hero {
+    padding: 96px 16px 60px;
+    min-height: 320px;
+  }
+
+  .about-hero h1 {
     font-size: 32px;
   }
-  .stat-label {
+
+  .hero-eyebrow {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+
+  .about-hero > .hero-inner > p {
+    font-size: 15px;
+  }
+
+  .about-story,
+  .about-values,
+  .about-facts,
+  .about-team {
+    padding: 56px 0;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  .section-header h2 {
+    font-size: 26px;
+  }
+
+  .story-content h2 {
+    font-size: 24px;
+  }
+
+  .story-content p {
+    font-size: 15px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .value-card {
+    padding: 24px 20px;
+  }
+
+  .value-card h3 {
+    font-size: 16px;
+  }
+
+  .facts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .fact-card {
+    padding: 20px 14px;
+  }
+
+  .fact-number {
+    font-size: 34px;
+  }
+
+  .fact-label {
+    font-size: 12px;
+  }
+
+  .fact-note {
+    font-size: 12px;
+  }
+}
+
+/* --- Mobile nhỏ: 480px --- */
+@media (max-width: 480px) {
+  .about-hero h1 {
+    font-size: 28px;
+  }
+
+  .about-hero > .hero-inner > p {
     font-size: 14px;
   }
-  .stat-item {
-    padding: 18px 10px;
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .story-content h2 {
+    font-size: 21px;
+  }
+
+  .facts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .fact-card {
+    padding: 18px 12px;
+    border-radius: 12px;
+  }
+
+  .fact-number {
+    font-size: 28px;
+  }
+
+  .fact-label {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  .fact-note {
+    font-size: 11px;
+  }
+
+  .value-card {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .logo-img-wrap {
+    max-width: 220px;
+  }
+
+  .member-list li {
+    font-size: 14px;
+    padding: 12px 0;
   }
 }
