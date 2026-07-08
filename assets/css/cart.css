@@ -1,3 +1,11 @@
+/* 
+=============================================================
+                        TÁC GIẢ
+    Phùng Cao Yến Trang 
+    B2404885
+============================================================= 
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap");
 
 /* header*/
@@ -77,6 +85,7 @@
   overflow: hidden;
 }
 .details p {
+  margin-bottom: 0;
   font-size: 1rem;
   color: #666;
 }

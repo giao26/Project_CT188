@@ -1,3 +1,12 @@
+//==========================================================================
+//                  TÁC GIẢ(Phần xử lý tổng tiền(hàm lastCost) và áp dụng voucher(sự kiện cho thẻ nhập voucher))
+//    HUỲNH TẤN GIAO
+//    B2408784
+//                  TÁC GIẢ(Phần còn lại)
+//    Phùng Cao Yến Trang
+//    B2404885
+//==========================================================================
+
 /**
  * cart.js - Quản lý giỏ hàng
  *

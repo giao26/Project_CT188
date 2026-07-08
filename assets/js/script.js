@@ -1,3 +1,9 @@
+//===================================================================
+//                       TÁC GIẢ (Phần render Header và Footer)
+//    HUỲNH TẤN GIAO
+//    B2408784
+//===================================================================
+
 document.addEventListener("DOMContentLoaded", async () => {
   await getHeaderAndFooter("#header", "header.html");
   await getHeaderAndFooter("#footer", "footer.html");
@@ -11,8 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 /**
  * Hàm tải nội dung HTML của header và footer từ các file tương ứng (header.html, footer.html)
  * Sử dụng Fetch API để chèn nội dung vào các thẻ được chỉ định
- * @param {string} selector - Selector của thẻ chứa (ví dụ: "#header")
- * @param {string} path - Đường dẫn đến file HTML (ví dụ: "header.html")
  */
 const getHeaderAndFooter = async (selector, path) => {
   const targetElement = document.querySelector(selector);
@@ -25,6 +29,12 @@ const getHeaderAndFooter = async (selector, path) => {
     console.error(`Lỗi khi tải ${path}:`, error);
   }
 };
+
+//=============================================================
+//                       TÁC GIẢ (Phần trang chủ)
+//    Trương Trọng Nguyễn
+//    B2410738
+//=============================================================
 
 /**
  * Khởi tạo các sự kiện cho thanh điều hướng (header) như:
