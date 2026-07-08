@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/images/logo/logo-mellow.png" />
+    <!-- Responsive: Đảm bảo giao diện hiển thị đúng tỷ lệ trên màn hình thiết bị di động -->
+
+    <!-- Remixicon: Thư viện icon dạng CDN, dùng để hiển thị các icon như mail, lock, eye... -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
@@ -11,48 +13,83 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Toastify CSS: Thư viện hiển thị thông báo popup (toast) siêu tiện lợi ở góc màn hình -->
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
     />
+
+    <!-- CSS chung của toàn dự án (chứa biến màu, reset CSS, định dạng cơ bản) -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!-- CSS cấu trúc và giao diện riêng cho trang Đăng nhập / Đăng ký -->
     <link rel="stylesheet" href="./assets/css/login.css" />
+
     <title>Đăng nhập & Đăng ký</title>
+    <!-- Tiêu đề trang hiển thị trên tab của trình duyệt -->
   </head>
   <body>
-    <header></header>
+    <!-- ================= HEADER: PHẦN ĐẦU TRANG ================= -->
+    <header>
+      <!-- Link bọc logo, nhấn vào sẽ quay về trang chủ (index.html) -->
+      <a href="./index.html" class="header-logo-link">
+        <img src="./assets/images/login/logo-mellow.png" alt="logo" />
+      </a>
+
+      <!-- Góc phải header: Chứa hình linh vật và lời chào linh động theo giờ -->
+      <div class="header-right">
+        <!-- Ảnh linh vật (Capybara của Mellow) -->
+        <img
+          class="linhvat"
+          src="./assets/images/login/capy-mellow.png"
+          alt="linhvat"
+        />
+        <!-- Khối chứa lời chào, nội dung sẽ được file login.js tự động điền vào đây -->
+        <div class="header-greeting" id="greeting"></div>
+      </div>
+    </header>
+
+    <!-- ================= MAIN: NỘI DUNG CHÍNH CỦA TRANG ================= -->
     <main class="auth-page">
+      <!-- CỘT TRÁI: HIỂN THỊ LOGO VÀ SLOGAN THƯƠNG HIỆU -->
       <section class="auth-content">
         <div class="logo-wrapper">
+          <!-- Hình ảnh ngôi sao 3D trang trí (có hiệu ứng bay lơ lửng bên CSS) -->
           <img
             src="./assets/images/login/laplanh_3d.png"
             alt="star"
             class="star"
           />
+          <!-- Logo phiên bản màu trắng để nổi bật trên nền xanh đậm -->
           <img
-            src="./assets/images/login/logo-mellow.png"
+            src="./assets/images/login/logo-white.png"
             alt="logo"
             class="logo"
           />
         </div>
-        <!-- <p id="greeting"></p> -->
+
+        <!-- Slogan của thương hiệu Mellow -->
         <p class="content">
           Uy tín làm nên thương hiệu <br />
           Tự tin tỏa sáng với phong cách của bạn
         </p>
       </section>
+
+      <!-- CỘT PHẢI: KHU VỰC CHỨA FORM ĐĂNG NHẬP / ĐĂNG KÝ -->
       <section class="auth-login">
         <div class="wrapper">
+          <!-- Tiêu đề nổi bật phía trên khung form -->
           <div class="form-header">
             <div class="title">Đăng nhập</div>
           </div>
-          <!---------
-            LOGIN
-          ---------->
+
+          <!-- ================= FORM ĐĂNG NHẬP ================= -->
           <form class="login-form">
-            <!-- email -->
+            <!-- Ô nhập Email -->
             <div class="input-box">
+              <!-- Icon mail của thư viện Remixicon -->
               <i class="ri-mail-line"></i>
               <input
                 type="email"
@@ -62,8 +99,10 @@
                 autocomplete="off"
                 required
               />
+              <!-- autocomplete="off" để tắt gợi ý tự động của trình duyệt, required bắt buộc nhập -->
             </div>
-            <!-- password -->
+
+            <!-- Ô nhập Mật khẩu -->
             <div class="input-box">
               <i class="ri-lock-line"></i>
               <input
@@ -73,36 +112,37 @@
                 placeholder="Mật khẩu"
                 required
               />
+              <!-- Icon con mắt để ẩn/hiện mật khẩu, JS sẽ bắt sự kiện click vào class "toggle" này -->
               <i class="ri-eye-off-fill toggle"></i>
             </div>
 
-            <div class="form-cols">
-              <div class="col-1"></div>
-              <div class="col-2"><a href="#">Quên mật khẩu?</a></div>
+            <!-- Cột tùy chọn bổ sung (Quên mật khẩu) -->
+            <div class="form-col">
+              <div class="col"><a href="#">Quên mật khẩu?</a></div>
             </div>
 
-            <div class="input-box click-btn">
-              <button class="log-btn" id="logBtn">
-                Đăng nhập
-                <i class="ri-login-box-line"></i>
-              </button>
-            </div>
+            <!-- Nút xác nhận đăng nhập -->
+            <button class="submit-btn" id="logBtn">
+              Đăng nhập
+              <i class="ri-login-box-line"></i>
+            </button>
 
+            <!-- Nút chuyển đổi sang form Đăng ký -->
             <div class="switch-form">
               <span>
-                Bạn mới biết đến MELLOW?
-                <a href="#" id="regset-log" onclick="registerFunction()"
+                Bạn mới đến MELLOW?
+                <!-- Sự kiện onclick gọi hàm registerFunction() trong file login.js để đổi form -->
+                <a href="#" id="reset-log" onclick="registerFunction()"
                   >Đăng ký ngay</a
                 ></span
               >
             </div>
           </form>
 
-          <!----------------
-                REGISTER
-            ---------------->
+          <!-- ================= FORM ĐĂNG KÝ ================= -->
+          <!-- class "hidden-form" giúp ẩn form này đi lúc mới load trang -->
           <form action="#" class="register-form hidden-form">
-            <!-- reg-user -->
+            <!-- Ô nhập Họ và tên -->
             <div class="input-box">
               <i class="ri-user-line"></i>
               <input
@@ -114,7 +154,8 @@
                 required
               />
             </div>
-            <!-- reg-mail -->
+
+            <!-- Ô nhập Email -->
             <div class="input-box">
               <i class="ri-mail-line"></i>
               <input
@@ -126,7 +167,8 @@
                 required
               />
             </div>
-            <!-- reg-phone -->
+
+            <!-- Ô nhập Số điện thoại: dùng type="tel" để hiện bàn phím số trên điện thoại -->
             <div class="input-box">
               <i class="ri-phone-line"></i>
               <input
@@ -138,7 +180,8 @@
                 required
               />
             </div>
-            <!-- reg-pass -->
+
+            <!-- Ô nhập Mật khẩu -->
             <div class="input-box">
               <i class="ri-lock-line"></i>
               <input
@@ -150,7 +193,8 @@
               />
               <i class="ri-eye-off-fill toggle"></i>
             </div>
-            <!-- reg-confirmPass -->
+
+            <!-- Ô Nhập lại mật khẩu để xác nhận -->
             <div class="input-box">
               <i class="ri-lock-line"></i>
               <input
@@ -162,15 +206,17 @@
               />
               <i class="ri-eye-off-fill toggle"></i>
             </div>
-            <!-- btn -->
-            <div class="input-box click-btn">
-              <button class="reg-btn" id="regBtn">
-                Đăng ký<i class="ri-user-add-line"></i>
-              </button>
-            </div>
+
+            <!-- Nút xác nhận đăng ký -->
+            <button class="submit-btn" id="regBtn">
+              Đăng ký<i class="ri-user-add-line"></i>
+            </button>
+
+            <!-- Nút chuyển đổi về form Đăng nhập -->
             <div class="switch-form">
               <span
                 >Bạn đã có tài khoản?
+                <!-- onclick gọi loginFunction() để quay lại màn hình đăng nhập -->
                 <a href="#" id="reset-reg" onclick="loginFunction()"
                   >Đăng nhập ngay</a
                 ></span
@@ -180,11 +226,17 @@
         </div>
       </section>
     </main>
+
+    <!-- ================= FOOTER ================= -->
     <footer></footer>
+
+    <!-- Thư viện JS của Toastify để chạy các popup thông báo -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
+
+    <!-- File JS chính xử lý logic chuyển form, validate dữ liệu, ẩn/hiện mật khẩu của trang -->
     <script src="./assets/js/login.js"></script>
   </body>
 </html>
