@@ -423,7 +423,7 @@ trừ phần height của header 81px
   Lúc này thiết kế tách thành dạng cột thay vì dàn 2 bên.
 */
 @media (max-width: 769px) {
-  .auth-content {
+  .auth-branding {
     display: none; /* Giấu hẳn cột slogan thương hiệu */
   }
 
