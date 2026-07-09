@@ -328,9 +328,10 @@
 
 .fact-note {
   font-size: 14px;
-  color: var(--color-gray-400);
+  color: var(--color-blue-light);
   line-height: 1.6;
   margin: 0;
+  opacity: 0.8;
 }
 
 /* ============================================

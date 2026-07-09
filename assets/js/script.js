@@ -11,8 +11,48 @@ document.addEventListener("DOMContentLoaded", async () => {
   initHeaderEvents();
   updateCartBadge();
   const path = window.location.pathname;
-  if (path.endsWith("index.html") || path.endsWith("/")) initHomePageEvent();
+  if (path.endsWith("index.html") || path.endsWith("/")) {
+    initHomePageEvent();
+    showWelcomeToast(); // Hiển thị toast chào mừng nếu vừa đăng nhập thành công
+  }
 });
+
+// ===========================
+// HIỂN THỊ TOAST CHÀO MỪNG SAU KHI ĐĂNG NHẬP
+// ===========================
+/**
+ * Đọc "toastMessage" từ localStorage (được login.js ghi trước khi redirect).
+ * Nếu có, hiển thị thông báo Toastify màu xanh lá rồi xóa key để tránh lặp lại khi F5.
+ */
+function showWelcomeToast() {
+  const message = localStorage.getItem("toastMessage");
+  if (!message) return;
+
+  // Xóa ngay để tránh hiện lại khi người dùng F5
+  localStorage.removeItem("toastMessage");
+
+  // Dùng setTimeout nhỏ để đảm bảo Toastify đã được load xong
+  setTimeout(() => {
+    Toastify({
+      text: message,
+      duration: 5000,
+      gravity: "top",
+      position: "right",
+      offset: {
+        x: 5,
+        y: 90, // Canh lề để không đè lên thanh header
+      },
+      style: {
+        background: "rgba(34, 197, 94, 0.92)",
+        color: "#ffffff",
+        borderRadius: "8px",
+        fontWeight: "600",
+        fontSize: "15px",
+        boxShadow: "0 4px 15px rgba(34, 197, 94, 0.35)",
+      },
+    }).showToast();
+  }, 300);
+}
 
 /**
  * Hàm tải nội dung HTML của header và footer từ các file tương ứng (header.html, footer.html)

@@ -19,7 +19,7 @@ const showSuccess = (message) => {
 
   currentToast = Toastify({
     text: message,
-    duration: 3000,
+    duration: 5000,
     gravity: "top",
     position: "right",
     offset: {
@@ -41,7 +41,7 @@ const showError = (message) => {
 
   currentToast = Toastify({
     text: message,
-    duration: 3000,
+    duration: 5000,
     gravity: "top",
     position: "right",
     offset: {
@@ -168,7 +168,7 @@ toggles.forEach((toggle) => {
 // ===========================
 // Bắt buộc SĐT VN và Email dùng đuôi .com hoặc .vn
 const phoneRegex = /^(0[35789])+([0-9]{8})$/;
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|vn)$/;
+const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
 // Tiện ích trải nghiệm người dùng: Tự động xóa class báo đỏ lỗi ngay khi người dùng gõ lại khớp với regex
 const removeError = (input, condition) => {
@@ -200,7 +200,7 @@ if (registerForm) {
 
     // Chuỗi kiểm tra Validate đầu vào, nếu sai sẽ ném Toastify + Thêm class đỏ bọc viền input
     if (!emailRegex.test(email)) {
-      showError("Email không đúng định dạng .com hoặc .vn");
+      showError("Email không đúng định dạng");
       emailInput.parentElement.classList.add("error-input");
       return;
     }
@@ -283,14 +283,18 @@ if (loginForm) {
     // Check account test
     if (email === testUser.email && password === testUser.password) {
       localStorage.setItem("currentUser", JSON.stringify(testUser));
-      console.log(localStorage.getItem("currentUser"));
+      // Đặt toastMessage để trang index.html đọc và hiển thị lời chào khi chuyển hướng
+      localStorage.setItem(
+        "toastMessage",
+        `Chào mừng ${testUser.name} đã đến với MELLOW 🎉`,
+      );
       window.location.href = "index.html"; // Redirect về trang chủ
       return;
     }
 
     // Validate email
     if (!emailRegex.test(email)) {
-      showError("Email không đúng định dạng .com hoặc .vn");
+      showError("Email không đúng định dạng");
       emailLogInput.parentElement.classList.add("error-input");
       return;
     }
@@ -312,7 +316,7 @@ if (loginForm) {
     // Đặt biến nội dung toastMessage để trang index.html đọc và hiển thị câu Welcome khi chuyển hướng
     localStorage.setItem(
       "toastMessage",
-      `Chào mừng ${user.name} đã đến với MELLOW`,
+      `Chào mừng ${user.name} đã đến với MELLOW 🎉`,
     );
     // Kích hoạt trạng thái đăng nhập hệ thống
     localStorage.setItem("currentUser", JSON.stringify(user));
@@ -332,3 +336,5 @@ if (needLogin) {
   showSuccess("Bạn cần đăng nhập để tiếp tục mua sắm!");
   localStorage.removeItem("needLogin"); // Xóa đi để tránh bị lặp lại khi F5
 }
+
+console.log(emailRegex.test("GIAO@123.vn"));
