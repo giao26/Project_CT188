@@ -92,7 +92,7 @@ trừ phần height của header 81px
 }
 
 /* 
-  .auth-content: Cột bên trái chứa logo trang trí
+  .auth-branding: Cột bên trái chứa logo trang trí
    width: 45% -> Cột này chiếm 45% không gian chiều rộng.
 */
 .auth-branding {
