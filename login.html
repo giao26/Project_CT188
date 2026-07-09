@@ -1,3 +1,10 @@
+<!-- =============================================================                       
+TÁC GIẢ
+        HUỲNH LÊ NHỰT TIẾN
+        B2405058
+==================================================================
+-->
+
 <!doctype html>
 <html lang="vi">
   <head>
@@ -28,8 +35,10 @@
     <!-- CSS cấu trúc và giao diện riêng cho trang Đăng nhập / Đăng ký -->
     <link rel="stylesheet" href="./assets/css/login.css" />
 
-    <title>Mellow - Đăng nhập & Đăng ký</title>
-    <!-- Tiêu đề trang hiển thị trên tab của trình duyệt -->
+    <!-- CSS riêng cho footer -->
+    <link rel="stylesheet" href="./assets/css/footer.css" />
+
+    <title>Đăng nhập & Đăng ký</title>
   </head>
   <body>
     <!-- ================= HEADER: PHẦN ĐẦU TRANG ================= -->
@@ -41,7 +50,7 @@
 
       <!-- Góc phải header: Chứa hình linh vật và lời chào linh động theo giờ -->
       <div class="header-right">
-        <!-- Ảnh linh vật (Capybara của Mellow) -->
+        <!-- Ảnh linh vật Capybara của Mellow -->
         <img
           class="linhvat"
           src="./assets/images/login/capy-mellow.png"
@@ -55,15 +64,15 @@
     <!-- ================= MAIN: NỘI DUNG CHÍNH CỦA TRANG ================= -->
     <main class="auth-page">
       <!-- CỘT TRÁI: HIỂN THỊ LOGO VÀ SLOGAN THƯƠNG HIỆU -->
-      <section class="auth-content">
+      <section class="auth-branding">
         <div class="logo-wrapper">
-          <!-- Hình ảnh ngôi sao 3D trang trí (có hiệu ứng bay lơ lửng bên CSS) -->
+          <!-- Hình ảnh ngôi sao 3D trang trí có hiệu ứng bay lơ lửng bên CSS -->
           <img
             src="./assets/images/login/laplanh_3d.png"
             alt="star"
             class="star"
           />
-          <!-- Logo phiên bản màu trắng để nổi bật trên nền xanh đậm -->
+          <!-- Logo phiên bản màu trắng  -->
           <img
             src="./assets/images/login/logo-white.png"
             alt="logo"
@@ -81,7 +90,6 @@
       <!-- CỘT PHẢI: KHU VỰC CHỨA FORM ĐĂNG NHẬP / ĐĂNG KÝ -->
       <section class="auth-login">
         <div class="wrapper">
-          <!-- Tiêu đề nổi bật phía trên khung form -->
           <div class="form-header">
             <div class="title">Đăng nhập</div>
           </div>
@@ -95,12 +103,11 @@
               <input
                 type="email"
                 class="input-field"
-                id="log-mail"
+                id="log-email"
                 placeholder="Email"
                 autocomplete="off"
-                required
               />
-              <!-- autocomplete="off" để tắt gợi ý tự động của trình duyệt, required bắt buộc nhập -->
+              <!-- autocomplete="off" để tắt gợi ý tự động của trình duyệt,  bắt buộc nhập -->
             </div>
 
             <!-- Ô nhập Mật khẩu -->
@@ -111,15 +118,14 @@
                 class="input-field password-input"
                 id="log-pass"
                 placeholder="Mật khẩu"
-                required
               />
               <!-- Icon con mắt để ẩn/hiện mật khẩu, JS sẽ bắt sự kiện click vào class "toggle" này -->
               <i class="ri-eye-off-fill toggle"></i>
             </div>
 
             <!-- Cột tùy chọn bổ sung (Quên mật khẩu) -->
-            <div class="form-col">
-              <div class="col"><a href="#">Quên mật khẩu?</a></div>
+            <div class="forgot-pass">
+              <div><a href="#">Quên mật khẩu?</a></div>
             </div>
 
             <!-- Nút xác nhận đăng nhập -->
@@ -152,7 +158,6 @@
                 id="reg-name"
                 placeholder="Họ và tên"
                 autocomplete="off"
-                required
               />
             </div>
 
@@ -162,10 +167,9 @@
               <input
                 type="email"
                 class="input-field"
-                id="reg-mail"
+                id="reg-email"
                 placeholder="Email"
                 autocomplete="off"
-                required
               />
             </div>
 
@@ -178,7 +182,6 @@
                 id="reg-phone"
                 placeholder="Số điện thoại"
                 autocomplete="off"
-                required
               />
             </div>
 
@@ -190,7 +193,6 @@
                 class="input-field password-input"
                 id="reg-pass"
                 placeholder="Mật khẩu"
-                required
               />
               <i class="ri-eye-off-fill toggle"></i>
             </div>
@@ -203,7 +205,6 @@
                 class="input-field password-input"
                 id="reg-confirmPass"
                 placeholder="Xác nhận mật khẩu"
-                required
               />
               <i class="ri-eye-off-fill toggle"></i>
             </div>
@@ -229,14 +230,15 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer></footer>
+    <footer id="footer" class="footer"></footer>
 
     <!-- Thư viện JS của Toastify để chạy các popup thông báo -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
-
+    <!-- File JS dùng để render footer -->
+    <script src="./assets/js/script.js"></script>
     <!-- File JS chính xử lý logic chuyển form, validate dữ liệu, ẩn/hiện mật khẩu của trang -->
     <script src="./assets/js/login.js"></script>
   </body>
