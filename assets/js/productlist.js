@@ -255,6 +255,22 @@ searchInp.addEventListener("keydown", (e) => {
   }
 });
 
+// Dự phòng cho bàn phím ảo mobile: một số thiết bị chỉ gửi keyup
+searchInp.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    currentSearch = removeVietnameseTones(e.target.value);
+    updateURL();
+  }
+});
+
+// Sự kiện "search" kích hoạt khi nhấn nút tìm kiếm trên bàn phím ảo (type="search")
+searchInp.addEventListener("search", (e) => {
+  e.preventDefault();
+  currentSearch = removeVietnameseTones(e.target.value);
+  updateURL();
+});
+
 // ===== KHỞI ĐỘNG =====
 // Gọi hàm tải dữ liệu ngay khi script được thực thi
 getProduct();
