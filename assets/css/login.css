@@ -1,6 +1,12 @@
-/* ============================
+/* =============================================================                       
+   TÁC GIẢ
+        HUỲNH LÊ NHỰT TIẾN
+        B2405058
+  ============================================================== */
+
+/* ===========================================
     LOGIN.CSS — Giao diện Đăng nhập / Đăng ký
-===============================
+   ===========================================
    File này định dạng cho toàn bộ trang đăng nhập/đăng ký, bao gồm:
    - Header riêng biệt với lời chào linh động.
    - Layout chia 2 cột: content (trái) và login form (phải).
@@ -41,8 +47,6 @@ header {
 
 /* 
   .header-right: Khu vực góc phải chứa linh vật và lời chào
-  - position: absolute + right: 5% -> Ép sát lề phải, cách viền 5%.
-  - top: -5px -> Nhích nhẹ lên trên một chút để cân đối.
   - gap: 20px -> Tạo khoảng cách đều 20px giữa linh vật Capy và lời chào.
   - z-index: 100 -> Đảm bảo luôn nổi lên trên cùng, không bị phần tử khác đè.
 */
@@ -58,11 +62,7 @@ header {
   z-index: 100;
 }
 
-/* 
-  .header-greeting: Thẻ chứa câu chúc (được JS thay đổi theo giờ)
-  - text-shadow & box-shadow -> Đổ bóng cho chữ và khung giúp khối nổi bật thành dạng 3D.
-  - border-radius: 36px -> Bo góc tròn mạnh tạo thành hình viên thuốc.
-*/
+/* .header-greeting: Thẻ chứa câu chúc (được JS thay đổi theo giờ) */
 .header-greeting {
   color: white;
   padding: 6px 14px;
@@ -73,7 +73,7 @@ header {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* Kích thước ảnh linh vật (Capybara) */
+/* Kích thước ảnh linh vật Capybara */
 .linhvat {
   width: 76px;
 }
@@ -83,9 +83,8 @@ header {
 ===============================*/
 
 /* 
-  .auth-page: Container bọc toàn bộ phần thân trang
-  - display: flex -> Chia màn hình thành các cột nằm ngang.
-  - height: calc(100vh - 81px) -> Chiếm toàn bộ chiều cao màn hình trừ đi header (80px cao + 1px viền).
+.auth-page: Container bọc toàn bộ phần thân trang 
+trừ phần height của header 81px
 */
 .auth-page {
   display: flex;
@@ -94,10 +93,9 @@ header {
 
 /* 
   .auth-content: Cột bên trái chứa logo trang trí
-  - width: 45% -> Cột này chiếm 45% không gian chiều rộng.
-  - background-color: var(--color-primary) -> Màu nền sử dụng biến màu chính của dự án.
+   width: 45% -> Cột này chiếm 45% không gian chiều rộng.
 */
-.auth-content {
+.auth-branding {
   width: 45%;
   display: flex;
   flex-direction: column;
@@ -108,8 +106,7 @@ header {
 
 /* 
   .auth-login: Cột bên phải chứa form tương tác
-  - width: 55% -> Chiếm phần diện tích còn lại.
-  - background-color: var(--color-blue-light) -> Sử dụng màu nền xanh nhạt.
+  width: 55% -> Chiếm phần diện tích còn lại.
 */
 .auth-login {
   width: 55%;
@@ -123,10 +120,7 @@ header {
      CONTENT AND LOGO
 =========================== */
 
-/* 
-  .content: Đoạn text slogan "Uy tín làm nên thương hiệu..."
-  - text-shadow: 0 2px 6px rgba(...) -> Giúp chữ màu trắng không bị chìm trên nền.
-*/
+/* .content: Đoạn text slogan "Uy tín làm nên thương hiệu..." */
 .content {
   color: white;
   font-weight: bold;
@@ -137,7 +131,7 @@ header {
 
 /* 
   .logo-wrapper: Hộp chứa logo Mellow trắng và ngôi sao 3D
-  - position: relative -> Trở thành hệ tọa độ gốc cho ngôi sao .star định vị absolute.
+  position: relative -> Trở thành hệ tọa độ gốc cho ngôi sao .star định vị absolute.
 */
 .logo-wrapper {
   position: relative;
@@ -155,10 +149,22 @@ header {
   height: auto;
 }
 
+/* Hiệu ứng float cho ngôi sao */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
 /* 
   .star: Ngôi sao trang trí lấp lánh 3D
-  - position: absolute -> Neo ở góc trên bên phải khung logo.
-  - animation: float 6s ease-in-out infinite -> Kích hoạt hiệu ứng bay lơ lửng, chạy vô hạn.
+  position: absolute -> Neo ở góc trên bên phải khung logo.
+  animation: float 6s ease-in-out infinite -> Kích hoạt hiệu ứng bay lơ lửng, chạy vô hạn.
 */
 .logo-wrapper .star {
   position: absolute;
@@ -172,13 +178,7 @@ header {
     Log and register
 ====================== */
 
-/* 
-  .wrapper: Khung Card trắng trung tâm chứa form
-  - max-width: 27rem -> Giới hạn không cho thẻ này bè ra quá rộng.
-  - padding: 7rem 3rem 2rem -> Cố tình đẩy lề trên cực lớn (7rem) để nhường chỗ cho khối title "Đăng nhập" vắt ngang.
-  - box-shadow: 0 8px 15px... -> Đổ bóng sâu làm card nổi rõ trên nền.
-  - transition: all 0.5s ease -> Khi JS đổi chiều cao card, nó sẽ co giãn từ từ rất mượt.
-*/
+/* .wrapper: Khung Card trắng trung tâm chứa form */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -200,7 +200,7 @@ header {
   transition: all 0.5s ease;
 }
 
-/* Thẻ form tổng: các trường input con cách nhau 8px */
+/* Thẻ form tổng: các trường input con */
 .login-form,
 .register-form {
   width: 100%;
@@ -211,8 +211,7 @@ header {
 
 /* 
   .form-header: Nhãn tiêu đề form ("Đăng nhập" / "Đăng ký")
-  - position: absolute + top: 0 + left: 50% + translateX(-50%) -> Neo chính giữa ở viền trên cùng của thẻ .wrapper.
-  - border-bottom-radius -> Bo 2 góc vuông phía dưới để tạo hình cái thẻ kẹp.
+  position: absolute + top: 0 + left: 50% + translateX(-50%) -> Neo chính giữa ở viền trên cùng của thẻ .wrapper.
 */
 .form-header {
   position: absolute;
@@ -232,8 +231,7 @@ header {
 
 /* 
   .form-header::before, .form-header::after: 
-  Sử dụng pseudo-elements kết hợp box-shadow để vẽ 2 đường cong 
-  nối liền mạch góc thẻ với khối title (hiệu ứng "khoét lẹm" giao diện).
+  Sử dụng pseudo-elements kết hợp box-shadow để vẽ 2 đường cong nối liền mạch góc thẻ với khối title
 */
 .form-header::before,
 .form-header::after {
@@ -264,12 +262,7 @@ header {
   font-size: 1.2rem;
 }
 
-/* 
-  .input-box: Khung bao ngoài mỗi ô nhập liệu
-  - display: flex + gap: 0.5rem -> Dàn ngang icon và text input.
-  - border-radius: 1.5rem -> Bo viền 2 bên thành hình viên thuốc.
-  - border: 1px solid #e3e4e6 -> Viền xám nhạt lúc bình thường.
-*/
+/* .input-box: Khung bao ngoài mỗi ô nhập liệu */
 .input-box {
   position: relative;
   display: flex;
@@ -283,11 +276,7 @@ header {
   gap: 0.5rem;
 }
 
-/* 
-  .input-field: Thẻ input thực sự
-  - flex: 1 -> Giãn hết phần khoảng trống còn lại.
-  - border, outline: none -> Xóa định dạng viền mặc định của trình duyệt.
-*/
+/* .input-field: Thẻ input thực sự */
 .input-field {
   flex: 1;
   border: none;
@@ -307,8 +296,7 @@ header {
 
 /* 
   .toggle: Icon con mắt (ẩn/hiện pass)
-  - transform: translateY(-50%) -> Căn chính giữa trục dọc.
-  - opacity: 0 -> Ẩn đi mặc định, JS trong file login.js sẽ đổi thành 1 khi gõ phím.
+  opacity: 0 -> Ẩn đi mặc định, JS trong file login.js sẽ đổi thành 1 khi gõ phím.
 */
 .toggle {
   position: absolute;
@@ -321,17 +309,14 @@ header {
 }
 
 /* Dòng chứa liên kết "Quên mật khẩu", ép sát về bên phải form */
-.form-col {
+.forgot-pass {
   display: flex;
   justify-content: flex-end;
   font-size: 1rem;
+  font-weight: 450;
 }
 
-/* 
-  .submit-btn: Nút xác nhận submit
-  - border-radius: 1.5rem -> Bo tròn đồng bộ thiết kế ô input.
-  - transition: all 0.3s ease -> Để lúc trỏ chuột vào hiệu ứng không bị giật.
-*/
+/* .submit-btn: Nút xác nhận submit */
 .submit-btn {
   display: flex;
   justify-content: center;
@@ -352,9 +337,9 @@ header {
 
 /* 
   .submit-btn:hover : Hiệu ứng trỏ chuột
-  - box-shadow -> Tỏa sáng màu xanh rõ rệt.
-  - transform: translateY(-3px) -> Nút bấm nhấc nhẹ lên trên.
-  - gap: 1rem -> Chữ và icon bên trong tách xa nhau thêm một chút.
+  box-shadow -> Tỏa sáng màu xanh rõ rệt.
+  transform: translateY(-3px) -> Nút bấm nhấc nhẹ lên trên.
+  gap: 1rem -> Chữ và icon bên trong tách xa nhau thêm một chút.
 */
 .submit-btn:hover {
   box-shadow: 0 0 10px 1px rgba(6, 71, 249, 0.5);
@@ -388,8 +373,8 @@ header {
 
 /* 
   .hidden-form: Kỹ thuật ẩn form mềm mại
-  - Kết hợp opacity, visibility và ép height về 0.
-  - pointer-events: none -> Đảm bảo user không lỡ tay click trúng form đang tàng hình.
+  Kết hợp opacity, visibility và ép height về 0.
+  pointer-events: none -> Đảm bảo user không lỡ tay click trúng form đang tàng hình.
 */
 .hidden-form {
   opacity: 0;
@@ -411,8 +396,7 @@ header {
 
 /* 
   .error-input: Class đánh dấu lỗi
-  - Dùng !important để ghi đè quyền của class focus.
-  - Viền đỏ rực + Nền màu đỏ cực nhạt cảnh báo user.
+  Dùng !important để ghi đè quyền của class focus.
 */
 .error-input {
   border: 2px solid #ef4444 !important;
@@ -453,11 +437,10 @@ header {
   }
 
   .submit-btn {
-    margin: 0;
-    margin-bottom: 8px;
+    margin: 0 0 8px; /* Thu nhỏ khoảng cách giữa nút submit và switch form */
   }
 
-  /* Chỉnh lại chiều cao card cho tablet/mobile */
+  /* Chỉnh lại chiều cao form cho tablet */
   .wrapper.login-mode {
     height: 23rem;
   }
@@ -487,7 +470,7 @@ header {
     padding: 6rem 0.5rem 0.5rem;
     margin: 0 10px;
   }
-
+  /* Chỉnh lại chiều cao form cho mobile */
   .wrapper.register-mode {
     height: 32rem;
   }
@@ -497,7 +480,7 @@ header {
   }
 
   .switch-form {
-    font-size: 0.8125rem;
+    font-size: 0.8125rem; /* Thu nhỏ size chữ */
   }
 
   .input-field {
@@ -505,13 +488,12 @@ header {
     height: 2.5rem; /* Ô nhập lùn đi một chút */
   }
 
-  .form-cols {
+  .forgot-pass {
     font-size: 0.9rem;
   }
 
   .submit-btn {
-    margin: 0;
-    margin-bottom: 8px;
+    margin: 0 0 8px;
   }
 
   .login-form,
