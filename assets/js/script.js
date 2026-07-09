@@ -98,7 +98,8 @@ function initHeaderEvents() {
 
   const path = window.location.pathname;
   for (const [page, index] of map) {
-    if (path.endsWith(page)) {
+    // Kiểm tra cả trường hợp path là "/" (Vercel serve index.html qua root URL)
+    if (path.endsWith(page) || (index === 0 && (path === "/" || path === ""))) {
       navLinks[index].classList.add("active");
       break;
     }
