@@ -14,6 +14,13 @@
    - Các trạng thái input có focus và responsive cho nhiều kích cỡ màn hình.
 */
 
+/* =====BODY===== */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* ============================
     HEADER RIÊNG CHO LOGIN
 ===============================*/
@@ -25,7 +32,7 @@
   - border-bottom: Đường viền xám mỏng ngăn cách header với phần main.
   - position: relative -> Định vị chuẩn để logo và vùng chứa lời chào dùng absolute neo vào.
 */
-header {
+.auth-header {
   display: flex;
   justify-content: center;
   align-items: center;
