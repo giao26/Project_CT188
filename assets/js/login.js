@@ -296,7 +296,9 @@ if (registerForm) {
   removeError(passwordInput, () => passwordInput.value.length >= 8);
   removeError(
     confirmPasswordInput,
-    () => confirmPasswordInput.value === passwordInput.value,
+    () =>
+      confirmPasswordInput.value === passwordInput.value &&
+      passwordInput.value.length >= 8,
   );
 }
 
