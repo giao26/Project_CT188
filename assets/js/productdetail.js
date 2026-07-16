@@ -14,6 +14,8 @@
 //   - Xử lý thêm sản phẩm vào giỏ hàng (lưu vào localStorage)
 //   - Render sản phẩm liên quan và modal bảng size
 // ============================================================
+//Import danh sách sản phẩm
+import data from "./data.js";
 
 // ===== THAM CHIẾU DOM (cấp cao nhất — phần tử tồn tại sẵn trong HTML) =====
 const singleProduct = document.querySelector(".container-main"); // Khu vực gallery + thông tin sản phẩm chính
@@ -50,14 +52,9 @@ const getProductDetail = async () => {
       return;
     }
 
-    // ── Tải toàn bộ danh sách sản phẩm từ JSON ──────
-    const productList = await (
-      await fetch("./assets/js/productlist.json")
-    ).json();
-
     // Tìm sản phẩm có id khớp với productId trên URL
     // So sánh dạng string để tránh lỗi type mismatch (id có thể là number trong JSON)
-    const product = productList.find(
+    const product = data.find(
       (prod) => prod.id.toString() === productId.toString(),
     );
 
@@ -81,7 +78,7 @@ const getProductDetail = async () => {
     // ── Lấy danh sách sản phẩm liên quan ────────────
     // product.references là mảng các ID → lọc ra các sản phẩm tương ứng
     const relatedId = product.references.map((id) => id.toString());
-    const relatedProducts = productList.filter((prod) => {
+    const relatedProducts = data.filter((prod) => {
       return relatedId.includes(prod.id.toString());
     });
 
