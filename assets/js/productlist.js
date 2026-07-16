@@ -27,8 +27,6 @@ let currentCategory = "default"; // Danh mục đang được lọc ("default" =
 let currentSearch = ""; // Từ khóa gốc (có dấu tiếng Việt) — dùng để hiển thị & lưu URL
 let currentSearchNormalized = ""; // Từ khóa đã chuẩn hóa (không dấu) — chỉ dùng để lọc sản phẩm
 let currentSort = "default"; // Thứ tự sắp xếp: "default" | "asc" | "desc"
-let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
-//let data = [];
 // ===== HÀM TẢI DỮ LIỆU =====
 /**
  * Tải dữ liệu sản phẩm từ file productlist.json, sau đó khởi tạo giao diện:
@@ -37,9 +35,8 @@ let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
  *  3. Áp dụng bộ lọc/sắp xếp từ URL (nếu có)
  *  4. Đồng bộ giá trị các control với trạng thái hiện tại
  */
-const getProduct = async () => {
+const getProduct = () => {
   try {
-    loadProductList(data);
     loadCategoryList(data);
     applySortAndFilter();
     applyUIAction();
@@ -158,11 +155,9 @@ const applySortAndFilter = () => {
     currentCategory =
       path.get("category") !== "all" ? path.get("category") : "default";
 
-  // Đọc tham số từ khóa gốc từ URL (giải mã %20 → dấu cách)
+  // Đọc tham số từ khóa gốc từ URL (URLSearchParams.get đã tự decode)
   if (path.get("key")) {
-    currentSearch = decodeURIComponent(
-      path.get("key").trim().replaceAll("-", " "),
-    );
+    currentSearch = path.get("key").trim().replaceAll("-", " ");
     currentSearchNormalized = removeVietnameseTones(currentSearch);
   }
 
@@ -235,8 +230,8 @@ const updateURL = () => {
     "%20",
     "-",
   );
-  URL = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
-  window.location.search = URL;
+  const queryString = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
+  window.location.search = queryString;
 };
 
 // ===== EVENT LISTENERS =====
@@ -265,23 +260,6 @@ searchInp.addEventListener("keydown", (e) => {
   }
 });
 
-// Dự phòng cho bàn phím ảo mobile: một số thiết bị chỉ gửi keyup
-searchInp.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    currentSearch = e.target.value;
-    currentSearchNormalized = removeVietnameseTones(currentSearch);
-    updateURL();
-  }
-});
-
-// Sự kiện "search" kích hoạt khi nhấn nút tìm kiếm trên bàn phím ảo (type="search")
-searchInp.addEventListener("search", (e) => {
-  e.preventDefault();
-  currentSearch = e.target.value;
-  currentSearchNormalized = removeVietnameseTones(currentSearch);
-  updateURL();
-});
 
 // ===== KHỞI ĐỘNG =====
 // Gọi hàm tải dữ liệu ngay khi script được thực thi

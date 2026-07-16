@@ -34,7 +34,7 @@ let currentToast = null; // Tham chiếu đến toast đang hiển thị (để 
 // Tải và render toàn bộ chi tiết sản phẩm, sau đó gắn tất cả
 // event listener cần thiết cho trang.
 // ============================================================
-const getProductDetail = async () => {
+const getProductDetail = () => {
   try {
     // ── Lấy ID sản phẩm từ URL ──────────────────────
     const path = new URLSearchParams(window.location.search);
