@@ -161,7 +161,9 @@ const applySortAndFilter = () => {
 
   // Đọc tham số từ khóa gốc từ URL (giải mã %20 → dấu cách)
   if (path.get("key")) {
-    currentSearch = decodeURIComponent(path.get("key").trim().replaceAll("-", " "));
+    currentSearch = decodeURIComponent(
+      path.get("key").trim().replaceAll("-", " "),
+    );
     currentSearchNormalized = removeVietnameseTones(currentSearch);
   }
 
@@ -230,7 +232,10 @@ function removeVietnameseTones(str) {
  */
 const updateURL = () => {
   // Lưu từ khóa gốc (có dấu) lên URL, thay khoảng trắng bằng "-"
-  const encodedKey = encodeURIComponent(currentSearch.trim()).replaceAll("%20", "-");
+  const encodedKey = encodeURIComponent(currentSearch.trim()).replaceAll(
+    "%20",
+    "-",
+  );
   URL = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
   window.location.search = URL;
 };
