@@ -717,7 +717,7 @@
   flex-direction: column;
 }
 
-a {
+.footer a {
   display: flex;
   gap: 10px;
 }

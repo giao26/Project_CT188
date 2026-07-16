@@ -23,7 +23,8 @@ const priceSort = document.getElementById("price-sort"); // Dropdown sắp xếp
 // ===== TRẠNG THÁI TOÀN CỤC =====
 let data = []; // Toàn bộ dữ liệu sản phẩm tải từ JSON
 let currentCategory = "default"; // Danh mục đang được lọc ("default" = hiển thị tất cả)
-let currentSearch = ""; // Từ khóa tìm kiếm hiện tại
+let currentSearch = ""; // Từ khóa gốc (có dấu tiếng Việt) — dùng để hiển thị & lưu URL
+let currentSearchNormalized = ""; // Từ khóa đã chuẩn hóa (không dấu) — chỉ dùng để lọc sản phẩm
 let currentSort = "default"; // Thứ tự sắp xếp: "default" | "asc" | "desc"
 let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
 
@@ -134,7 +135,7 @@ const loadCategoryList = (data) => {
  * để khớp với trạng thái đang lọc.
  */
 const applyUIAction = () => {
-  searchInp.value = currentSearch;
+  searchInp.value = currentSearch; // Hiển thị từ khóa gốc (có dấu)
   // Nếu category là "all" thì hiển thị lại "default" trên dropdown
   fillterCategory.value =
     currentCategory !== "all" ? currentCategory : "default";
@@ -158,9 +159,11 @@ const applySortAndFilter = () => {
     currentCategory =
       path.get("category") !== "all" ? path.get("category") : "default";
 
-  // Đọc tham số từ khóa từ URL, khôi phục dấu "-" thành dấu cách
-  if (path.get("key"))
-    currentSearch = path.get("key").trim().replaceAll("-", " ");
+  // Đọc tham số từ khóa gốc từ URL (giải mã %20 → dấu cách)
+  if (path.get("key")) {
+    currentSearch = decodeURIComponent(path.get("key").trim().replaceAll("-", " "));
+    currentSearchNormalized = removeVietnameseTones(currentSearch);
+  }
 
   // Đọc tham số sắp xếp giá từ URL
   if (path.get("price")) currentSort = path.get("price");
@@ -190,9 +193,9 @@ const applySortAndFilter = () => {
   }
 
   // Lọc theo từ khóa tìm kiếm (so sánh không phân biệt dấu)
-  if (currentSearch) {
+  if (currentSearchNormalized) {
     products = products.filter((item) =>
-      removeVietnameseTones(item.name).includes(currentSearch),
+      removeVietnameseTones(item.name).includes(currentSearchNormalized),
     );
   }
 
@@ -226,7 +229,9 @@ function removeVietnameseTones(str) {
  * - price: thứ tự sắp xếp ("default" | "asc" | "desc")
  */
 const updateURL = () => {
-  URL = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${currentSearch.trim().replaceAll(" ", "-")}&price=${currentSort}`;
+  // Lưu từ khóa gốc (có dấu) lên URL, thay khoảng trắng bằng "-"
+  const encodedKey = encodeURIComponent(currentSearch.trim()).replaceAll("%20", "-");
+  URL = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
   window.location.search = URL;
 };
 
@@ -250,9 +255,28 @@ priceSort.addEventListener("change", (e) => {
 searchInp.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
-    currentSearch = removeVietnameseTones(e.target.value);
+    currentSearch = e.target.value; // Giữ nguyên từ khóa gốc (có dấu)
+    currentSearchNormalized = removeVietnameseTones(currentSearch);
     updateURL();
   }
+});
+
+// Dự phòng cho bàn phím ảo mobile: một số thiết bị chỉ gửi keyup
+searchInp.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    currentSearch = e.target.value;
+    currentSearchNormalized = removeVietnameseTones(currentSearch);
+    updateURL();
+  }
+});
+
+// Sự kiện "search" kích hoạt khi nhấn nút tìm kiếm trên bàn phím ảo (type="search")
+searchInp.addEventListener("search", (e) => {
+  e.preventDefault();
+  currentSearch = e.target.value;
+  currentSearchNormalized = removeVietnameseTones(currentSearch);
+  updateURL();
 });
 
 // ===== KHỞI ĐỘNG =====
