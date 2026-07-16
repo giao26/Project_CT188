@@ -13,6 +13,8 @@
 //   - Hỗ trợ lọc theo danh mục, sắp xếp theo giá, tìm kiếm theo tên
 //   - Đồng bộ trạng thái bộ lọc với URL query string
 // ============================================================
+// Import mảng danh sách sản phẩm
+import data from "./data.js";
 
 // ===== THAM CHIẾU DOM =====
 const searchInp = document.getElementById("search-inp"); // Ô nhập từ khóa tìm kiếm
@@ -20,14 +22,13 @@ const fillterCategory = document.getElementById("filter-category"); // Dropdown 
 const productsList = document.getElementById("product-grid"); // Container chứa lưới sản phẩm
 const priceSort = document.getElementById("price-sort"); // Dropdown sắp xếp theo giá
 
-// ===== TRẠNG THÁI TOÀN CỤC =====
-let data = []; // Toàn bộ dữ liệu sản phẩm tải từ JSON
+// ===== TRẠNG THÁI TOÀN CỤC ===== // Toàn bộ dữ liệu sản phẩm tải từ JSON
 let currentCategory = "default"; // Danh mục đang được lọc ("default" = hiển thị tất cả)
 let currentSearch = ""; // Từ khóa gốc (có dấu tiếng Việt) — dùng để hiển thị & lưu URL
 let currentSearchNormalized = ""; // Từ khóa đã chuẩn hóa (không dấu) — chỉ dùng để lọc sản phẩm
 let currentSort = "default"; // Thứ tự sắp xếp: "default" | "asc" | "desc"
 let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
-
+//let data = [];
 // ===== HÀM TẢI DỮ LIỆU =====
 /**
  * Tải dữ liệu sản phẩm từ file productlist.json, sau đó khởi tạo giao diện:
@@ -38,13 +39,11 @@ let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
  */
 const getProduct = async () => {
   try {
-    data = await (await fetch("./assets/js/productlist.json")).json();
     loadProductList(data);
     loadCategoryList(data);
     applySortAndFilter();
     applyUIAction();
   } catch (error) {
-    // Nếu fetch thất bại, hiển thị thông báo lỗi thân thiện thay toàn bộ trang
     console.error("Lỗi khi tải danh sách sản phẩm:", error);
     document.querySelector("body").innerHTML =
       `<div class="" style="width:100%;text-align:center;padding:3rem;color:var(--color-gray-600);"> 
@@ -161,7 +160,9 @@ const applySortAndFilter = () => {
 
   // Đọc tham số từ khóa gốc từ URL (giải mã %20 → dấu cách)
   if (path.get("key")) {
-    currentSearch = decodeURIComponent(path.get("key").trim().replaceAll("-", " "));
+    currentSearch = decodeURIComponent(
+      path.get("key").trim().replaceAll("-", " "),
+    );
     currentSearchNormalized = removeVietnameseTones(currentSearch);
   }
 
@@ -230,7 +231,10 @@ function removeVietnameseTones(str) {
  */
 const updateURL = () => {
   // Lưu từ khóa gốc (có dấu) lên URL, thay khoảng trắng bằng "-"
-  const encodedKey = encodeURIComponent(currentSearch.trim()).replaceAll("%20", "-");
+  const encodedKey = encodeURIComponent(currentSearch.trim()).replaceAll(
+    "%20",
+    "-",
+  );
   URL = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
   window.location.search = URL;
 };
