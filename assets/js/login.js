@@ -176,7 +176,7 @@ toggles.forEach((toggle) => {
 // ===========================
 // Bắt buộc SĐT VN và Email dùng đuôi .com hoặc .vn
 const phoneRegex = /^(0[35789])+([0-9]{8})$/;
-const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+const emailRegex = /^[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+(?:com|vn)$/i;
 
 // Tự động xóa class báo đỏ lỗi ngay khi người dùng gõ lại khớp với điều kiện
 const removeError = (input, condition) => {
@@ -296,7 +296,9 @@ if (registerForm) {
   removeError(passwordInput, () => passwordInput.value.length >= 8);
   removeError(
     confirmPasswordInput,
-    () => confirmPasswordInput.value === passwordInput.value,
+    () =>
+      confirmPasswordInput.value === passwordInput.value &&
+      passwordInput.value.length >= 8,
   );
 }
 
