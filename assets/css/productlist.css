@@ -304,4 +304,14 @@
     align-items: stretch;
     flex-direction: column;
   }
+
+  .banner {
+    right: -0.875rem;
+    top: -0.25rem;
+  }
+
+  .banner img {
+    width: 80px;
+    height: auto;
+  }
 }

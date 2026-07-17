@@ -700,12 +700,12 @@
   }
 
   .references-product .related-card-badge {
-    right: -18px;
-    top: -8px;
+    right: -0.875rem;
+    top: -0.25rem;
   }
 
   .references-product .related-card-badge img {
-    width: 100px;
+    width: 80px;
   }
 }
 
@@ -720,9 +720,5 @@
 
   .quantity-action button {
     width: auto;
-  }
-
-  .references-product {
-    grid-template-columns: 1fr;
   }
 }
