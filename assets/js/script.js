@@ -1,12 +1,10 @@
 //===================================================================
-//                       TÁC GIẢ (Phần render Header và Footer)
+//                       TÁC GIẢ (Phần xử lý Header events)
 //    HUỲNH TẤN GIAO
 //    B2408784
 //===================================================================
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await getHeaderAndFooter("#header", "header.html");
-  await getHeaderAndFooter("#footer", "footer.html");
+document.addEventListener("DOMContentLoaded", () => {
 
   initHeaderEvents();
   updateCartBadge();
@@ -54,21 +52,7 @@ function showWelcomeToast() {
   }, 300);
 }
 
-/**
- * Hàm tải nội dung HTML của header và footer từ các file tương ứng (header.html, footer.html)
- * Sử dụng Fetch API để chèn nội dung vào các thẻ được chỉ định
- */
-const getHeaderAndFooter = async (selector, path) => {
-  const targetElement = document.querySelector(selector);
-  if (!targetElement) return;
-  try {
-    const response = await fetch(path);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    targetElement.innerHTML = await response.text();
-  } catch (error) {
-    console.error(`Lỗi khi tải ${path}:`, error);
-  }
-};
+
 
 //=============================================================
 //                       TÁC GIẢ (Phần trang chủ)
@@ -149,11 +133,15 @@ function initHeaderEvents() {
       }
 
       // Hiển thị lời chào dạng text thay vì icon hình người
-      userAccountBtn.innerHTML = `
-                <span class="welcome" style="font-size: 14px; font-weight: 700;  white-space: nowrap;">
-                    Hi, ${displayUsername}
-                </span>
-            `;
+      // Xóa con của userAccountBtn bằng removeChild và thêm span/createTextNode để tránh innerHTML
+      while (userAccountBtn.firstChild) userAccountBtn.removeChild(userAccountBtn.firstChild);
+      const welcomeSpan = document.createElement("span");
+      welcomeSpan.classList.add("welcome");
+      welcomeSpan.style.fontSize = "14px";
+      welcomeSpan.style.fontWeight = "700";
+      welcomeSpan.style.whiteSpace = "nowrap";
+      welcomeSpan.appendChild(document.createTextNode(`Hi, ${displayUsername}`));
+      userAccountBtn.appendChild(welcomeSpan);
       userAccountBtn.title = "Tài khoản của tôi";
       userAccountBtn.style.pointerEvents = "none"; // Khóa chuyển hướng sang trang login khi đã đăng nhập
 
@@ -164,7 +152,12 @@ function initHeaderEvents() {
         logoutBtn.id = "logout-btn";
         logoutBtn.href = "#";
         logoutBtn.title = "Đăng xuất";
-        logoutBtn.innerHTML = `<i class="ti ti-logout" style=" font-weight: bold; margin-left: 15px;"></i>`;
+        // Tạo icon dạng Element thay vì innerHTML string
+        const logoutIcon = document.createElement("i");
+        logoutIcon.classList.add("ti", "ti-logout");
+        logoutIcon.style.fontWeight = "bold";
+        logoutIcon.style.marginLeft = "15px";
+        logoutBtn.appendChild(logoutIcon);
         userAccountBtn.parentNode.insertBefore(
           logoutBtn,
           userAccountBtn.nextSibling,
@@ -184,8 +177,11 @@ function initHeaderEvents() {
         }
       });
     } else {
-      // Trường hợp: Chưa đăng nhập, hiển thị icon user mặc định
-      userAccountBtn.innerHTML = `<i class="ti ti-user"></i>`;
+      // Trả lại icon hình người ban đầu, dùng removeChild + appendChild thay vì innerHTML
+      while (userAccountBtn.firstChild) userAccountBtn.removeChild(userAccountBtn.firstChild);
+      const userIcon = document.createElement("i");
+      userIcon.classList.add("ti", "ti-user");
+      userAccountBtn.appendChild(userIcon);
       userAccountBtn.title = "Tài khoản";
       userAccountBtn.style.pointerEvents = "auto";
 
@@ -215,14 +211,17 @@ function updateCartBadge() {
   const currentUserRaw = localStorage.getItem("currentUser");
 
   if (!currentUserRaw) {
-    cartBadge.textContent = "0";
+    // Thay đổi số lượng giỏ hàng bằng removeChild + createTextNode để tránh dùng textContent trực tiếp
+    while (cartBadge.firstChild) cartBadge.removeChild(cartBadge.firstChild);
+    cartBadge.appendChild(document.createTextNode("0"));
     return;
   }
 
   try {
     const currentUser = JSON.parse(currentUserRaw);
     if (!currentUser || !currentUser.id) {
-      cartBadge.textContent = "0";
+      while (cartBadge.firstChild) cartBadge.removeChild(cartBadge.firstChild);
+      cartBadge.appendChild(document.createTextNode("0"));
       return;
     }
 
@@ -234,10 +233,12 @@ function updateCartBadge() {
 
     // Cộng dồn thuộc tính .quantity của từng item trong giỏ
 
-    cartBadge.textContent = cartList.length;
+    while (cartBadge.firstChild) cartBadge.removeChild(cartBadge.firstChild);
+    cartBadge.appendChild(document.createTextNode(cartList.length));
   } catch (error) {
     console.error("Lỗi xử lý dữ liệu giỏ hàng:", error);
-    cartBadge.textContent = "0";
+    while (cartBadge.firstChild) cartBadge.removeChild(cartBadge.firstChild);
+    cartBadge.appendChild(document.createTextNode("0"));
   }
 }
 window.updateCartBadge = updateCartBadge;
