@@ -27,8 +27,6 @@ let currentCategory = "default"; // Danh mục đang được lọc ("default" =
 let currentSearch = ""; // Từ khóa gốc (có dấu tiếng Việt) — dùng để hiển thị & lưu URL
 let currentSearchNormalized = ""; // Từ khóa đã chuẩn hóa (không dấu) — chỉ dùng để lọc sản phẩm
 let currentSort = "default"; // Thứ tự sắp xếp: "default" | "asc" | "desc"
-let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
-//let data = [];
 // ===== HÀM TẢI DỮ LIỆU =====
 /**
  * Tải dữ liệu sản phẩm từ file productlist.json, sau đó khởi tạo giao diện:
@@ -37,69 +35,117 @@ let URL = ``; // Chuỗi query string sẽ gắn vào địa chỉ trang
  *  3. Áp dụng bộ lọc/sắp xếp từ URL (nếu có)
  *  4. Đồng bộ giá trị các control với trạng thái hiện tại
  */
-const getProduct = async () => {
+const getProduct = () => {
   try {
-    loadProductList(data);
     loadCategoryList(data);
     applySortAndFilter();
     applyUIAction();
   } catch (error) {
     console.error("Lỗi khi tải danh sách sản phẩm:", error);
-    document.querySelector("body").innerHTML =
-      `<div class="" style="width:100%;text-align:center;padding:3rem;color:var(--color-gray-600);"> 
-          <p>
-            Không tìm thấy sản phẩm. Vui lòng thử lại sau.
-          </p>
-        </div>`;
+    const body = document.querySelector("body");
+    // Xóa toàn bộ con của body bằng removeChild thay vì innerHTML = ""
+    while (body.firstChild) body.removeChild(body.firstChild);
+    // Tạo cấu trúc thông báo lỗi bằng createElement và appendChild
+    const errorDiv = document.createElement("div");
+    errorDiv.style.width = "100%";
+    errorDiv.style.textAlign = "center";
+    errorDiv.style.padding = "3rem";
+    errorDiv.style.color = "var(--color-gray-600)";
+    const errorP = document.createElement("p");
+    errorP.appendChild(document.createTextNode("Không tìm thấy sản phẩm. Vui lòng thử lại sau."));
+    errorDiv.appendChild(errorP);
+    body.appendChild(errorDiv);
   }
 };
 
 // ===== HÀM RENDER LƯỚI SẢN PHẨM =====
 
 const loadProductList = (data) => {
-  const innerProductsList = data
-    .map(
-      (prod) => `
-        <div class="product-card" data-key="${prod.id}" data-category-slug="${prod.categorySlug}" >
-          <a href="productdetail.html?id=${prod.id}" class="img-wrapper">
-            <img
-              src="${prod.mainImg}"
-              alt="${prod.name}"
-              class="main-img"
-            />
-            <img
-              src="${prod.ImgHover}"
-              alt="${prod.name}"
-              class="hover-img"
-            />
-          </a>
-          <div class="content">
-            <a href="productdetail.html?id=${prod.id}">
-              <h3 class="product-name">${prod.name}</h3>
-            </a>
-            <div class="content-footer flex">
-              <!-- Giá sau giảm: làm tròn lên bội số 1000 -->
-              <span class="product-price affter-sale">${(Math.ceil((prod.priceValue * (1 - prod.discountPercent / 100)) / 1000) * 1000).toLocaleString("vi-VN")}₫</span>
-              <div class="sale">
-                <span class="price-before">${prod.price}</span>
-                <span class="discount-percent">${prod.discountPercent}%</span>
-              </div>
-            </div>
-          </div>
-          ${
-            prod.isNew
-              ? ` 
-            <div class="banner">
-              <img src="assets/images/productlistimage/news.png" alt="" />
-            </div>`
-              : ""
-          }
-        </div>
-    `,
-    )
-    .join("");
+  data.forEach((prod) => {
+    const productCard = document.createElement("article");
+    productCard.classList.add("product-card");
+    productCard.setAttribute("data-key", prod.id);
+    productCard.setAttribute("data-category-slug", prod.categorySlug);
 
-  productsList.innerHTML = innerProductsList;
+    const imageWrapper = document.createElement("a");
+    imageWrapper.classList.add("img-wrapper");
+    imageWrapper.setAttribute("href", `productdetail.html?id=${prod.id}`);
+
+    const content = document.createElement("div");
+    content.classList.add("content");
+
+    const banner = document.createElement("div");
+    banner.classList.add("banner");
+
+    const mainImg = document.createElement("img");
+    mainImg.classList.add("main-img");
+    mainImg.setAttribute("src", prod.mainImg);
+    mainImg.setAttribute("alt", prod.name);
+
+    const hoverImg = document.createElement("img");
+    hoverImg.classList.add("hover-img");
+    hoverImg.setAttribute("src", prod.ImgHover);
+    hoverImg.setAttribute("alt", prod.name);
+
+    const nameWrapper = document.createElement("a");
+    nameWrapper.setAttribute("href", `productdetail.html?id=${prod.id}`);
+
+    const productName = document.createElement("h3");
+    productName.classList.add("product-name");
+    productName.appendChild(document.createTextNode(prod.name));
+
+    const contentFooter = document.createElement("div");
+    contentFooter.classList.add("content-footer", "flex");
+
+    const productPrice = document.createElement("span");
+    productPrice.classList.add("product-price", "after-sale");
+    productPrice.appendChild(
+      document.createTextNode(
+        `${(Math.ceil((prod.priceValue * (1 - prod.discountPercent / 100)) / 1000) * 1000).toLocaleString("vi-VN")}₫`,
+      ),
+    );
+
+    const sale = document.createElement("div");
+    sale.classList.add("sale");
+
+    const priceBefore = document.createElement("span");
+    priceBefore.classList.add("price-before");
+    priceBefore.appendChild(document.createTextNode(prod.price));
+
+    const discountPercent = document.createElement("span");
+    discountPercent.classList.add("discount-percent");
+    discountPercent.appendChild(
+      document.createTextNode(`${prod.discountPercent}%`),
+    );
+
+    const imgBanner = document.createElement("img");
+    imgBanner.setAttribute("src", "assets/images/productlistimage/news.png");
+    imgBanner.setAttribute("alt", "Sản phẩm mới");
+
+    imageWrapper.appendChild(mainImg);
+    imageWrapper.appendChild(hoverImg);
+
+    sale.appendChild(priceBefore);
+    sale.appendChild(discountPercent);
+
+    contentFooter.appendChild(productPrice);
+    contentFooter.appendChild(sale);
+
+    nameWrapper.appendChild(productName);
+
+    content.appendChild(nameWrapper);
+    content.appendChild(contentFooter);
+
+    productCard.appendChild(imageWrapper);
+    productCard.appendChild(content);
+
+    if (prod.isNew) {
+      banner.appendChild(imgBanner);
+      productCard.appendChild(banner);
+    }
+
+    productsList.appendChild(productCard);
+  });
 };
 
 // ===== HÀM TẠO DANH SÁCH DANH MỤC =====
@@ -111,20 +157,19 @@ const loadCategoryList = (data) => {
     categoryMap.set(prod.categorySlug, prod.category);
   });
 
-  // Chuyển Map thành chuỗi HTML các thẻ <option>
-  const category = Array.from(categoryMap)
-    .map(
-      ([categorySlug, categoryName]) => `
-      <option value="${categorySlug}">${categoryName}</option>
-    `,
-    )
-    .join("");
+  const defaultCategory = document.createElement("option");
+  defaultCategory.setAttribute("value", "default");
+  defaultCategory.appendChild(document.createTextNode("Sản phẩm nổi bật"));
 
-  // Thêm option mặc định "Sản phẩm nổi bật" lên đầu danh sách
-  fillterCategory.innerHTML = `
-    <option value="default" selected>Sản phẩm nổi bật</option>
-    ${category}
-  `;
+  fillterCategory.appendChild(defaultCategory);
+
+  Array.from(categoryMap).forEach(([categorySlug, categoryName]) => {
+    const option = document.createElement("option");
+    option.setAttribute("value", categorySlug);
+    option.appendChild(document.createTextNode(categoryName));
+
+    fillterCategory.appendChild(option);
+  });
 };
 
 // ===== HÀM ĐỒNG BỘ GIAO DIỆN VỚI TRẠNG THÁI =====
@@ -158,11 +203,9 @@ const applySortAndFilter = () => {
     currentCategory =
       path.get("category") !== "all" ? path.get("category") : "default";
 
-  // Đọc tham số từ khóa gốc từ URL (giải mã %20 → dấu cách)
+  // Đọc tham số từ khóa gốc từ URL (URLSearchParams.get đã tự decode)
   if (path.get("key")) {
-    currentSearch = decodeURIComponent(
-      path.get("key").trim().replaceAll("-", " "),
-    );
+    currentSearch = path.get("key").trim().replaceAll("-", " ");
     currentSearchNormalized = removeVietnameseTones(currentSearch);
   }
 
@@ -235,8 +278,8 @@ const updateURL = () => {
     "%20",
     "-",
   );
-  URL = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
-  window.location.search = URL;
+  const queryString = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
+  window.location.search = queryString;
 };
 
 // ===== EVENT LISTENERS =====
@@ -263,24 +306,6 @@ searchInp.addEventListener("keydown", (e) => {
     currentSearchNormalized = removeVietnameseTones(currentSearch);
     updateURL();
   }
-});
-
-// Dự phòng cho bàn phím ảo mobile: một số thiết bị chỉ gửi keyup
-searchInp.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    currentSearch = e.target.value;
-    currentSearchNormalized = removeVietnameseTones(currentSearch);
-    updateURL();
-  }
-});
-
-// Sự kiện "search" kích hoạt khi nhấn nút tìm kiếm trên bàn phím ảo (type="search")
-searchInp.addEventListener("search", (e) => {
-  e.preventDefault();
-  currentSearch = e.target.value;
-  currentSearchNormalized = removeVietnameseTones(currentSearch);
-  updateURL();
 });
 
 // ===== KHỞI ĐỘNG =====

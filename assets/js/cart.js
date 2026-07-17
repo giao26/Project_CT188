@@ -54,6 +54,17 @@ function formatPrice(price) {
   return price.toLocaleString("vi-VN") + "₫";
 }
 
+/**
+ * Hàm tiện ích: xóa toàn bộ nội dung của element và gán text mới.
+ * Thay thế cho innerHTML/textContent để tuân thủ quy tắc không thao tác trực tiếp cây DOM.
+ * @param {HTMLElement} el - Phần tử cần cập nhật
+ * @param {string|number} text - Nội dung text mới
+ */
+function setElText(el, text) {
+  while (el.firstChild) el.removeChild(el.firstChild);
+  el.appendChild(document.createTextNode(text));
+}
+
 // ================= Render giỏ hàng =================
 
 /**
@@ -74,106 +85,153 @@ function renderCart() {
 
   // Lỗi 1: Nếu chưa đăng nhập, hiển thị thông báo và không render sản phẩm
   if (!currentUser) {
-    container.innerHTML = `
-            <h2>Vui lòng <a href="login.html" style="color: var(--color-primary);">đăng nhập</a> để xem giỏ hàng.</h2>
-        `;
+    // Dùng removeChild để làm trống và createElement để tạo link, tránh innerHTML
+    while (container.firstChild) container.removeChild(container.firstChild);
+    const h2 = document.createElement("h2");
+    h2.appendChild(document.createTextNode("Vui lòng "));
+    const loginLink = document.createElement("a");
+    loginLink.setAttribute("href", "login.html");
+    loginLink.style.color = "var(--color-primary)";
+    loginLink.appendChild(document.createTextNode("đăng nhập"));
+    h2.appendChild(loginLink);
+    h2.appendChild(document.createTextNode(" để xem giỏ hàng."));
+    container.appendChild(h2);
     updateSummary();
     return;
   }
 
-  // Xóa nội dung cũ trước khi render lại
-  container.innerHTML = "";
+  // Xóa nội dung cũ trước khi render lại bằng removeChild
+  while (container.firstChild) container.removeChild(container.firstChild);
 
   // Nếu giỏ hàng rỗng, hiển thị thông báo và cập nhật tổng tiền về 0
   if (cartList.length === 0) {
-    container.innerHTML = `
-            <h2>Giỏ hàng đang trống.</h2>
-        `;
+    // Dùng removeChild và createElement thay vì innerHTML = "<h2>Giỏ hàng đang trống.</h2>"
+    while (container.firstChild) container.removeChild(container.firstChild);
+    const h2 = document.createElement("h2");
+    h2.appendChild(document.createTextNode("Giỏ hàng đang trống."));
+    container.appendChild(h2);
 
     updateSummary();
     return;
   }
 
-  // Duyệt qua từng sản phẩm và tạo HTML tương ứng
+  // Duyệt qua từng sản phẩm và tạo DOM tương ứng
   cartList.forEach((product, index) => {
-    container.innerHTML += `
-        <div class="cart-item">
+    const cartItem = document.createElement("div");
+    cartItem.classList.add("cart-item");
 
-            <!-- Ảnh sản phẩm (thay đổi theo màu được chọn) -->
-            <img src="${product.mainImg}" alt="${product.name}">
+    // Ảnh sản phẩm (thay đổi theo màu được chọn)
+    const productImg = document.createElement("img");
+    productImg.setAttribute("src", product.mainImg);
+    productImg.setAttribute("alt", product.name);
 
-            <div class="details">
+    const details = document.createElement("div");
+    details.classList.add("details");
 
-                <h2>${product.name}</h2>
+    const h2 = document.createElement("h2");
+    h2.appendChild(document.createTextNode(product.name));
 
-                <!-- Dropdown chọn màu sắc và kích thước -->
-                <div class="option-select">
+    // Dropdown chọn màu sắc và kích thước
+    const optionSelect = document.createElement("div");
+    optionSelect.classList.add("option-select");
 
-                    <!-- Dropdown màu: hiển thị tất cả màu, đánh dấu màu đang chọn -->
-                        <select class="color-select" data-index=${index} name="Màu">
-                            ${product.colors
-                              .map(
-                                (color) => `
-                                <option
-                                    value="${color.color}"
-                                    ${color.color === product.selectedColor ? "selected" : ""}
-                                >
-                                    ${color.color}
-                                </option>
-                            `,
-                              )
-                              .join("")}
-                        </select>
+    // Dropdown màu: hiển thị tất cả màu, đánh dấu màu đang chọn
+    const colorSelect = document.createElement("select");
+    colorSelect.classList.add("color-select");
+    colorSelect.setAttribute("data-index", index);
+    colorSelect.setAttribute("name", "Màu");
 
-                        <!-- Dropdown size: hiển thị tất cả size, đánh dấu size đang chọn -->
-                        <select class="size-select" data-index=${index} name="Size">
-                            ${product.sizes
-                              .map(
-                                (size) => `
-                                <option
-                                    value="${size}"
-                                    ${size === product.selectedSize ? "selected" : ""}
-                                >
-                                    ${size}
-                                </option>
-                            `,
-                              )
-                              .join("")}
-                        </select>
+    product.colors.forEach((color) => {
+      const option = document.createElement("option");
+      option.setAttribute("value", color.color);
+      if (color.color === product.selectedColor) {
+        option.setAttribute("selected", "selected");
+      }
+      option.appendChild(document.createTextNode(color.color));
+      colorSelect.appendChild(option);
+    });
 
-                </div>
+    // Dropdown size: hiển thị tất cả size, đánh dấu size đang chọn
+    const sizeSelect = document.createElement("select");
+    sizeSelect.classList.add("size-select");
+    sizeSelect.setAttribute("data-index", index);
+    sizeSelect.setAttribute("name", "Size");
 
-                <!-- Phần dưới: điều chỉnh số lượng và hiển thị giá -->
-                <div class="bottom-info">
+    product.sizes.forEach((size) => {
+      const option = document.createElement("option");
+      option.setAttribute("value", size);
+      if (size === product.selectedSize) {
+        option.setAttribute("selected", "selected");
+      }
+      option.appendChild(document.createTextNode(size));
+      sizeSelect.appendChild(option);
+    });
 
-                        <div class="quantity-box">
+    optionSelect.appendChild(colorSelect);
+    optionSelect.appendChild(sizeSelect);
 
-                            <button class="minus" data-index="${index}">-</button>
+    // Phần dưới: điều chỉnh số lượng và hiển thị giá
+    const bottomInfo = document.createElement("div");
+    bottomInfo.classList.add("bottom-info");
 
-                            <span class="quantity-number">
-                                ${product.quantity}
-                            </span>
+    const quantityBox = document.createElement("div");
+    quantityBox.classList.add("quantity-box");
 
-                            <button class="plus" data-index="${index}">+</button>
+    const minusBtn = document.createElement("button");
+    minusBtn.classList.add("minus");
+    minusBtn.setAttribute("data-index", index);
+    minusBtn.appendChild(document.createTextNode("-"));
 
-                        </div>
+    const quantityNumber = document.createElement("span");
+    quantityNumber.classList.add("quantity-number");
+    quantityNumber.appendChild(document.createTextNode(product.quantity));
 
-                    <!-- Giá = giá gốc * (1 - % giảm) * số lượng, làm tròn lên bội 1000 -->
-                    <p class="price">
-                        ${formatPrice(Math.ceil((product.priceValue * (1 - product.discountPercent / 100)) / 1000) * 1000 * product.quantity)}
-                    </p>
+    const plusBtn = document.createElement("button");
+    plusBtn.classList.add("plus");
+    plusBtn.setAttribute("data-index", index);
+    plusBtn.appendChild(document.createTextNode("+"));
 
-                </div>
+    quantityBox.appendChild(minusBtn);
+    quantityBox.appendChild(quantityNumber);
+    quantityBox.appendChild(plusBtn);
 
-            </div>
+    // Giá = giá gốc * (1 - % giảm) * số lượng, làm tròn lên bội 1000
+    const priceP = document.createElement("p");
+    priceP.classList.add("price");
+    priceP.appendChild(
+      document.createTextNode(
+        formatPrice(
+          Math.ceil(
+            (product.priceValue * (1 - product.discountPercent / 100)) / 1000,
+          ) *
+            1000 *
+            product.quantity,
+        ),
+      ),
+    );
 
-            <!-- Nút xóa sản phẩm khỏi giỏ hàng -->
-            <button class="remove" data-index="${index}">
-                <i class="fa-solid fa-trash"></i>
-            </button>
+    bottomInfo.appendChild(quantityBox);
+    bottomInfo.appendChild(priceP);
 
-        </div>
-        `;
+    details.appendChild(h2);
+    details.appendChild(optionSelect);
+    details.appendChild(bottomInfo);
+
+    // Nút xóa sản phẩm khỏi giỏ hàng
+    const removeBtn = document.createElement("button");
+    removeBtn.classList.add("remove");
+    removeBtn.setAttribute("data-index", index);
+
+    const trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa-solid", "fa-trash");
+
+    removeBtn.appendChild(trashIcon);
+
+    cartItem.appendChild(productImg);
+    cartItem.appendChild(details);
+    cartItem.appendChild(removeBtn);
+
+    container.appendChild(cartItem);
   });
 
   // Sau khi render xong, gắn lại toàn bộ sự kiện và cập nhật tổng tiền
@@ -185,7 +243,7 @@ function renderCart() {
 
 /**
  * Gắn các sự kiện click/change cho các nút chức năng bên trong giỏ hàng sau khi render.
- * Phải gọi lại mỗi lần renderCart() vì innerHTML thay thế toàn bộ DOM → mất sự kiện cũ.
+ * Phải gọi lại mỗi lần renderCart() vì createElement tạo lại toàn bộ DOM → mất sự kiện cũ.
  *
  * Các sự kiện được gắn:
  *  - Nút "+" (class .plus): tăng số lượng sản phẩm
@@ -307,8 +365,7 @@ function lastCost() {
   const lastCost = preCost + deliveryCost - voucherValue;
 
   // Hiển thị và lưu tổng tiền cuối cùng vào DOM
-  document.querySelector(".pricing-info .total-cost strong").innerHTML =
-    formatPrice(lastCost);
+  setElText(document.querySelector(".pricing-info .total-cost strong"), formatPrice(lastCost));
   document
     .querySelector(".pricing-info .total-cost strong")
     .setAttribute("value", lastCost);
@@ -340,20 +397,18 @@ function updateSummary() {
   document
     .querySelector(".pricing-info .pre-cost strong")
     .setAttribute("value", total);
-  document.querySelector(".pricing-info .pre-cost strong").innerHTML =
-    formatPrice(total);
+  setElText(document.querySelector(".pricing-info .pre-cost strong"), formatPrice(total));
 
   // Cập nhật phí vận chuyển dựa theo ngưỡng giá trị đơn hàng
   if (total > 0) {
-    document.querySelector(".pricing-info .delivery-cost strong").innerHTML =
-      total >= 299000 ? "Miễn phí" : formatPrice(30000);
+    setElText(document.querySelector(".pricing-info .delivery-cost strong"),
+      total >= 299000 ? "Miễn phí" : formatPrice(30000));
     document
       .querySelector(".pricing-info .delivery-cost strong")
       .setAttribute("value", total >= 299000 ? 0 : 30000);
   } else {
     // Giỏ hàng rỗng: phí vận chuyển = 0
-    document.querySelector(".pricing-info .delivery-cost strong").innerHTML =
-      "0₫";
+    setElText(document.querySelector(".pricing-info .delivery-cost strong"), "0₫");
     document
       .querySelector(".pricing-info .delivery-cost strong")
       .setAttribute("value", 0);
@@ -363,8 +418,7 @@ function updateSummary() {
   document
     .querySelector(".pricing-info .voucher-aplied strong")
     .setAttribute("value", 0);
-  document.querySelector(".pricing-info .voucher-aplied strong").innerHTML =
-    "0₫";
+  setElText(document.querySelector(".pricing-info .voucher-aplied strong"), "0₫");
 
   // Tính và cập nhật tổng cuối cùng
   lastCost();
@@ -445,24 +499,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("note").value = "";
 
     // Reset hiển thị các ô tổng tiền về 0₫
-    document.querySelector(".pricing-info .pre-cost strong").innerHTML = "0₫";
+    setElText(document.querySelector(".pricing-info .pre-cost strong"), "0₫");
     document
       .querySelector(".pricing-info .pre-cost strong")
       .setAttribute("value", 0);
 
-    document.querySelector(".pricing-info .delivery-cost strong").innerHTML =
-      "0₫";
+    setElText(document.querySelector(".pricing-info .delivery-cost strong"), "0₫");
     document
       .querySelector(".pricing-info .delivery-cost strong")
       .setAttribute("value", 0);
 
-    document.querySelector(".pricing-info .voucher-aplied strong").innerHTML =
-      "0₫";
+    setElText(document.querySelector(".pricing-info .voucher-aplied strong"), "0₫");
     document
       .querySelector(".pricing-info .voucher-aplied strong")
       .setAttribute("value", 0);
 
-    document.querySelector(".pricing-info .total-cost strong").innerHTML = "0₫";
+    setElText(document.querySelector(".pricing-info .total-cost strong"), "0₫");
     document
       .querySelector(".pricing-info .total-cost strong")
       .setAttribute("value", 0);
@@ -505,7 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
       voucherInput.placeholder = "Mã giảm giá không tồn tại.";
       voucherInput.classList.add("error"); // Viền đỏ báo lỗi
       voucherApply.setAttribute("value", 0);
-      voucherApply.innerHTML = "0₫";
+      setElText(voucherApply, "0₫");
       lastCost();
       return;
     }
@@ -519,7 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (Number(preCost.getAttribute("value")) >= condition) {
       // Áp dụng thành công: cập nhật giá trị giảm và làm sạch input
       voucherApply.setAttribute("value", voucherValue);
-      voucherApply.innerHTML = formatPrice(voucherValue);
+      setElText(voucherApply, formatPrice(voucherValue));
       voucherInput.value = "";
       voucherInput.placeholder = "Nhập mã giảm giá của bạn...";
       voucherInput.classList.remove("error");
@@ -529,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
       voucherInput.placeholder = "Giá trị đơn hàng không đủ điều kiện áp dụng";
       voucherInput.classList.add("error");
       voucherApply.setAttribute("value", 0);
-      voucherApply.innerHTML = "0₫";
+      setElText(voucherApply, "0₫");
     }
 
     // Tính lại tổng tiền sau khi xử lý voucher
