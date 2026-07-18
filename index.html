@@ -37,300 +37,180 @@
     />
   </head>
   <body>
-    <header class="header" id="header">
-      <div class="nav-overlay" id="nav-overlay"></div>
-      <nav class="nav">
-        <button class="menu-toggle" id="mobile-menu-toggle" title="Menu">
-          <i class="ti ti-menu-2"></i>
-        </button>
+    <header class="header" id="header"></header>
 
-        <div class="nav-logo">
-          <a href="index.html">
-            <img src="assets/images/homepage/logo1.png" alt="logo"
-          /></a>
-        </div>
+    <main>
+      <section class="hero">
+        <div class="hero-text"></div>
+      </section>
 
-        <ul class="nav-links" id="nav-links-menu">
-          <li class="mobile-close-item">
-            <button class="menu-close" id="mobile-menu-close" title="Đóng Menu">
-              <i class="ti ti-x"></i>
-            </button>
-          </li>
-          <li class="links"><a href="index.html">TRANG CHỦ</a></li>
-          <li class="links">
-            <a href="productlist.html?category=all&key=&price=default"
-              >DANH MỤC SẢN PHẨM
-            </a>
-          </li>
-          <li class="links"><a href="about.html">GIỚI THIỆU</a></li>
-        </ul>
+      <section class="services-container">
+        <div class="service-card">
+          <div class="service-icon"><i class="ti ti-truck-delivery"></i></div>
+          <div class="service-content">
+            <p>Vận chuyển <strong>MIỄN PHÍ</strong></p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="ti ti-id-badge-2"></i></div>
+          <div class="service-content">
+            <p>Nhận nhiều ưu đãi với</p>
+            <strong>THÀNH VIÊN VIP</strong>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="ti ti-credit-card"></i></div>
+          <div class="service-content">
+            <p><strong>THANH TOÁN</strong></p>
+            <span>Với nhiều PHƯƠNG THỨC</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="ti ti-refresh"></i></div>
+          <div class="service-content">
+            <p><strong>100% HOÀN TIỀN</strong></p>
+            <span>nếu sản phẩm lỗi</span>
+          </div>
+        </div>
+      </section>
 
-        <div class="nav-icons">
-          <a href="cart.html" title="Giỏ hàng" style="position: relative">
-            <i class="ti ti-shopping-bag"></i>
-            <span class="cart-badge">0</span>
-          </a>
-          <a href="login.html" id="user-account-btn" title="Tài khoản"
-            ><i class="ti ti-user"></i
-          ></a>
+      <section class="category-grid">
+        <div class="item tshirt">
+          <img src="assets/images/homepage/aothun.jpg" alt="Áo thun" />
+          <div class="overlay">
+            <h2>ÁO THUN</h2>
+            <a href="productlist.html?category=ao-thun">XEM THÊM</a>
+          </div>
         </div>
-      </nav>
-    </header>
+        <div class="item shirt">
+          <img src="assets/images/homepage/aosomi.jpg" alt="Sơ mi" />
+          <div class="overlay">
+            <h3>SƠ MI</h3>
+            <a href="productlist.html?category=ao-so-mi">XEM THÊM</a>
+          </div>
+        </div>
+        <div class="item short">
+          <img src="assets/images/homepage/short.jpg" alt="Quần Short" />
+          <div class="overlay">
+            <h3>QUẦN SHORT</h3>
+            <a href="productlist.html?category=quan-short">XEM THÊM</a>
+          </div>
+        </div>
+        <div class="item polo">
+          <img src="assets/images/homepage/polo.jpg" alt="Polo" />
+          <div class="overlay">
+            <h3>POLO</h3>
+            <a href="productlist.html?category=ao-polo">XEM THÊM</a>
+          </div>
+        </div>
+        <div class="item jean">
+          <img src="assets/images/homepage/jean.jpg" alt="Quần Jean" />
+          <div class="overlay">
+            <h3>QUẦN JEAN</h3>
+            <a href="productlist.html?category=quan-jean">XEM THÊM</a>
+          </div>
+        </div>
+      </section>
 
-    <section class="hero">
-      <div class="hero-text"></div>
-    </section>
-
-    <section class="services-container">
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-truck-delivery"></i></div>
-        <div class="service-content">
-          <p>Vận chuyển <strong>MIỄN PHÍ</strong></p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-id-badge-2"></i></div>
-        <div class="service-content">
-          <p>Nhận nhiều ưu đãi với</p>
-          <strong>THÀNH VIÊN VIP</strong>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-credit-card"></i></div>
-        <div class="service-content">
-          <p><strong>THANH TOÁN</strong></p>
-          <span>Với nhiều PHƯƠNG THỨC</span>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="ti ti-refresh"></i></div>
-        <div class="service-content">
-          <p><strong>100% HOÀN TIỀN</strong></p>
-          <span>nếu sản phẩm lỗi</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="category-grid">
-      <div class="item tshirt">
-        <img src="assets/images/homepage/aothun.jpg" alt="Áo thun" />
-        <div class="overlay">
-          <h2>ÁO THUN</h2>
-          <a href="productlist.html?category=ao-thun">XEM THÊM</a>
-        </div>
-      </div>
-      <div class="item shirt">
-        <img src="assets/images/homepage/aosomi.jpg" alt="Sơ mi" />
-        <div class="overlay">
-          <h3>SƠ MI</h3>
-          <a href="productlist.html?category=ao-so-mi">XEM THÊM</a>
-        </div>
-      </div>
-      <div class="item short">
-        <img src="assets/images/homepage/short.jpg" alt="Quần Short" />
-        <div class="overlay">
-          <h3>QUẦN SHORT</h3>
-          <a href="productlist.html?category=quan-short">XEM THÊM</a>
-        </div>
-      </div>
-      <div class="item polo">
-        <img src="assets/images/homepage/polo.jpg" alt="Polo" />
-        <div class="overlay">
-          <h3>POLO</h3>
-          <a href="productlist.html?category=ao-polo">XEM THÊM</a>
-        </div>
-      </div>
-      <div class="item jean">
-        <img src="assets/images/homepage/jean.jpg" alt="Quần Jean" />
-        <div class="overlay">
-          <h3>QUẦN JEAN</h3>
-          <a href="productlist.html?category=quan-jean">XEM THÊM</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="blog-section" id="khuyenmai-section">
-      <div class="blog-container">
-        <h2 class="blog-main-title">Blog</h2>
-        <div class="blog-grid">
-          <article class="blog-item">
-            <div class="blog-image">
-              <img src="assets/images/homepage/blog1.png" alt="Siêu sale hè" />
-            </div>
-            <div class="blog-content">
-              <h3 class="blog-item-title">
-                Siêu Sale Hè 2026 – Giảm Đồng Loạt 50% Toàn Bộ Sản Phẩm
-              </h3>
-              <p class="blog-excerpt">
-                Mellow chính thức kích hoạt chiến dịch lớn nhất năm: "SUMMER
-                SALE 2026". Cơ hội độc nhất để sở hữu những thiết kế thời trang
-                nam cao cấp với mức giá giảm ngay một nửa.
-              </p>
-              <div class="blog-meta">
-                <div class="meta-left">
-                  <span class="blog-date"
-                    ><i class="ti ti-calendar"></i> 20/06/2026</span
-                  >
-                  <span class="blog-likes"><i class="ti ti-heart"></i> 20</span>
-                </div>
-                <a href="#" class="btn-readmore">Xem thêm</a>
+      <section class="blog-section" id="khuyenmai-section">
+        <div class="blog-container">
+          <h2 class="blog-main-title">Blog</h2>
+          <div class="blog-grid">
+            <article class="blog-item">
+              <div class="blog-image">
+                <img
+                  src="assets/images/homepage/blog1.png"
+                  alt="Siêu sale hè"
+                />
               </div>
-            </div>
-          </article>
-          <article class="blog-item">
-            <div class="blog-image">
-              <img
-                src="assets/images/homepage/blog2.png"
-                alt="Bộ sưu tập mới"
-              />
-            </div>
-            <div class="blog-content">
-              <h3 class="blog-item-title">
-                Ra Mắt BST "The New Mellow 2026" – Định Hình Phong Cách Lịch Lãm
-              </h3>
-              <p class="blog-excerpt">
-                Mellow chính thức trình làng Bộ sưu tập mới nhất mang tên "The
-                New Mellow 2026", mang đến làn gió mới cho tủ đồ của phái mạnh
-                với những thiết kế tối giản, tinh tế.
-              </p>
-              <div class="blog-meta">
-                <div class="meta-left">
-                  <span class="blog-date"
-                    ><i class="ti ti-calendar"></i> 18/06/2026</span
-                  >
-                  <span class="blog-likes"><i class="ti ti-heart"></i> 15</span>
+              <div class="blog-content">
+                <h3 class="blog-item-title">
+                  Siêu Sale Hè 2026 – Giảm Đồng Loạt 50% Toàn Bộ Sản Phẩm
+                </h3>
+                <p class="blog-excerpt">
+                  Mellow chính thức kích hoạt chiến dịch lớn nhất năm: "SUMMER
+                  SALE 2026". Cơ hội độc nhất để sở hữu những thiết kế thời
+                  trang nam cao cấp với mức giá giảm ngay một nửa.
+                </p>
+                <div class="blog-meta">
+                  <div class="meta-left">
+                    <span class="blog-date"
+                      ><i class="ti ti-calendar"></i> 20/06/2026</span
+                    >
+                    <span class="blog-likes"
+                      ><i class="ti ti-heart"></i> 20</span
+                    >
+                  </div>
+                  <a href="#" class="btn-readmore">Xem thêm</a>
                 </div>
-                <a href="#" class="btn-readmore">Xem thêm</a>
               </div>
-            </div>
-          </article>
-          <article class="blog-item">
-            <div class="blog-image">
-              <img
-                src="assets/images/homepage/blog3.png"
-                alt="Cẩm nang săn sale"
-              />
-            </div>
-            <div class="blog-content">
-              <h3 class="blog-item-title">
-                Top 5 Items Đồ Nam Không Thể Thiếu Trong Tủ Đồ Hè 2026
-              </h3>
-              <p class="blog-excerpt">
-                Từ những chiếc áo Polo Premium đứng dáng đến quần Short Kaki
-                năng động, tất cả đều được thiết kế từ chất liệu sợi tre mát
-                lạnh, thoáng khí tối đa.
-              </p>
-              <div class="blog-meta">
-                <div class="meta-left">
-                  <span class="blog-date"
-                    ><i class="ti ti-calendar"></i> 15/06/2026</span
-                  >
-                  <span class="blog-likes"><i class="ti ti-heart"></i> 32</span>
+            </article>
+            <article class="blog-item">
+              <div class="blog-image">
+                <img
+                  src="assets/images/homepage/blog2.png"
+                  alt="Bộ sưu tập mới"
+                />
+              </div>
+              <div class="blog-content">
+                <h3 class="blog-item-title">
+                  Ra Mắt BST "The New Mellow 2026" – Định Hình Phong Cách Lịch
+                  Lãm
+                </h3>
+                <p class="blog-excerpt">
+                  Mellow chính thức trình làng Bộ sưu tập mới nhất mang tên "The
+                  New Mellow 2026", mang đến làn gió mới cho tủ đồ của phái mạnh
+                  với những thiết kế tối giản, tinh tế.
+                </p>
+                <div class="blog-meta">
+                  <div class="meta-left">
+                    <span class="blog-date"
+                      ><i class="ti ti-calendar"></i> 18/06/2026</span
+                    >
+                    <span class="blog-likes"
+                      ><i class="ti ti-heart"></i> 15</span
+                    >
+                  </div>
+                  <a href="#" class="btn-readmore">Xem thêm</a>
                 </div>
-                <a href="#" class="btn-readmore">Xem thêm</a>
               </div>
-            </div>
-          </article>
+            </article>
+            <article class="blog-item">
+              <div class="blog-image">
+                <img
+                  src="assets/images/homepage/blog3.png"
+                  alt="Cẩm nang săn sale"
+                />
+              </div>
+              <div class="blog-content">
+                <h3 class="blog-item-title">
+                  Top 5 Items Đồ Nam Không Thể Thiếu Trong Tủ Đồ Hè 2026
+                </h3>
+                <p class="blog-excerpt">
+                  Từ những chiếc áo Polo Premium đứng dáng đến quần Short Kaki
+                  năng động, tất cả đều được thiết kế từ chất liệu sợi tre mát
+                  lạnh, thoáng khí tối đa.
+                </p>
+                <div class="blog-meta">
+                  <div class="meta-left">
+                    <span class="blog-date"
+                      ><i class="ti ti-calendar"></i> 15/06/2026</span
+                    >
+                    <span class="blog-likes"
+                      ><i class="ti ti-heart"></i> 32</span
+                    >
+                  </div>
+                  <a href="#" class="btn-readmore">Xem thêm</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
-    <footer class="footer" id="footer">
-      <div class="footer-line"></div>
-      <div class="footer-content">
-        <!-- Thương hiệu -->
-        <div class="footer-item footer-mellow">
-          <div class="footer-brand">
-            <img src="./assets/images/footer/logo_footer.png" alt="logo" />
-            <span class="footer-brand-text">MELLOW</span>
-          </div>
-          <p class="footer-text">
-            Mang đến cho bạn những thời trang phong cách hiện đại nhất. <br />
-            Hãy tỏa sáng theo cách của bạn
-          </p>
-          <p class="footer-slogan">"Uy tín làm nên thương hiệu"</p>
-          <div class="footer-title-underline">
-            <h4 class="footer-title">Theo dõi MELLOW ngay</h4>
-            <div class="footer-underline"></div>
-          </div>
-          <div class="footer-social">
-            <a href="#"><i class="ri-facebook-fill"></i></a>
-            <a href="#"><i class="ri-instagram-fill"></i></a>
-            <a href="#"><i class="ri-tiktok-fill"></i></a>
-            <a href="#"><i class="ri-twitter-x-line"></i></a>
-          </div>
-        </div>
-        <!-- MELLOW VN -->
-        <div class="footer-item footer-about">
-          <div class="footer-title-underline">
-            <h4 class="footer-title">MELLOW VIỆT NAM</h4>
-            <div class="footer-underline"></div>
-          </div>
-          <ul class="footer-links">
-            <li>
-              <a href="#"
-                ><i class="ri-arrow-right-s-line"></i><span>Về MELLOW</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="ri-arrow-right-s-line"></i><span>Tuyển dụng</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="ri-arrow-right-s-line"></i
-                ><span>Điều khoản MELLOW</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="ri-arrow-right-s-line"></i
-                ><span>Chính sách bảo mật</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="ri-arrow-right-s-line"></i><span>Flash Sale</span></a
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- Liên hệ -->
-        <div class="footer-item footer-contact">
-          <div class="footer-title-underline">
-            <h4 class="footer-title">LIÊN HỆ MELLOW</h4>
-            <div class="footer-underline"></div>
-          </div>
-          <ul class="footer-links">
-            <li>
-              <a href="#"
-                ><i class="ri-map-pin-fill"></i
-                ><span
-                  >36 Đường 3/2, P.Xuân Khánh, Q.Ninh Kiều, Cần Thơ</span
-                ></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="ri-phone-fill"></i><span>0363 636 369</span></a
-              >
-            </li>
-            <li>
-              <a href="#"
-                ><i class="ri-mail-line"></i><span>cskh@mellow.com.vn</span></a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>
-          &copy;2026
-          <img src="./assets/images/footer/logo_footer.png" alt="logo" />
-          MELLOW. Made with by Group 7 CT188<i class="ri-bard-line"></i>
-        </p>
-      </div>
-    </footer>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
     <!-- Thư viện JS của Toastify để chạy các popup thông báo -->
     <script
       type="text/javascript"
