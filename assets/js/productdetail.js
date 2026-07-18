@@ -208,7 +208,7 @@ const getProductDetail = () => {
 
     // Dữ liệu các mục khuyến mãi
     const promoItems = [
-      { text: "Nhập mã ", code: "CT188", suffix: " giảm 20K đơn từ 499K" },
+      { text: "Nhập mã ", code: "CT188", suffix: " giảm 50K đơn từ 499K" },
       { text: "Nhập mã ", code: "CT18806", suffix: " giảm 96K đơn từ 799K" },
       {
         text: "Nhập mã ",

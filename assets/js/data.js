@@ -529,7 +529,7 @@ const data = [
     designTechnique:
       "Thiết kế wash xanh đậm phối chi tiết rách gối vừa đủ, mang đến vẻ bụi bặm nam tính. Phần cạp bản 4 cm may hai kim chắc chắn, belt loop đều và túi đồng hồ nhỏ ở phía trước theo đúng phom jean cổ điển. Patch da phía sau và nút kim loại màu bạc là điểm nhấn tinh tế, hoàn thiện tổng thể.",
     form: "Straight",
-    price: "699.000₫",
+    price: "799.000₫",
     priceValue: 799000,
     unit: "cái",
     mainImg:
