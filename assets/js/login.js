@@ -63,10 +63,13 @@ const showError = (message) => {
 // CHUYỂN ĐỔI FORM ĐĂNG NHẬP VÀ ĐĂNG KÝ
 // ====================================
 
+// Lấy các phần tử của giao diện đăng nhập và đăng ký
 const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 const wrapper = document.querySelector(".wrapper");
 const title = document.querySelector(".title");
+const switchLogin = document.getElementById("switch-log");
+const switchRegister = document.getElementById("switch-reg");
 
 // Hàm chuyển sang giao diện Đăng ký
 const registerFunction = () => {
@@ -76,7 +79,11 @@ const registerFunction = () => {
 
   wrapper.classList.remove("login-mode");
   wrapper.classList.add("register-mode"); // Đổi chiều cao khung chứa form
-  title.textContent = "Đăng ký"; // Cập nhật thẻ tiêu đề
+
+  if (title.firstChild) {
+    title.removeChild(title.firstChild);
+  }
+  title.appendChild(document.createTextNode("Đăng ký"));
 };
 
 // Hàm chuyển sang giao diện Đăng nhập
@@ -87,19 +94,27 @@ const loginFunction = () => {
 
   wrapper.classList.remove("register-mode");
   wrapper.classList.add("login-mode");
-  title.textContent = "Đăng nhập";
+
+  if (title.firstChild) {
+    title.removeChild(title.firstChild);
+  }
+  title.appendChild(document.createTextNode("Đăng nhập"));
 };
 
-// Reset form (xóa trắng dữ liệu đang nhập dở) khi ấn chuyển qua lại
-const resetReg = document.getElementById("reset-reg");
-resetReg.addEventListener("click", () => {
-  registerForm.reset();
-});
-
-const resetLog = document.getElementById("reset-log");
-resetLog.addEventListener("click", () => {
-  loginForm.reset();
-});
+// Thêm sự kiện khi click chuyển sang form đăng nhập
+if (switchLogin) {
+  switchLogin.addEventListener("click", () => {
+    loginFunction();
+    loginForm.reset();
+  });
+}
+// Thêm sự kiện khi click chuyển sang form đăng đăng ký
+if (switchRegister) {
+  switchRegister.addEventListener("click", () => {
+    registerFunction();
+    registerForm.reset();
+  });
+}
 
 // ============================
 // LỜI CHÀO THEO THỜI GIAN THỰC
@@ -126,7 +141,12 @@ const setGreeting = () => {
   }
 
   // Cập nhật DOM
-  document.getElementById("greeting").innerHTML = greeting;
+  const greetingElement = document.getElementById("greeting");
+  if (greetingElement.firstChild) {
+    greetingElement.removeChild(greetingElement.firstChild);
+  }
+
+  greetingElement.append(document.createTextNode(greeting));
   document.getElementById("greeting").style.background = gradient;
 };
 setGreeting(); // Gọi ngay lần đầu load trang
@@ -135,6 +155,8 @@ setInterval(setGreeting, 60000); // Lặp lại hàm kiểm tra mỗi 1 phút đ
 // ===========================
 // HIỂN THỊ / ẨN MẬT KHẨU
 // ===========================
+
+// Lấy tất cả ô nhập password
 const passwordInputs = document.querySelectorAll(".password-input");
 
 // Tính năng 1: Bắt đầu gõ phím mới hiện icon con mắt
@@ -190,18 +212,25 @@ const removeError = (input, condition) => {
 // ===========================
 //    XỬ LÝ FORM ĐĂNG KÝ
 // ===========================
-const nameInput = document.getElementById("reg-name");
-const emailInput = document.getElementById("reg-email");
-const phoneInput = document.getElementById("reg-phone");
-const passwordInput = document.getElementById("reg-pass");
-const confirmPasswordInput = document.getElementById("reg-confirmPass");
+// const nameInput = document.getElementById("reg-name");
+// const emailInput = document.getElementById("reg-email");
+// const phoneInput = document.getElementById("reg-phone");
+// const passwordInput = document.getElementById("reg-pass");
+// const confirmPasswordInput = document.getElementById("reg-confirmPass");
 
 if (registerForm) {
+  // Lấy các ô nhập liệu của form đăng ký
+  const nameInput = document.getElementById("reg-name");
+  const emailInput = document.getElementById("reg-email");
+  const phoneInput = document.getElementById("reg-phone");
+  const passwordInput = document.getElementById("reg-pass");
+  const confirmPasswordInput = document.getElementById("reg-confirmPass");
+
   registerForm.addEventListener("submit", (event) => {
     event.preventDefault(); // Chặn hành động nạp lại trang mặc định
 
     // Bóc tách dữ liệu nhập vào và trim() dùng loại bỏ dấu cách dư thừa
-    const name = document.getElementById("reg-name").value.trim();
+    const name = nameInput.value.trim();
     const email = emailInput.value.trim().toLowerCase();
     const phone = phoneInput.value.trim();
     const password = passwordInput.value.trim();
@@ -305,9 +334,6 @@ if (registerForm) {
 // ===========================
 // XỬ LÝ FORM ĐĂNG NHẬP
 // ===========================
-const emailLogInput = document.getElementById("log-email");
-const passwordLogInput = document.getElementById("log-pass");
-
 if (loginForm) {
   // tài khoản thử nghiệm nhanh
   const testUser = {
@@ -319,6 +345,10 @@ if (loginForm) {
 
   // lưu localstorage cho người dùng muốn xem và trải nghiệm thử
   localStorage.setItem("testUser", JSON.stringify(testUser));
+
+  // Lấy các ô nhập liệu của form đăng nhập
+  const emailLogInput = document.getElementById("log-email");
+  const passwordLogInput = document.getElementById("log-pass");
 
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();

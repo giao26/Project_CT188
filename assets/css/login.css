@@ -196,8 +196,8 @@ trừ phần height của header 81px
 
   background-color: white;
   width: 100%;
-  max-width: 27rem;
-  min-height: 20rem;
+  max-width: 432px;
+  min-height: 320px;
   border-radius: 15px;
   padding: 7rem 3rem 2rem;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -228,8 +228,8 @@ trừ phần height của header 81px
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 8.75rem;
-  height: 4.375rem;
+  width: 140px;
+  height: 70px;
   background-color: var(--color-primary);
   color: white;
   border-bottom-left-radius: 1rem;
@@ -371,11 +371,11 @@ trừ phần height của header 81px
   Vì form đăng ký nhiều trường nhập hơn form đăng nhập nên cần card dài hơn.
 */
 .wrapper.register-mode {
-  height: 34.375rem;
+  height: 550px;
 }
 
 .wrapper.login-mode {
-  height: 25rem;
+  height: 400px;
 }
 
 /* 
@@ -439,8 +439,8 @@ trừ phần height của header 81px
   }
 
   .wrapper {
-    margin: 0 1.5rem;
-    width: 23rem; /* Thu nhỏ card lại cho vừa thiết bị */
+    margin: 0 24px;
+    width: 368px; /* Thu nhỏ card lại cho vừa thiết bị */
   }
 
   .submit-btn {
@@ -449,11 +449,11 @@ trừ phần height của header 81px
 
   /* Chỉnh lại chiều cao form cho tablet */
   .wrapper.login-mode {
-    height: 23rem;
+    height: 368px;
   }
 
   .wrapper.register-mode {
-    height: 32rem;
+    height: 512px;
   }
 }
 
@@ -479,11 +479,11 @@ trừ phần height của header 81px
   }
   /* Chỉnh lại chiều cao form cho mobile */
   .wrapper.register-mode {
-    height: 32rem;
+    height: 512px;
   }
 
   .wrapper.login-mode {
-    height: 22rem;
+    height: 352px;
   }
 
   .switch-form {
@@ -492,15 +492,11 @@ trừ phần height của header 81px
 
   .input-field {
     font-size: 0.8125rem;
-    height: 2.5rem; /* Ô nhập lùn đi một chút */
+    height: 40px; /* Ô nhập lùn đi một chút */
   }
 
   .forgot-pass {
     font-size: 0.9rem;
-  }
-
-  .submit-btn {
-    margin: 0 0 8px;
   }
 
   .login-form,
