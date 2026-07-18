@@ -365,7 +365,10 @@ function lastCost() {
   const lastCost = preCost + deliveryCost - voucherValue;
 
   // Hiển thị và lưu tổng tiền cuối cùng vào DOM
-  setElText(document.querySelector(".pricing-info .total-cost strong"), formatPrice(lastCost));
+  setElText(
+    document.querySelector(".pricing-info .total-cost strong"),
+    formatPrice(lastCost),
+  );
   document
     .querySelector(".pricing-info .total-cost strong")
     .setAttribute("value", lastCost);
@@ -397,18 +400,26 @@ function updateSummary() {
   document
     .querySelector(".pricing-info .pre-cost strong")
     .setAttribute("value", total);
-  setElText(document.querySelector(".pricing-info .pre-cost strong"), formatPrice(total));
+  setElText(
+    document.querySelector(".pricing-info .pre-cost strong"),
+    formatPrice(total),
+  );
 
   // Cập nhật phí vận chuyển dựa theo ngưỡng giá trị đơn hàng
   if (total > 0) {
-    setElText(document.querySelector(".pricing-info .delivery-cost strong"),
-      total >= 299000 ? "Miễn phí" : formatPrice(30000));
+    setElText(
+      document.querySelector(".pricing-info .delivery-cost strong"),
+      total >= 299000 ? "Miễn phí" : formatPrice(30000),
+    );
     document
       .querySelector(".pricing-info .delivery-cost strong")
       .setAttribute("value", total >= 299000 ? 0 : 30000);
   } else {
     // Giỏ hàng rỗng: phí vận chuyển = 0
-    setElText(document.querySelector(".pricing-info .delivery-cost strong"), "0₫");
+    setElText(
+      document.querySelector(".pricing-info .delivery-cost strong"),
+      "0₫",
+    );
     document
       .querySelector(".pricing-info .delivery-cost strong")
       .setAttribute("value", 0);
@@ -418,7 +429,10 @@ function updateSummary() {
   document
     .querySelector(".pricing-info .voucher-aplied strong")
     .setAttribute("value", 0);
-  setElText(document.querySelector(".pricing-info .voucher-aplied strong"), "0₫");
+  setElText(
+    document.querySelector(".pricing-info .voucher-aplied strong"),
+    "0₫",
+  );
 
   // Tính và cập nhật tổng cuối cùng
   lastCost();
@@ -504,12 +518,18 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelector(".pricing-info .pre-cost strong")
       .setAttribute("value", 0);
 
-    setElText(document.querySelector(".pricing-info .delivery-cost strong"), "0₫");
+    setElText(
+      document.querySelector(".pricing-info .delivery-cost strong"),
+      "0₫",
+    );
     document
       .querySelector(".pricing-info .delivery-cost strong")
       .setAttribute("value", 0);
 
-    setElText(document.querySelector(".pricing-info .voucher-aplied strong"), "0₫");
+    setElText(
+      document.querySelector(".pricing-info .voucher-aplied strong"),
+      "0₫",
+    );
     document
       .querySelector(".pricing-info .voucher-aplied strong")
       .setAttribute("value", 0);

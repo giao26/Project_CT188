@@ -41,7 +41,6 @@ const getProduct = () => {
     applySortAndFilter();
     applyUIAction();
   } catch (error) {
-    console.error("Lỗi khi tải danh sách sản phẩm:", error);
     const body = document.querySelector("body");
     // Xóa toàn bộ con của body bằng removeChild thay vì innerHTML = ""
     while (body.firstChild) body.removeChild(body.firstChild);
@@ -52,7 +51,9 @@ const getProduct = () => {
     errorDiv.style.padding = "3rem";
     errorDiv.style.color = "var(--color-gray-600)";
     const errorP = document.createElement("p");
-    errorP.appendChild(document.createTextNode("Không tìm thấy sản phẩm. Vui lòng thử lại sau."));
+    errorP.appendChild(
+      document.createTextNode("Không tìm thấy sản phẩm. Vui lòng thử lại sau."),
+    );
     errorDiv.appendChild(errorP);
     body.appendChild(errorDiv);
   }
@@ -307,7 +308,6 @@ searchInp.addEventListener("keydown", (e) => {
     updateURL();
   }
 });
-
 
 // ===== KHỞI ĐỘNG =====
 // Gọi hàm tải dữ liệu ngay khi script được thực thi

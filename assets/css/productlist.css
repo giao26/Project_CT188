@@ -166,18 +166,21 @@
 }
 
 .product-name {
+  display: -webkit-box;
   overflow: hidden;
   color: var(--color-black);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.45;
   margin-bottom: 2rem;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .content-footer {
-  display: flex;
   margin-top: auto;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .sale {
@@ -267,12 +270,9 @@
   }
 
   .product-name {
-    display: -webkit-box;
     min-height: calc(1.2em * 2);
     margin-bottom: 10px;
     font-size: 0.82rem;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
   }
 
   .product-price,

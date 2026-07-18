@@ -850,7 +850,6 @@ const getProductDetail = () => {
     });
   } catch (error) {
     // Bắt mọi lỗi bất ngờ (network, JSON parse, DOM lỗi...) và hiển thị thông báo
-    console.error("Lỗi khi tải chi tiết sản phẩm:", error);
     const mainEl = document.querySelector("main");
     while (mainEl.firstChild) mainEl.removeChild(mainEl.firstChild);
     const errorP = document.createElement("p");

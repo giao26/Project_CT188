@@ -1,16 +1,14 @@
-//===================================================================
-//                       TÁC GIẢ (Phần xử lý Header events)
-//    HUỲNH TẤN GIAO
-//    B2408784
-//===================================================================
+//=============================================================
+//                       TÁC GIẢ (Phần trang chủ)
+//    Trương Trọng Nguyễn
+//    B2410738
+//=============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-
   initHeaderEvents();
   updateCartBadge();
   const path = window.location.pathname;
   if (path.endsWith("index.html") || path.endsWith("/")) {
-    initHomePageEvent();
     showWelcomeToast(); // Hiển thị toast chào mừng nếu vừa đăng nhập thành công
   }
 });
@@ -31,34 +29,28 @@ function showWelcomeToast() {
 
   // Dùng setTimeout nhỏ để đảm bảo Toastify đã được load xong
   setTimeout(() => {
-    Toastify({
-      text: message,
-      duration: 5000,
-      gravity: "top",
-      position: "right",
-      offset: {
-        x: 5,
-        y: 90, // Canh lề để không đè lên thanh header
-      },
-      style: {
-        background: "rgba(34, 197, 94, 0.92)",
-        color: "#ffffff",
-        borderRadius: "8px",
-        fontWeight: "600",
-        fontSize: "15px",
-        boxShadow: "0 4px 15px rgba(34, 197, 94, 0.35)",
-      },
-    }).showToast();
+    if (typeof Toastify === "function") {
+      Toastify({
+        text: message,
+        duration: 5000,
+        gravity: "top",
+        position: "right",
+        offset: {
+          x: 5,
+          y: 90, // Canh lề để không đè lên thanh header
+        },
+        style: {
+          background: "rgba(34, 197, 94, 0.92)",
+          color: "#ffffff",
+          borderRadius: "8px",
+          fontWeight: "600",
+          fontSize: "15px",
+          boxShadow: "0 4px 15px rgba(34, 197, 94, 0.35)",
+        },
+      }).showToast();
+    }
   }, 300);
 }
-
-
-
-//=============================================================
-//                       TÁC GIẢ (Phần trang chủ)
-//    Trương Trọng Nguyễn
-//    B2410738
-//=============================================================
 
 /**
  * Khởi tạo các sự kiện cho thanh điều hướng (header) như:
@@ -134,13 +126,16 @@ function initHeaderEvents() {
 
       // Hiển thị lời chào dạng text thay vì icon hình người
       // Xóa con của userAccountBtn bằng removeChild và thêm span/createTextNode để tránh innerHTML
-      while (userAccountBtn.firstChild) userAccountBtn.removeChild(userAccountBtn.firstChild);
+      while (userAccountBtn.firstChild)
+        userAccountBtn.removeChild(userAccountBtn.firstChild);
       const welcomeSpan = document.createElement("span");
       welcomeSpan.classList.add("welcome");
       welcomeSpan.style.fontSize = "14px";
       welcomeSpan.style.fontWeight = "700";
       welcomeSpan.style.whiteSpace = "nowrap";
-      welcomeSpan.appendChild(document.createTextNode(`Hi, ${displayUsername}`));
+      welcomeSpan.appendChild(
+        document.createTextNode(`Hi, ${displayUsername}`),
+      );
       userAccountBtn.appendChild(welcomeSpan);
       userAccountBtn.title = "Tài khoản của tôi";
       userAccountBtn.style.pointerEvents = "none"; // Khóa chuyển hướng sang trang login khi đã đăng nhập
@@ -178,7 +173,8 @@ function initHeaderEvents() {
       });
     } else {
       // Trả lại icon hình người ban đầu, dùng removeChild + appendChild thay vì innerHTML
-      while (userAccountBtn.firstChild) userAccountBtn.removeChild(userAccountBtn.firstChild);
+      while (userAccountBtn.firstChild)
+        userAccountBtn.removeChild(userAccountBtn.firstChild);
       const userIcon = document.createElement("i");
       userIcon.classList.add("ti", "ti-user");
       userAccountBtn.appendChild(userIcon);
@@ -236,37 +232,8 @@ function updateCartBadge() {
     while (cartBadge.firstChild) cartBadge.removeChild(cartBadge.firstChild);
     cartBadge.appendChild(document.createTextNode(cartList.length));
   } catch (error) {
-    console.error("Lỗi xử lý dữ liệu giỏ hàng:", error);
     while (cartBadge.firstChild) cartBadge.removeChild(cartBadge.firstChild);
     cartBadge.appendChild(document.createTextNode("0"));
   }
 }
 window.updateCartBadge = updateCartBadge;
-
-/**
- * Khởi tạo các sự kiện dành riêng cho Trang Chủ (index.html)
- * Chức năng chính: Xử lý tìm kiếm danh mục (hiệu ứng nổi bật khung danh mục theo từ khóa)
- */
-function initHomePageEvent() {
-  const searchInput = document.getElementById("search-input");
-  const searchBtn = document.getElementById("search-btn");
-  const searchInputMobile = document.getElementById("search-input-mobile");
-  const searchBtnMobile = document.getElementById("search-btn-mobile");
-  // ================= XỬ LÝ SỰ KIỆN TÌM KIẾM THEO DANH MỤC TRÊN TRANG CHỦ =================
-  if (searchBtn) {
-    searchBtn.addEventListener("click", executeSearch);
-  }
-  if (searchBtnMobile) {
-    searchBtnMobile.addEventListener("click", executeSearch);
-  }
-  if (searchInput) {
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") executeSearch();
-    });
-  }
-  if (searchInputMobile) {
-    searchInputMobile.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") executeSearch();
-    });
-  }
-}
