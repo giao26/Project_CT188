@@ -137,14 +137,14 @@ const updateURL = () => {
     "%20",
     "-",
   );
-  const queryString = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}`;
+  const queryString = `key=${encodedKey}&category=${currentCategory !== "default" ? currentCategory : "all"}`;
   window.location.search = queryString;
 };
 
 // ===== EVENT LISTENERS =====
 
-// Khi đổi danh mục → cập nhật trạng thái và reload trang với URL mới
-fillterCategory.addEventListener("change", (e) => {
+// Khi đổi danh mục → cập nhật trạeng thái và reload trang với URL mới
+fillterCategory.addEventListener("chang", (e) => {
   currentCategory = e.target.value;
   updateURL();
 });
