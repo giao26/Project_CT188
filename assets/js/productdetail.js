@@ -34,6 +34,7 @@ let currentToast = null; // Tham chiếu đến toast đang hiển thị (để 
 // Tải và render toàn bộ chi tiết sản phẩm, sau đó gắn tất cả
 // event listener cần thiết cho trang.
 // ============================================================
+
 const getProductDetail = () => {
   try {
     // ── Lấy ID sản phẩm từ URL ──────────────────────
@@ -42,25 +43,7 @@ const getProductDetail = () => {
 
     // Nếu URL không có tham số ?id=... → báo lỗi và dừng
     if (!productId) {
-      const body = document.querySelector("body");
-      while (body.firstChild) body.removeChild(body.firstChild);
-      const errorDiv = document.createElement("div");
-      errorDiv.style.width = "100%";
-      errorDiv.style.textAlign = "center";
-      errorDiv.style.padding = "3rem";
-      errorDiv.style.color = "var(--color-gray-600)";
-      const errorP = document.createElement("p");
-      errorP.appendChild(
-        document.createTextNode("Không tìm thấy sản phẩm. Vui lòng quay lại "),
-      );
-      const errorLink = document.createElement("a");
-      errorLink.setAttribute("href", "productlist.html");
-      errorLink.style.display = "inline";
-      errorLink.style.color = "var(--color-primary)";
-      errorLink.appendChild(document.createTextNode("danh sách sản phẩm."));
-      errorP.appendChild(errorLink);
-      errorDiv.appendChild(errorP);
-      body.appendChild(errorDiv);
+      showError();
       return;
     }
 
@@ -72,25 +55,7 @@ const getProductDetail = () => {
 
     // Nếu không tìm thấy sản phẩm nào khớp ID → báo lỗi và dừng
     if (!product) {
-      const body = document.querySelector("body");
-      while (body.firstChild) body.removeChild(body.firstChild);
-      const errorDiv = document.createElement("div");
-      errorDiv.style.width = "100%";
-      errorDiv.style.textAlign = "center";
-      errorDiv.style.padding = "3rem";
-      errorDiv.style.color = "var(--color-gray-600)";
-      const errorP = document.createElement("p");
-      errorP.appendChild(
-        document.createTextNode("Không tìm thấy sản phẩm. Vui lòng quay lại "),
-      );
-      const errorLink = document.createElement("a");
-      errorLink.setAttribute("href", "productlist.html");
-      errorLink.style.display = "inline";
-      errorLink.style.color = "var(--color-primary)";
-      errorLink.appendChild(document.createTextNode("danh sách sản phẩm."));
-      errorP.appendChild(errorLink);
-      errorDiv.appendChild(errorP);
-      body.appendChild(errorDiv);
+      showError();
       return;
     }
 
@@ -706,7 +671,7 @@ const getProductDetail = () => {
     moreDescription.appendChild(hr3);
 
     // ── Render khu vực sản phẩm liên quan ───────────
-    // Mỗi card liên quan có ảnh hover, tên, giá và badge "NEW" nếu applicable
+    // Mỗi card liên quan có ảnh hover, tên, giá và badge "NEW" nếu isNew === true
     // ── Render sản phẩm liên quan bằng createElement ──
     while (references.firstChild) references.removeChild(references.firstChild);
 
@@ -858,6 +823,29 @@ const getProductDetail = () => {
     );
     mainEl.appendChild(errorP);
   }
+};
+
+//Hàm thông báo lỗi khi id không tồn tại hoặc không tìm thấy
+const showError = () => {
+  const body = document.querySelector("body");
+  while (body.firstChild) body.removeChild(body.firstChild);
+  const errorDiv = document.createElement("div");
+  errorDiv.style.width = "100%";
+  errorDiv.style.textAlign = "center";
+  errorDiv.style.padding = "3rem";
+  errorDiv.style.color = "var(--color-gray-600)";
+  const errorP = document.createElement("p");
+  errorP.appendChild(
+    document.createTextNode("Không tìm thấy sản phẩm. Vui lòng quay lại "),
+  );
+  const errorLink = document.createElement("a");
+  errorLink.setAttribute("href", "productlist.html");
+  errorLink.style.display = "inline";
+  errorLink.style.color = "var(--color-primary)";
+  errorLink.appendChild(document.createTextNode("danh sách sản phẩm."));
+  errorP.appendChild(errorLink);
+  errorDiv.appendChild(errorP);
+  body.appendChild(errorDiv);
 };
 
 // ===== KHỞI ĐỘNG =====

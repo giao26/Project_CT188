@@ -7,8 +7,6 @@
 // ============================================================
 // PRODUCTLIST.JS — Trang danh sách sản phẩm
 // Chức năng:
-//   - Render thẻ sản phẩm lên lưới (product grid)
-//   - Tạo bộ lọc danh mục động từ dữ liệu
 //   - Hỗ trợ lọc theo danh mục, kiếm theo tên
 //   - Đồng bộ trạng thái bộ lọc với URL query string
 // ============================================================
@@ -18,6 +16,9 @@ const searchInp = document.getElementById("search-inp"); // Ô nhập từ khóa
 const fillterCategory = document.getElementById("filter-category"); // Dropdown lọc danh mục
 const productsList = document.getElementById("product-grid"); // Container chứa lưới sản phẩm
 const priceSort = document.getElementById("price-sort"); // Dropdown sắp xếp theo giá
+const products = document.querySelectorAll(
+  ".product .product-grid .product-card",
+); // Danh sách sản phẩm
 
 // ===== TRẠNG THÁI TOÀN CỤC =====
 let currentCategory = "default"; // Danh mục đang được lọc ("default" = hiển thị tất cả)
@@ -25,16 +26,9 @@ let currentSearch = ""; // Từ khóa gốc (có dấu tiếng Việt) — dùng
 let currentSearchNormalized = ""; // Từ khóa đã chuẩn hóa (không dấu) — chỉ dùng để lọc sản phẩm
 
 // ===== HÀM TẢI DỮ LIỆU =====
-/**
- * Tải dữ liệu sản phẩm từ file productlist.json, sau đó khởi tạo giao diện:
- *  1. Render toàn bộ sản phẩm lên lưới
- *  2. Tạo danh sách danh mục cho dropdown
- *  3. Áp dụng bộ lọc/sắp xếp từ URL (nếu có)
- *  4. Đồng bộ giá trị các control với trạng thái hiện tại
- */
-const getProduct = () => {
+const initProductListEvent = () => {
   try {
-    applySortAndFilter();
+    applyFilter();
     applyUIAction();
   } catch (error) {
     const body = document.querySelector("body");
@@ -77,7 +71,7 @@ const applyUIAction = () => {
  *  3. Lọc theo từ khóa tìm kiếm (không phân biệt dấu tiếng Việt)
  * Cuối cùng render lại lưới sản phẩm với kết quả đã xử lý.
  */
-const applySortAndFilter = () => {
+const applyFilter = () => {
   const path = new URLSearchParams(window.location.search);
 
   // Đọc tham số danh mục từ URL (nếu có)
@@ -91,21 +85,13 @@ const applySortAndFilter = () => {
     currentSearchNormalized = removeVietnameseTones(currentSearch);
   }
 
-  // Đọc tham số sắp xếp giá từ URL
-  //if (path.get("price")) currentSort = path.get("price");
+  // Lọc đồng thời theo danh mục và từ khóa tìm kiếm
 
-  // Tạo bản sao mảng để không làm thay đổi mảng gốc
-  // let products = [...data];
-  const products = document.querySelectorAll(
-    ".product .product-grid .product-card",
-  );
-
-  // console.log(products);
-  // Lọc đồng thời theo danh mục và từ khóa tìm kiếm (AND logic)
   products.forEach((item) => {
     const matchCategory =
       currentCategory === "default" ||
       item.getAttribute("data-category-slug") === currentCategory;
+
     const matchSearch =
       !currentSearchNormalized ||
       item.getAttribute("product-name").includes(currentSearchNormalized);
@@ -177,4 +163,4 @@ searchInp.addEventListener("keydown", (e) => {
 
 // ===== KHỞI ĐỘNG =====
 // Gọi hàm tải dữ liệu ngay khi script được thực thi
-getProduct();
+initProductListEvent();
