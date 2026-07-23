@@ -143,8 +143,8 @@ const updateURL = () => {
 
 // ===== EVENT LISTENERS =====
 
-// Khi đổi danh mục → cập nhật trạeng thái và reload trang với URL mới
-fillterCategory.addEventListener("chang", (e) => {
+// Khi đổi danh mục → cập nhật trạng thái và reload trang với URL mới
+fillterCategory.addEventListener("change", (e) => {
   currentCategory = e.target.value;
   updateURL();
 });
