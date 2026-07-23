@@ -275,6 +275,9 @@ function bindEvents() {
 
       if (cartList[index].quantity <= 0) {
         cartList.splice(index, 1); // Xóa phần tử tại vị trí index
+        if (typeof window.updateCartBadge === "function") {
+          window.updateCartBadge();
+        }
       }
 
       saveCart();
@@ -362,7 +365,7 @@ function lastCost() {
       .getAttribute("value"),
   );
 
-  const lastCost = preCost + deliveryCost - voucherValue;
+  const lastCost = Math.max(0, preCost + deliveryCost - voucherValue);
 
   // Hiển thị và lưu tổng tiền cuối cùng vào DOM
   setElText(

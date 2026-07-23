@@ -4,22 +4,10 @@
 //    B2410738
 //===================================================================================
 
-//===================================================================================
-//                       TÁC GIẢ (Logic render header và footer ở các trang)
-//    Huỳnh Tấn Giao
-//    B2408784
-//===================================================================================
-
-// Import hàm tạo header và footer
-import createHeader from "./header.js";
-import createFooter from "./footer.js";
-
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".header").appendChild(createHeader());
-  document.querySelector(".footer").appendChild(createFooter());
-
   initHeaderEvents();
   updateCartBadge();
+
   const path = window.location.pathname;
   if (path.endsWith("index.html") || path.endsWith("/")) {
     showWelcomeToast(); // Hiển thị toast chào mừng nếu vừa đăng nhập thành công

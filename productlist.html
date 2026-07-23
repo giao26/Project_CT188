@@ -36,7 +36,51 @@
     />
   </head>
   <body>
-    <header class="header" id="header"></header>
+    <header class="header" id="header">
+      <!-- =============================================================                       
+                        TÁC GIẢ
+        Trương Trọng Nguyễn 
+        B2410738
+==================================================================
+-->
+      <div class="nav-overlay" id="nav-overlay"></div>
+      <nav class="nav">
+        <button class="menu-toggle" id="mobile-menu-toggle" title="Menu">
+          <i class="ti ti-menu-2"></i>
+        </button>
+
+        <div class="nav-logo">
+          <a href="index.html">
+            <img src="assets/images/homepage/logo1.png" alt="logo"
+          /></a>
+        </div>
+
+        <ul class="nav-links" id="nav-links-menu">
+          <li class="mobile-close-item">
+            <button class="menu-close" id="mobile-menu-close" title="Đóng Menu">
+              <i class="ti ti-x"></i>
+            </button>
+          </li>
+          <li class="links"><a href="index.html">TRANG CHỦ</a></li>
+          <li class="links">
+            <a href="productlist.html?category=all&key=&price=default"
+              >DANH MỤC SẢN PHẨM
+            </a>
+          </li>
+          <li class="links"><a href="about.html">GIỚI THIỆU</a></li>
+        </ul>
+
+        <div class="nav-icons">
+          <a href="cart.html" title="Giỏ hàng" style="position: relative">
+            <i class="ti ti-shopping-bag"></i>
+            <span class="cart-badge">0</span>
+          </a>
+          <a href="login.html" id="user-account-btn" title="Tài khoản"
+            ><i class="ti ti-user"></i
+          ></a>
+        </div>
+      </nav>
+    </header>
 
     <main>
       <section class="productlist-hero">
@@ -63,25 +107,620 @@
             id="search-inp"
           />
         </div>
+        <!-- <select
+          class="filter-category"
+          name="category"
+          id="filter-category"
+          title="bộ lọc"
+        ></select> -->
         <select
           class="filter-category"
           name="category"
           id="filter-category"
           title="bộ lọc"
-        ></select>
-        <select class="price-sort" id="price-sort" title="Sắp xếp theo giá">
-          <option value="default" selected>Giá</option>
-          <option value="asc">Thấp-cao</option>
-          <option value="desc">Cao-thấp</option>
+        >
+          <option value="default">Sản phẩm nổi bật</option>
+          <option value="ao-polo">Áo polo</option>
+          <option value="ao-so-mi">Áo sơ mi</option>
+          <option value="ao-thun">Áo thun</option>
+          <option value="quan-short">Quần short</option>
+          <option value="quan-dai">Quần dài</option>
+          <option value="quan-jean">Quần jean</option>
         </select>
       </section>
-
       <section class="product">
-        <div class="product-grid" id="product-grid"></div>
+        <!-- <div class="product-grid" id="product-grid"></div> -->
+        <div class="product-grid" id="product-grid">
+          <article
+            class="product-card"
+            data-key="1"
+            data-category-slug="ao-polo"
+            product-name="ao polo nam icondenim trim color"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=1"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-polo-icondenim-trim-color__6__main.jpg"
+                alt="Áo Polo Nam IconDenim Trim Color" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-polo-icondenim-trim-color__6__hover.jpg"
+                alt="Áo Polo Nam IconDenim Trim Color"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=1"
+                ><h3 class="product-name">
+                  Áo Polo Nam IconDenim Trim Color
+                </h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">280.000₫</span>
+                <div class="sale">
+                  <span class="price-before">329.000₫</span
+                  ><span class="discount-percent">15%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="2"
+            data-category-slug="ao-polo"
+            product-name="ao polo nam hoa tiet phoi co"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=2"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/-polo-nam-hoa-tiet-phoi-co-contrasting-ribbed-details-form-regular__2__main.jpg"
+                alt="Áo Polo Nam Họa Tiết Phối Cổ" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/-polo-nam-hoa-tiet-phoi-co-contrasting-ribbed-details-form-regular__2__hover.jpg"
+                alt="Áo Polo Nam Họa Tiết Phối Cổ"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=2"
+                ><h3 class="product-name">Áo Polo Nam Họa Tiết Phối Cổ</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">217.000₫</span>
+                <div class="sale">
+                  <span class="price-before">289.000₫</span
+                  ><span class="discount-percent">25%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="3"
+            data-category-slug="ao-so-mi"
+            product-name="ao so mi cuban simplify"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=3"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-cuban-simplify-form-relaxed__main.jpg"
+                alt="Áo Sơ Mi Cuban Simplify" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-cuban-simplify-form-relaxed__hover.jpg"
+                alt="Áo Sơ Mi Cuban Simplify"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=3"
+                ><h3 class="product-name">Áo Sơ Mi Cuban Simplify</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">340.000₫</span>
+                <div class="sale">
+                  <span class="price-before">419.000₫</span
+                  ><span class="discount-percent">19%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="4"
+            data-category-slug="ao-so-mi"
+            product-name="ao so mi tay dai sandveil"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=4"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-dai-sandveil-form-regular93__main.jpg"
+                alt="Áo Sơ Mi Tay Dài Sandveil" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-dai-sandveil-form-regular93__hover.jpg"
+                alt="Áo Sơ Mi Tay Dài Sandveil"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=4"
+                ><h3 class="product-name">Áo Sơ Mi Tay Dài Sandveil</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">235.000₫</span>
+                <div class="sale">
+                  <span class="price-before">459.000₫</span
+                  ><span class="discount-percent">49%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="5"
+            data-category-slug="ao-so-mi"
+            product-name="ao so mi tay ngan cosmic draft"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=5"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-cosmic-draft-form-boxy-1__main.jpg"
+                alt="Áo Sơ Mi Tay Ngắn Cosmic Draft" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-cosmic-draft-form-boxy-1__hover.jpg"
+                alt="Áo Sơ Mi Tay Ngắn Cosmic Draft"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=5"
+                ><h3 class="product-name">Áo Sơ Mi Tay Ngắn Cosmic Draft</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">324.000₫</span>
+                <div class="sale">
+                  <span class="price-before">399.000₫</span
+                  ><span class="discount-percent">19%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="6"
+            data-category-slug="ao-so-mi"
+            product-name="ao so mi linen cuban sandrift"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=6"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-linen-cuban-sandrift-form-relaxed-1__main.jpg"
+                alt="Áo Sơ Mi Linen Cuban Sandrift" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-linen-cuban-sandrift-form-relaxed-1__hover.jpg"
+                alt="Áo Sơ Mi Linen Cuban Sandrift"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=6"
+                ><h3 class="product-name">Áo Sơ Mi Linen Cuban Sandrift</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">374.000₫</span>
+                <div class="sale">
+                  <span class="price-before">439.000₫</span
+                  ><span class="discount-percent">15%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="7"
+            data-category-slug="ao-so-mi"
+            product-name="ao so mi summer tribal"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=7"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-summer-tribal-form-relaxed-2_main.jpg"
+                alt="Áo Sơ Mi Summer Tribal" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-so-mi-nam-tay-ngan-summer-tribal-form-relaxed-2_hover.jpg"
+                alt="Áo Sơ Mi Summer Tribal"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=7"
+                ><h3 class="product-name">Áo Sơ Mi Summer Tribal</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">270.000₫</span>
+                <div class="sale">
+                  <span class="price-before">379.000₫</span
+                  ><span class="discount-percent">29%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="8"
+            data-category-slug="ao-thun"
+            product-name="ao thun nam atelier regular"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=8"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-thun-nam-atelier-form-regular27__main.jpg"
+                alt="Áo Thun Nam Atelier Regular" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-thun-nam-atelier-form-regular27__hover.jpg"
+                alt="Áo Thun Nam Atelier Regular"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=8"
+                ><h3 class="product-name">Áo Thun Nam Atelier Regular</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">168.000₫</span>
+                <div class="sale">
+                  <span class="price-before">199.000₫</span
+                  ><span class="discount-percent">16%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="9"
+            data-category-slug="ao-thun"
+            product-name="ao thun nam precision regular"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=9"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/ao-thun-nam-precision-form-regular41_main.jpg"
+                alt="Áo Thun Nam Precision Regular" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/ao-thun-nam-precision-form-regular41__hover.jpg"
+                alt="Áo Thun Nam Precision Regular"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=9"
+                ><h3 class="product-name">Áo Thun Nam Precision Regular</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">187.000₫</span>
+                <div class="sale">
+                  <span class="price-before">249.000₫</span
+                  ><span class="discount-percent">25%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="10"
+            data-category-slug="quan-short"
+            product-name="quan short denim nam wash basic"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=10"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/quan-short-denim-nam-wash-basic-color-form-slim__3__main.jpg"
+                alt="Quần Short Denim Nam Wash Basic" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/quan-short-denim-nam-wash-basic-color-form-slim__3__hover.jpg"
+                alt="Quần Short Denim Nam Wash Basic"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=10"
+                ><h3 class="product-name">
+                  Quần Short Denim Nam Wash Basic
+                </h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">290.000₫</span>
+                <div class="sale">
+                  <span class="price-before">349.000₫</span
+                  ><span class="discount-percent">17%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="11"
+            data-category-slug="quan-short"
+            product-name="quan short nam zephyr regular"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=11"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/quan-short-nam-zephyr-form-regular-3__main.jpg"
+                alt="Quần Short Nam Zephyr Regular" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/quan-short-nam-zephyr-form-regular-3__hover.jpg"
+                alt="Quần Short Nam Zephyr Regular"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=11"
+                ><h3 class="product-name">Quần Short Nam Zephyr Regular</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">195.000₫</span>
+                <div class="sale">
+                  <span class="price-before">319.000₫</span
+                  ><span class="discount-percent">39%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="12"
+            data-category-slug="quan-dai"
+            product-name="quan linen sudaze baggy"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=12"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/quan_nam_linen_sudaze_baggy__main.jpg"
+                alt="Quần Linen Sudaze Baggy" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/quan_nam_linen_sudaze_baggy__hover.jpg"
+                alt="Quần Linen Sudaze Baggy"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=12"
+                ><h3 class="product-name">Quần Linen Sudaze Baggy</h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">412.000₫</span>
+                <div class="sale">
+                  <span class="price-before">579.000₫</span
+                  ><span class="discount-percent">29%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="13"
+            data-category-slug="ao-thun"
+            product-name="ao thun nam tron cotton lua 4 chieu casual vibe form regular"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=13"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/id-000123a_main.jpg"
+                alt="Áo Thun Nam Trơn Cotton Lụa 4 Chiều Casual Vibe Form Regular" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/id-000123a_hover.jpg"
+                alt="Áo Thun Nam Trơn Cotton Lụa 4 Chiều Casual Vibe Form Regular"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=13"
+                ><h3 class="product-name">
+                  Áo Thun Nam Trơn Cotton Lụa 4 Chiều Casual Vibe Form Regular
+                </h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">472.000₫</span>
+                <div class="sale">
+                  <span class="price-before">629.000₫</span
+                  ><span class="discount-percent">25%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="14"
+            data-category-slug="quan-dai"
+            product-name="quan tay nam ong om classical form slim"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=14"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/id-005102a__main.jpg"
+                alt="Quần Tây Nam Ống Ôm Classical Form Slim" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/id-005102a__hover.jpg"
+                alt="Quần Tây Nam Ống Ôm Classical Form Slim"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=14"
+                ><h3 class="product-name">
+                  Quần Tây Nam Ống Ôm Classical Form Slim
+                </h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">490.000₫</span>
+                <div class="sale">
+                  <span class="price-before">699.000₫</span
+                  ><span class="discount-percent">30%</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            data-key="15"
+            data-category-slug="quan-jean"
+            product-name="quan jeans nam stonefade form straight"
+          >
+            <a class="img-wrapper" href="productdetail.html?id=15"
+              ><img
+                class="main-img"
+                src="./assets/images/productlistimage/quan-jeans-nam-stonefade-form-straight_55743c9c515c4207a41c08eb8622a544_1024x1024__main.jpg"
+                alt="Quần Jeans Nam Stonefade Form Straight" /><img
+                class="hover-img"
+                src="./assets/images/productlistimage/quan-jeans-nam-stonefade-form-straight47_221fb4a99c7f450bac3257a5e2306aeb_1024x1024__hover.webp"
+                alt="Quần Jeans Nam Stonefade Form Straight"
+            /></a>
+            <div class="content">
+              <a href="productdetail.html?id=15"
+                ><h3 class="product-name">
+                  Quần Jeans Nam Stonefade Form Straight
+                </h3></a
+              >
+              <div class="content-footer flex">
+                <span class="product-price after-sale">672.000₫</span>
+                <div class="sale">
+                  <span class="price-before">799.000₫</span
+                  ><span class="discount-percent">16%</span>
+                </div>
+              </div>
+            </div>
+            <div class="banner">
+              <img
+                src="assets/images/productlistimage/news.png"
+                alt="Sản phẩm mới"
+              />
+            </div>
+          </article>
+        </div>
       </section>
     </main>
 
-    <footer class="footer" id="footer"></footer>
+    <footer class="footer" id="footer">
+      <!-- =============================================================                       
+TÁC GIẢ
+        HUỲNH LÊ NHỰT TIẾN
+        B2405058
+==================================================================
+-->
+
+      <div class="footer-line"></div>
+      <div class="footer-content">
+        <!-- Thương hiệu -->
+        <div class="footer-item footer-mellow">
+          <div class="footer-brand">
+            <img src="./assets/images/footer/logo_footer.png" alt="logo" />
+            <span class="footer-brand-text">MELLOW</span>
+          </div>
+          <p class="footer-text">
+            Mang đến cho bạn những thời trang phong cách hiện đại nhất. <br />
+            Hãy tỏa sáng theo cách của bạn
+          </p>
+          <p class="footer-slogan">"Uy tín làm nên thương hiệu"</p>
+          <!-- Theo dõi MELLOW -->
+
+          <div class="footer-title-underline">
+            <h4 class="footer-title">Theo dõi MELLOW ngay</h4>
+            <div class="footer-underline"></div>
+          </div>
+
+          <div class="footer-social">
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+            <a href="#"><i class="ri-instagram-fill"></i></a>
+            <a href="#"><i class="ri-tiktok-fill"></i></a>
+            <a href="#"><i class="ri-twitter-x-line"></i></a>
+          </div>
+        </div>
+
+        <!-- MELLOW VN -->
+        <div class="footer-item footer-about">
+          <div class="footer-title-underline">
+            <h4 class="footer-title">MELLOW VIỆT NAM</h4>
+            <div class="footer-underline"></div>
+          </div>
+          <ul class="footer-links">
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i><span>Về MELLOW</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i><span>Tuyển dụng</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i
+                ><span>Điều khoản MELLOW</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i
+                ><span>Chính sách bảo mật</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-arrow-right-s-line"></i><span>Flash Sale</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Liên hệ -->
+        <div class="footer-item footer-contact">
+          <div class="footer-title-underline">
+            <h4 class="footer-title">LIÊN HỆ MELLOW</h4>
+            <div class="footer-underline"></div>
+          </div>
+          <ul class="footer-links">
+            <li>
+              <a href="#"
+                ><i class="ri-map-pin-fill"></i
+                ><span
+                  >36 Đường 3/2, P.Xuân Khánh, Q.Ninh Kiều, Cần Thơ</span
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-phone-fill"></i><span>0363 636 369</span></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="ri-mail-line"></i><span>cskh@mellow.com.vn</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy;2026
+          <img src="./assets/images/footer/logo_footer.png" alt="logo" />
+          MELLOW. Made with by Group 7 CT188<i class="ri-bard-line"></i>
+        </p>
+      </div>
+    </footer>
 
     <script type="module" src="./assets/js/script.js"></script>
     <!-- <script type="module" scr="./assets/js/data.js"></script> -->

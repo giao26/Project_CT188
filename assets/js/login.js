@@ -212,11 +212,6 @@ const removeError = (input, condition) => {
 // ===========================
 //    XỬ LÝ FORM ĐĂNG KÝ
 // ===========================
-// const nameInput = document.getElementById("reg-name");
-// const emailInput = document.getElementById("reg-email");
-// const phoneInput = document.getElementById("reg-phone");
-// const passwordInput = document.getElementById("reg-pass");
-// const confirmPasswordInput = document.getElementById("reg-confirmPass");
 
 if (registerForm) {
   // Lấy các ô nhập liệu của form đăng ký

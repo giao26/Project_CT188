@@ -206,8 +206,7 @@ const getProductDetail = () => {
 
     const saleboxUl = document.createElement("ul");
 
-    // Dữ liệu các mục khuyến mãi
-    const promoItems = [
+    [
       { text: "Nhập mã ", code: "CT188", suffix: " giảm 50K đơn từ 499K" },
       { text: "Nhập mã ", code: "CT18806", suffix: " giảm 96K đơn từ 799K" },
       {
@@ -215,9 +214,7 @@ const getProductDetail = () => {
         code: "CT18806NHOM7",
         suffix: " giảm 196K đơn từ 1099K",
       },
-    ];
-
-    promoItems.forEach((item) => {
+    ].forEach((item) => {
       const li = document.createElement("li");
       li.appendChild(document.createTextNode(item.text));
       const strong = document.createElement("strong");
@@ -348,7 +345,7 @@ const getProductDetail = () => {
 
     const policiesUl = document.createElement("ul");
 
-    const policyData = [
+    [
       {
         img: "assets/images/productlistimage/policy_product_image_1.png",
         text: "FreeShip từ đơn 299k",
@@ -365,9 +362,7 @@ const getProductDetail = () => {
         img: "assets/images/productlistimage/policy_product_image_4.png",
         text: "Đổi trả hàng miễn phí trong 15 ngày",
       },
-    ];
-
-    policyData.forEach((item) => {
+    ].forEach((item) => {
       const li = document.createElement("li");
       const img = document.createElement("img");
       img.setAttribute("src", item.img);
@@ -838,7 +833,7 @@ const getProductDetail = () => {
       });
 
     // Click nút "×" trong modal → đóng modal
-    document.getElementById("closeModalBtn").addEventListener("click", () => {
+    closeBtn.addEventListener("click", () => {
       overlayModal.classList.remove("show");
     });
 

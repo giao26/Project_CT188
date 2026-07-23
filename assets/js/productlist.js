@@ -7,14 +7,11 @@
 // ============================================================
 // PRODUCTLIST.JS — Trang danh sách sản phẩm
 // Chức năng:
-//   - Tải danh sách sản phẩm từ file JSON
 //   - Render thẻ sản phẩm lên lưới (product grid)
 //   - Tạo bộ lọc danh mục động từ dữ liệu
-//   - Hỗ trợ lọc theo danh mục, sắp xếp theo giá, tìm kiếm theo tên
+//   - Hỗ trợ lọc theo danh mục, kiếm theo tên
 //   - Đồng bộ trạng thái bộ lọc với URL query string
 // ============================================================
-// Import mảng danh sách sản phẩm
-import data from "./data.js";
 
 // ===== THAM CHIẾU DOM =====
 const searchInp = document.getElementById("search-inp"); // Ô nhập từ khóa tìm kiếm
@@ -22,11 +19,11 @@ const fillterCategory = document.getElementById("filter-category"); // Dropdown 
 const productsList = document.getElementById("product-grid"); // Container chứa lưới sản phẩm
 const priceSort = document.getElementById("price-sort"); // Dropdown sắp xếp theo giá
 
-// ===== TRẠNG THÁI TOÀN CỤC ===== // Toàn bộ dữ liệu sản phẩm tải từ JSON
+// ===== TRẠNG THÁI TOÀN CỤC =====
 let currentCategory = "default"; // Danh mục đang được lọc ("default" = hiển thị tất cả)
 let currentSearch = ""; // Từ khóa gốc (có dấu tiếng Việt) — dùng để hiển thị & lưu URL
 let currentSearchNormalized = ""; // Từ khóa đã chuẩn hóa (không dấu) — chỉ dùng để lọc sản phẩm
-let currentSort = "default"; // Thứ tự sắp xếp: "default" | "asc" | "desc"
+
 // ===== HÀM TẢI DỮ LIỆU =====
 /**
  * Tải dữ liệu sản phẩm từ file productlist.json, sau đó khởi tạo giao diện:
@@ -37,14 +34,13 @@ let currentSort = "default"; // Thứ tự sắp xếp: "default" | "asc" | "des
  */
 const getProduct = () => {
   try {
-    loadCategoryList(data);
     applySortAndFilter();
     applyUIAction();
   } catch (error) {
     const body = document.querySelector("body");
-    // Xóa toàn bộ con của body bằng removeChild thay vì innerHTML = ""
+
     while (body.firstChild) body.removeChild(body.firstChild);
-    // Tạo cấu trúc thông báo lỗi bằng createElement và appendChild
+
     const errorDiv = document.createElement("div");
     errorDiv.style.width = "100%";
     errorDiv.style.textAlign = "center";
@@ -59,120 +55,6 @@ const getProduct = () => {
   }
 };
 
-// ===== HÀM RENDER LƯỚI SẢN PHẨM =====
-
-const loadProductList = (data) => {
-  data.forEach((prod) => {
-    const productCard = document.createElement("article");
-    productCard.classList.add("product-card");
-    productCard.setAttribute("data-key", prod.id);
-    productCard.setAttribute("data-category-slug", prod.categorySlug);
-
-    const imageWrapper = document.createElement("a");
-    imageWrapper.classList.add("img-wrapper");
-    imageWrapper.setAttribute("href", `productdetail.html?id=${prod.id}`);
-
-    const content = document.createElement("div");
-    content.classList.add("content");
-
-    const banner = document.createElement("div");
-    banner.classList.add("banner");
-
-    const mainImg = document.createElement("img");
-    mainImg.classList.add("main-img");
-    mainImg.setAttribute("src", prod.mainImg);
-    mainImg.setAttribute("alt", prod.name);
-
-    const hoverImg = document.createElement("img");
-    hoverImg.classList.add("hover-img");
-    hoverImg.setAttribute("src", prod.ImgHover);
-    hoverImg.setAttribute("alt", prod.name);
-
-    const nameWrapper = document.createElement("a");
-    nameWrapper.setAttribute("href", `productdetail.html?id=${prod.id}`);
-
-    const productName = document.createElement("h3");
-    productName.classList.add("product-name");
-    productName.appendChild(document.createTextNode(prod.name));
-
-    const contentFooter = document.createElement("div");
-    contentFooter.classList.add("content-footer", "flex");
-
-    const productPrice = document.createElement("span");
-    productPrice.classList.add("product-price", "after-sale");
-    productPrice.appendChild(
-      document.createTextNode(
-        `${(Math.ceil((prod.priceValue * (1 - prod.discountPercent / 100)) / 1000) * 1000).toLocaleString("vi-VN")}₫`,
-      ),
-    );
-
-    const sale = document.createElement("div");
-    sale.classList.add("sale");
-
-    const priceBefore = document.createElement("span");
-    priceBefore.classList.add("price-before");
-    priceBefore.appendChild(document.createTextNode(prod.price));
-
-    const discountPercent = document.createElement("span");
-    discountPercent.classList.add("discount-percent");
-    discountPercent.appendChild(
-      document.createTextNode(`${prod.discountPercent}%`),
-    );
-
-    const imgBanner = document.createElement("img");
-    imgBanner.setAttribute("src", "assets/images/productlistimage/news.png");
-    imgBanner.setAttribute("alt", "Sản phẩm mới");
-
-    imageWrapper.appendChild(mainImg);
-    imageWrapper.appendChild(hoverImg);
-
-    sale.appendChild(priceBefore);
-    sale.appendChild(discountPercent);
-
-    contentFooter.appendChild(productPrice);
-    contentFooter.appendChild(sale);
-
-    nameWrapper.appendChild(productName);
-
-    content.appendChild(nameWrapper);
-    content.appendChild(contentFooter);
-
-    productCard.appendChild(imageWrapper);
-    productCard.appendChild(content);
-
-    if (prod.isNew) {
-      banner.appendChild(imgBanner);
-      productCard.appendChild(banner);
-    }
-
-    productsList.appendChild(productCard);
-  });
-};
-
-// ===== HÀM TẠO DANH SÁCH DANH MỤC =====
-const loadCategoryList = (data) => {
-  // Dùng Map để đảm bảo mỗi danh mục chỉ xuất hiện một lần
-  const categoryMap = new Map();
-
-  data.forEach((prod) => {
-    categoryMap.set(prod.categorySlug, prod.category);
-  });
-
-  const defaultCategory = document.createElement("option");
-  defaultCategory.setAttribute("value", "default");
-  defaultCategory.appendChild(document.createTextNode("Sản phẩm nổi bật"));
-
-  fillterCategory.appendChild(defaultCategory);
-
-  Array.from(categoryMap).forEach(([categorySlug, categoryName]) => {
-    const option = document.createElement("option");
-    option.setAttribute("value", categorySlug);
-    option.appendChild(document.createTextNode(categoryName));
-
-    fillterCategory.appendChild(option);
-  });
-};
-
 // ===== HÀM ĐỒNG BỘ GIAO DIỆN VỚI TRẠNG THÁI =====
 /**
  * Sau khi áp dụng bộ lọc từ URL, đồng bộ lại giá trị hiển thị
@@ -184,7 +66,6 @@ const applyUIAction = () => {
   // Nếu category là "all" thì hiển thị lại "default" trên dropdown
   fillterCategory.value =
     currentCategory !== "all" ? currentCategory : "default";
-  priceSort.value = currentSort;
 };
 
 // ===== HÀM ÁP DỤNG BỘ LỌC & SẮP XẾP =====
@@ -211,40 +92,32 @@ const applySortAndFilter = () => {
   }
 
   // Đọc tham số sắp xếp giá từ URL
-  if (path.get("price")) currentSort = path.get("price");
+  //if (path.get("price")) currentSort = path.get("price");
 
   // Tạo bản sao mảng để không làm thay đổi mảng gốc
-  let products = [...data];
+  // let products = [...data];
+  const products = document.querySelectorAll(
+    ".product .product-grid .product-card",
+  );
 
-  // Lọc theo danh mục
-  if (currentCategory !== "default") {
-    products = products.filter((item) => item.categorySlug === currentCategory);
-  }
+  // console.log(products);
+  // Lọc đồng thời theo danh mục và từ khóa tìm kiếm (AND logic)
+  products.forEach((item) => {
+    const matchCategory =
+      currentCategory === "default" ||
+      item.getAttribute("data-category-slug") === currentCategory;
+    const matchSearch =
+      !currentSearchNormalized ||
+      item.getAttribute("product-name").includes(currentSearchNormalized);
 
-  // Sắp xếp theo giá sau giảm
-  // Công thức giá sau giảm: làm tròn lên bội số 1000 gần nhất
-  if (currentSort !== "default") {
-    products = products.sort((a, b) =>
-      currentSort === "asc"
-        ? Math.ceil((a.priceValue * (1 - a.discountPercent / 100)) / 1000) *
-            1000 -
-          Math.ceil((b.priceValue * (1 - b.discountPercent / 100)) / 1000) *
-            1000
-        : Math.ceil((b.priceValue * (1 - b.discountPercent / 100)) / 1000) *
-            1000 -
-          Math.ceil((a.priceValue * (1 - a.discountPercent / 100)) / 1000) *
-            1000,
-    );
-  }
+    if (matchCategory && matchSearch) {
+      item.classList.remove("hidden");
+    } else {
+      item.classList.add("hidden");
+    }
+  });
 
-  // Lọc theo từ khóa tìm kiếm (so sánh không phân biệt dấu)
-  if (currentSearchNormalized) {
-    products = products.filter((item) =>
-      removeVietnameseTones(item.name).includes(currentSearchNormalized),
-    );
-  }
-
-  loadProductList(products);
+  //loadProductList(products);
 };
 
 // ===== HÀM CHUẨN HÓA CHUỖI TIẾNG VIỆT =====
@@ -271,7 +144,6 @@ function removeVietnameseTones(str) {
  * Trang sẽ tự đọc lại URL và áp dụng bộ lọc khi load lại.
  * - category: slug danh mục đang chọn ("all" nếu là "default")
  * - key: từ khóa tìm kiếm (thay khoảng trắng bằng "-" để đưa lên URL)
- * - price: thứ tự sắp xếp ("default" | "asc" | "desc")
  */
 const updateURL = () => {
   // Lưu từ khóa gốc (có dấu) lên URL, thay khoảng trắng bằng "-"
@@ -279,7 +151,7 @@ const updateURL = () => {
     "%20",
     "-",
   );
-  const queryString = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}&price=${currentSort}`;
+  const queryString = `category=${currentCategory !== "default" ? currentCategory : "all"}&key=${encodedKey}`;
   window.location.search = queryString;
 };
 
@@ -288,12 +160,6 @@ const updateURL = () => {
 // Khi đổi danh mục → cập nhật trạng thái và reload trang với URL mới
 fillterCategory.addEventListener("change", (e) => {
   currentCategory = e.target.value;
-  updateURL();
-});
-
-// Khi đổi thứ tự sắp xếp → cập nhật trạng thái và reload trang với URL mới
-priceSort.addEventListener("change", (e) => {
-  currentSort = e.target.value;
   updateURL();
 });
 
