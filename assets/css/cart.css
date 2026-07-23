@@ -166,11 +166,12 @@
   width: 65%;
   border-radius: var(--radius-md);
   padding: 0 0.875rem;
+  border: 1px solid #000;
 }
 
 .voucher input:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .voucher .error::placeholder {

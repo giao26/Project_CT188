@@ -62,12 +62,7 @@
   width: 200px;
 }
 
-.price-sort {
-  width: 140px;
-}
-
-.filter-category,
-.price-sort {
+.filter-category {
   min-height: 44px;
   border: 1px solid var(--color-gray-400);
   border-radius: var(--radius-xl);
@@ -78,8 +73,7 @@
 }
 
 .product-search:focus-within,
-.filter-category:focus,
-.price-sort:focus {
+.filter-category:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
@@ -245,8 +239,7 @@
     width: 100%;
   }
 
-  .filter-category,
-  .price-sort {
+  .filter-category {
     flex: 1 1 calc(50% - 0.5rem);
     width: auto;
   }
@@ -291,8 +284,7 @@
     gap: 0.75rem;
   }
 
-  .filter-category,
-  .price-sort {
+  .filter-category {
     flex-basis: 100%;
   }
 
