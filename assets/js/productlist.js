@@ -15,7 +15,6 @@
 const searchInp = document.getElementById("search-inp"); // Ô nhập từ khóa tìm kiếm
 const fillterCategory = document.getElementById("filter-category"); // Dropdown lọc danh mục
 const productsList = document.getElementById("product-grid"); // Container chứa lưới sản phẩm
-const priceSort = document.getElementById("price-sort"); // Dropdown sắp xếp theo giá
 const products = document.querySelectorAll(
   ".product .product-grid .product-card",
 ); // Danh sách sản phẩm

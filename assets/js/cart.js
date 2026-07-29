@@ -488,6 +488,16 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    function isValidPhone(phone) {
+      const phoneRegex = /^(0[35789])([0-9]{8})$/;
+      return phoneRegex.test(phone);
+    }
+
+    if (!isValidPhone(phone)) {
+      alert("Số điện thoại không hợp lệ!");
+      document.getElementById("phone").focus();
+      return;
+    }
     // Hiển thị toast thông báo đặt hàng thành công trong 3 giây
     const toast = document.getElementById("success-message");
 

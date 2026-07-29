@@ -147,7 +147,7 @@ const setGreeting = () => {
   }
 
   greetingElement.append(document.createTextNode(greeting));
-  document.getElementById("greeting").style.background = gradient;
+  greetingElement.style.background = gradient;
 };
 setGreeting(); // Gọi ngay lần đầu load trang
 setInterval(setGreeting, 60000); // Lặp lại hàm kiểm tra mỗi 1 phút để giữ tính chính xác
